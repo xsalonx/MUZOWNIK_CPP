@@ -12,15 +12,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a62cfe64-33c4-411e-bcad-41d7124d417d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MUZOWNIK.exe" beforeDir="false" afterPath="$PROJECT_DIR$/MUZOWNIK.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/opus.txt" beforeDir="false" afterPath="$PROJECT_DIR$/opus.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/init_putting.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/init_putting.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/putting.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/putting.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_edit_logic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_edit_logic.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_editing_utils.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_editing_utils.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OPUS_LOADSAVE/OPUS_loadsave.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_LOADSAVE/OPUS_loadsave.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/STRUCTS_MALLFREE/structs_mallfree.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/STRUCTS_MALLFREE/structs_mallfree.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WINDOWS/windows.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/WINDOWS/windows.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WINDOWS/windows.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/WINDOWS/windows.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/library.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/library.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/library.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/structs.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/structs.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wynik.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/wynik.bmp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,17 +51,18 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../c/MUZOWNIK_PI_PART_LIB" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="configurable.group.build" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\programowanie\c_cpp\c++\MUZOWNIK" />
+      <recent name="D:\programowanie\c_cpp\c++\MUZOWNIK\out" />
       <recent name="D:\programowanie\c_cpp\c\MUZOWNIK_PI_PART_LIB\src" />
       <recent name="D:\programowanie\c_cpp\c\MUZOWNIK_PI_PART_LIB\tmp" />
       <recent name="D:\programowanie\c_cpp\c\MUZOWNIK_PI_PART_LIB\src\OPUS_LOADSAVE" />
-      <recent name="D:\programowanie\c_cpp\c\NUTOWNIK_PI_PART_LIB\src" />
     </key>
   </component>
   <component name="RunManager">
@@ -139,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623486884147</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="malloc to new, free to delete">
+      <created>1623514347500</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1623514347500</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,7 +161,8 @@
     <MESSAGE value="Windows commitment" />
     <MESSAGE value="partition done" />
     <MESSAGE value="bugs of deleting first bar removed" />
-    <option name="LAST_COMMIT_MESSAGE" value="bugs of deleting first bar removed" />
+    <MESSAGE value="malloc to new, free to delete" />
+    <option name="LAST_COMMIT_MESSAGE" value="malloc to new, free to delete" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -160,9 +173,14 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/STRUCTS_MALLFREE/structs_mallfree.cpp</url>
-          <line>45</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/src/ON_STAVE_PUTTING/init_putting.cpp</url>
+          <line>136</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/library.cpp</url>
+          <line>33</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

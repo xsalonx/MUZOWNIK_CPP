@@ -30,16 +30,16 @@ int put_chord_on_treb_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL_
 
     acci_rect.x = *X_start - DISTANCE_BETWEEN_ACCI_AND_NOTE;
 
-    SDL_Surface *note_without_flag = NULL;
-    SDL_Surface *note_with_flag = NULL;
-    SDL_Surface *note_to_put = NULL;
-    SDL_Surface *sign_note_without_flag = NULL;
-    SDL_Surface *sign_note_with_flag = NULL;
+    SDL_Surface *note_without_flag = nullptr;
+    SDL_Surface *note_with_flag = nullptr;
+    SDL_Surface *note_to_put = nullptr;
+    SDL_Surface *sign_note_without_flag = nullptr;
+    SDL_Surface *sign_note_with_flag = nullptr;
 
     SDL_Surface *acci_b = SDL_LoadBMP("obrazki/accidental/acci_b.bmp");
     SDL_Surface *acci_s = SDL_LoadBMP("obrazki/accidental/acci_s.bmp");
     SDL_Surface *acci_n = SDL_LoadBMP("obrazki/accidental/acci_n.bmp");
-    SDL_Surface *acci_to_put = NULL;
+    SDL_Surface *acci_to_put = nullptr;
 
     SDL_Surface *time_dot = SDL_LoadBMP("obrazki/notes/time_dot.bmp");
 
@@ -170,7 +170,7 @@ int put_chord_on_treb_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL_
                     insert_note_rect.y =
                             Y_FIRST_LINE + DISTANCE_BETWEEN_FIRST_LINE_BRACES * brace - DISTANCE_BETWEEN_LINES * 3 -
                             Y_OF_ON_LINE_NOTES;
-                    SDL_BlitSurface(note_to_put, NULL, stave, &insert_note_rect);
+                    SDL_BlitSurface(note_to_put, nullptr, stave, &insert_note_rect);
                     line_rect.y =
                             Y_FIRST_LINE + DISTANCE_BETWEEN_FIRST_LINE_BRACES * brace - DISTANCE_BETWEEN_LINES * 1;
                     SDL_FillRect(stave, &line_rect, 0x00);
@@ -195,7 +195,7 @@ int put_chord_on_treb_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL_
                     insert_note_rect.y =
                             Y_FIRST_LINE + DISTANCE_BETWEEN_FIRST_LINE_BRACES * brace - DISTANCE_BETWEEN_LINES * 4 -
                             Y_OF_BETWEEN_LINE_NOTES;
-                    SDL_BlitSurface(note_to_put, NULL, stave, &insert_note_rect);
+                    SDL_BlitSurface(note_to_put, nullptr, stave, &insert_note_rect);
                     line_rect.y =
                             Y_FIRST_LINE + DISTANCE_BETWEEN_FIRST_LINE_BRACES * brace - DISTANCE_BETWEEN_LINES * 1;
                     SDL_FillRect(stave, &line_rect, 0x00);
@@ -286,7 +286,7 @@ int put_chord_on_treb_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL_
             dots_rect.y = insert_note_rect.y;
             dots_rect.x = insert_note_rect.x + WIDTH_NOTES_WITHOUT_FLAG;
             for (j = 0; j < chord_to_put->_time_dots_; j++){
-                SDL_BlitSurface(time_dot, NULL, stave, &dots_rect);
+                SDL_BlitSurface(time_dot, nullptr, stave, &dots_rect);
                 dots_rect.x += time_dot->w;
             }
         }
@@ -297,17 +297,17 @@ int put_chord_on_treb_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL_
                 if (path[prefix_len + 1] == 'u' && k == 0) {
                     dots_rect.x = insert_note_rect.x + WIDTH_NOTES_WITHOUT_FLAG / 3;
                     dots_rect.y = insert_note_rect.y + 15;
-                    SDL_BlitSurface(time_dot, NULL, stave, &dots_rect);
+                    SDL_BlitSurface(time_dot, nullptr, stave, &dots_rect);
                 }  else if (path[prefix_len + 1] == 'd' && k == chord_to_put->notes_number - 1) {
                     dots_rect.x = insert_note_rect.x + WIDTH_NOTES_WITHOUT_FLAG / 3;
                     dots_rect.y = insert_note_rect.y - 15;
-                    SDL_BlitSurface(time_dot, NULL, stave, &dots_rect);
+                    SDL_BlitSurface(time_dot, nullptr, stave, &dots_rect);
                 }
             }
         }
 
         if (insert_note_rect.y != 0) {
-            SDL_BlitSurface(note_to_put, NULL, stave, &insert_note_rect);
+            SDL_BlitSurface(note_to_put, nullptr, stave, &insert_note_rect);
             any_put = 1;
             if (is_acci_req(chord_to_put, k, COE->current_O->default_serial_key) || chord_to_put->notes_[k].may_print_acci) {
                 acci_rect.y = insert_note_rect.y + Y_OF_ACCI_S_ON_LINE + 10;
@@ -329,7 +329,7 @@ int put_chord_on_treb_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL_
                     acci_rect.y -= DISTANCE_BETWEEN_LINES / 2;
                 }
 
-                SDL_BlitSurface(acci_to_put, NULL, stave, &acci_rect);
+                SDL_BlitSurface(acci_to_put, nullptr, stave, &acci_rect);
             }
         }
     }
@@ -388,16 +388,16 @@ int put_chord_on_bass_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL_
 
     acci_rect.x = *X_start - DISTANCE_BETWEEN_ACCI_AND_NOTE;
 
-    SDL_Surface *note_without_flag = NULL;
-    SDL_Surface *note_with_flag = NULL;
-    SDL_Surface *note_to_put = NULL;
-    SDL_Surface *sign_note_without_flag = NULL;
-    SDL_Surface *sign_note_with_flag = NULL;
+    SDL_Surface *note_without_flag = nullptr;
+    SDL_Surface *note_with_flag = nullptr;
+    SDL_Surface *note_to_put = nullptr;
+    SDL_Surface *sign_note_without_flag = nullptr;
+    SDL_Surface *sign_note_with_flag = nullptr;
 
     SDL_Surface *acci_b = SDL_LoadBMP("obrazki/accidental/acci_b.bmp");
     SDL_Surface *acci_s = SDL_LoadBMP("obrazki/accidental/acci_s.bmp");
     SDL_Surface *acci_n = SDL_LoadBMP("obrazki/accidental/acci_n.bmp");
-    SDL_Surface *acci_to_put = NULL;
+    SDL_Surface *acci_to_put = nullptr;
 
     SDL_Surface *time_dot = SDL_LoadBMP("obrazki/notes/time_dot.bmp");
 
@@ -719,7 +719,7 @@ int put_chord_on_bass_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL_
             dots_rect.y = insert_note_rect.y;
             dots_rect.x = insert_note_rect.x + WIDTH_NOTES_WITHOUT_FLAG;
             for (j = 0; j < chord_to_put->_time_dots_; j++) {
-                SDL_BlitSurface(time_dot, NULL, stave, &dots_rect);
+                SDL_BlitSurface(time_dot, nullptr, stave, &dots_rect);
                 dots_rect.x += time_dot->w;
             }
         }
@@ -730,17 +730,17 @@ int put_chord_on_bass_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL_
                 if (path[prefix_len + 1] == 'u' && k == 0) {
                     dots_rect.x = insert_note_rect.x + WIDTH_NOTES_WITHOUT_FLAG / 3;
                     dots_rect.y = insert_note_rect.y + 15;
-                    SDL_BlitSurface(time_dot, NULL, stave, &dots_rect);
+                    SDL_BlitSurface(time_dot, nullptr, stave, &dots_rect);
                 }  else if (path[prefix_len + 1] == 'd' && k == chord_to_put->notes_number - 1) {
                     dots_rect.x = insert_note_rect.x + WIDTH_NOTES_WITHOUT_FLAG / 3;
                     dots_rect.y = insert_note_rect.y - 15;
-                    SDL_BlitSurface(time_dot, NULL, stave, &dots_rect);
+                    SDL_BlitSurface(time_dot, nullptr, stave, &dots_rect);
                 }
             }
         }
 
         if (insert_note_rect.y != 0) {
-            SDL_BlitSurface(note_to_put, NULL, stave, &insert_note_rect);
+            SDL_BlitSurface(note_to_put, nullptr, stave, &insert_note_rect);
             any_put = 1;
             ////// Znaki chromatyczne
             if (is_acci_req(chord_to_put, k, COE->current_O->default_serial_key) || chord_to_put->notes_[k].may_print_acci) {
@@ -760,7 +760,7 @@ int put_chord_on_bass_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL_
                         break;
                 }
 
-                SDL_BlitSurface(acci_to_put, NULL, stave, &acci_rect);
+                SDL_BlitSurface(acci_to_put, nullptr, stave, &acci_rect);
             }
         }
     }
@@ -809,7 +809,7 @@ int put_pause_on_stave_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL
     SDL_Rect pause_rect;
     pause_rect.x = *X_start;
     pause_rect.y = Y_FIRST_LINE + hand * DISTANCE_BETWEEN_FIRST_LINE_HANDS_STAVES + brace * DISTANCE_BETWEEN_FIRST_LINE_BRACES;
-    SDL_Surface *pause = NULL;
+    SDL_Surface *pause = nullptr;
     char path[26] = "obrazki/notes/paus_0n.bmp";
     int prefix_len = 19;
     path[prefix_len] = (char)(chord_to_put->time + 48);
@@ -820,7 +820,7 @@ int put_pause_on_stave_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL
 
     pause = SDL_LoadBMP(path);
 
-    SDL_BlitSurface(pause, NULL, stave, &pause_rect);
+    SDL_BlitSurface(pause, nullptr, stave, &pause_rect);
 
     chord_to_put->X_position = *X_start;
     *X_start += b_space->widths_ni_[chord_to_put->time][chord_to_put->_time_dots_];
@@ -884,7 +884,7 @@ int put_bar_on_stave(BAR *bar_to_put, SDL_Surface *stave, SDL_Surface *blank_sta
     bass_bar_rect.h = 4 * DISTANCE_BETWEEN_LINES + 12 * DISTANCE_BETWEEN_LINES;
 
 
-    CHORD *help_chord = NULL;
+    CHORD *help_chord = nullptr;
     double chords_periods[6][6], max_metre_sum, metre_sum = 0;
     max_metre_sum = (double) chosen_metre[0] / (double) chosen_metre[1];
     chords_periods[0][0] = 1;
@@ -898,7 +898,7 @@ int put_bar_on_stave(BAR *bar_to_put, SDL_Surface *stave, SDL_Surface *blank_sta
     help_chord = bar_to_put->first_chord_treb;
 
 
-    while (help_chord != NULL) {
+    while (help_chord != nullptr) {
         metre_sum += chords_periods[help_chord->time][help_chord->_time_dots_];
         help_chord = help_chord->next;
     }
@@ -906,11 +906,11 @@ int put_bar_on_stave(BAR *bar_to_put, SDL_Surface *stave, SDL_Surface *blank_sta
     while (metre_sum > max_metre_sum) {
         was_chord_deleted = 1;
         help_chord = bar_to_put->first_chord_treb;
-        while (help_chord->next != NULL) {
+        while (help_chord->next != nullptr) {
             help_chord = help_chord->next;
         }
-        if (help_chord->prev != NULL) {
-            help_chord->prev->next = NULL;
+        if (help_chord->prev != nullptr) {
+            help_chord->prev->next = nullptr;
             delete help_chord;
         } else {
             help_chord->time++;
@@ -918,7 +918,7 @@ int put_bar_on_stave(BAR *bar_to_put, SDL_Surface *stave, SDL_Surface *blank_sta
 
         help_chord = bar_to_put->first_chord_treb;
         metre_sum = 0;
-        while (help_chord != NULL) {
+        while (help_chord != nullptr) {
             metre_sum += chords_periods[help_chord->time][help_chord->_time_dots_];
             help_chord = help_chord->next;
         }
@@ -929,7 +929,7 @@ int put_bar_on_stave(BAR *bar_to_put, SDL_Surface *stave, SDL_Surface *blank_sta
     metre_sum = 0;
     help_chord = bar_to_put->first_chord_bass;
 
-    while (help_chord != NULL) {
+    while (help_chord != nullptr) {
         metre_sum += chords_periods[help_chord->time][help_chord->_time_dots_];
         help_chord = help_chord->next;
     }
@@ -937,12 +937,12 @@ int put_bar_on_stave(BAR *bar_to_put, SDL_Surface *stave, SDL_Surface *blank_sta
     while (metre_sum > max_metre_sum) {
         was_chord_deleted = 1;
         help_chord = bar_to_put->first_chord_bass;
-        while (help_chord->next != NULL) {
+        while (help_chord->next != nullptr) {
             help_chord = help_chord->next;
         }
 
-        if (help_chord->prev != NULL) {
-            help_chord->prev->next = NULL;
+        if (help_chord->prev != nullptr) {
+            help_chord->prev->next = nullptr;
             delete help_chord;
         } else {
             help_chord->time++;
@@ -950,7 +950,7 @@ int put_bar_on_stave(BAR *bar_to_put, SDL_Surface *stave, SDL_Surface *blank_sta
 
         help_chord = bar_to_put->first_chord_bass;
         metre_sum = 0;
-        while (help_chord != NULL) {
+        while (help_chord != nullptr) {
             metre_sum += chords_periods[help_chord->time][help_chord->_time_dots_];
             help_chord = help_chord->next;
         }
@@ -958,13 +958,13 @@ int put_bar_on_stave(BAR *bar_to_put, SDL_Surface *stave, SDL_Surface *blank_sta
     if (was_chord_deleted) {
         if (COE->current_hand == 0) {
             help_chord = bar_to_put->first_chord_treb;
-            while (help_chord->next != NULL) {
+            while (help_chord->next != nullptr) {
                 help_chord = help_chord->next;
             }
             COE->current_C = help_chord;
         } else {
             help_chord = bar_to_put->first_chord_bass;
-            while (help_chord->next != NULL) {
+            while (help_chord->next != nullptr) {
                 help_chord = help_chord->next;
             }
             COE->current_C = help_chord;
@@ -1000,13 +1000,13 @@ int put_bar_on_stave(BAR *bar_to_put, SDL_Surface *stave, SDL_Surface *blank_sta
     ///Odkładanie chord-ów
     if (may_edit_whole_bar || hand == 2) {
         help_chord = bar_to_put->first_chord_treb;
-        while (help_chord != NULL) {
+        while (help_chord != nullptr) {
             put_chord_on_stave_without_beam(help_chord, stave, blank_stave, &X_start_hands[0], 0, brace, serial_key,
                                             &b_space, COE);
             help_chord = help_chord->next;
         }
         help_chord = bar_to_put->first_chord_bass;
-        while (help_chord != NULL) {
+        while (help_chord != nullptr) {
             put_chord_on_stave_without_beam(help_chord, stave, blank_stave, &X_start_hands[1], 1, brace, serial_key,
                                             &b_space, COE);
             help_chord = help_chord->next;
@@ -1014,14 +1014,14 @@ int put_bar_on_stave(BAR *bar_to_put, SDL_Surface *stave, SDL_Surface *blank_sta
     } else {
         if (hand == 0) {
             help_chord = bar_to_put->first_chord_treb;
-            while (help_chord != NULL) {
+            while (help_chord != nullptr) {
                 put_chord_on_stave_without_beam(help_chord, stave, blank_stave, &X_start_hands[0], 0, brace, serial_key,
                                                 &b_space, COE);
                 help_chord = help_chord->next;
             }
         } else if (hand == 1) {
             help_chord = bar_to_put->first_chord_bass;
-            while (help_chord != NULL) {
+            while (help_chord != nullptr) {
                 put_chord_on_stave_without_beam(help_chord, stave, blank_stave, &X_start_hands[1], 1, brace, serial_key,
                                                 &b_space, COE);
                 help_chord = help_chord->next;
@@ -1035,9 +1035,9 @@ int put_bar_on_stave(BAR *bar_to_put, SDL_Surface *stave, SDL_Surface *blank_sta
 int put_all_bars_on_stave(BAR *first_bar_to_put, SDL_Surface *stave, SDL_Surface *blank_stave, const char serial_key[7],
                           const int chosen_metre[2],
                           struct current_OPUS_edits_ *COE){
-    SDL_BlitSurface(blank_stave, NULL, stave, NULL);
+    SDL_BlitSurface(blank_stave, nullptr, stave, nullptr);
 
-    while (first_bar_to_put != NULL){
+    while (first_bar_to_put != nullptr){
         put_bar_on_stave(first_bar_to_put, stave, blank_stave, 2, first_bar_to_put->brace, serial_key, chosen_metre, COE);
         first_bar_to_put = first_bar_to_put->next;
     }

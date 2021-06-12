@@ -62,6 +62,8 @@ int compare_notes(NOTE *n1, NOTE *n2) {
     if (i1 > i2) return 1;
     if (i1 == i2) return 0;
     if (i1 < i2) return -1;
+
+    return 0;
 }
 int sort_uniq_notes(CHORD *chord_to_sort) {
     if (chord_to_sort->notes_number <= 1) return 0;
@@ -244,8 +246,8 @@ int is_acci_req(CHORD *chord_to_put, int k, const char *defauly_serial_key) {
             break;
     }
     if (//n->acci != chord_to_put->local_serial_key[i] ||
-            (chord_to_put->prev == NULL && n->acci != defauly_serial_key[i]) ||
-            (chord_to_put->prev != NULL && n->acci != chord_to_put->prev->local_serial_key[i])) {
+            (chord_to_put->prev == nullptr && n->acci != defauly_serial_key[i]) ||
+            (chord_to_put->prev != nullptr && n->acci != chord_to_put->prev->local_serial_key[i])) {
         return 1;
     }
 

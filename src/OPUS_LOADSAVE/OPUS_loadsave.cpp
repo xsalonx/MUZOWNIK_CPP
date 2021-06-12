@@ -7,7 +7,7 @@
 int fscanf_note(FILE *opus_text_file, NOTE *n) {
 
     char c;
-    if (n == NULL) {
+    if (n == nullptr) {
         return 1;
     }
     n->name = (char)getc(opus_text_file);
@@ -30,7 +30,7 @@ int fscanf_note(FILE *opus_text_file, NOTE *n) {
 }
 CHORD *fscanf_chord(FILE *opus_text_file) {
 
-    CHORD *chord = NULL;
+    CHORD *chord = nullptr;
     int i;
     char c;
     chord = new CHORD;
@@ -86,7 +86,7 @@ CHORD *fscanf_chord(FILE *opus_text_file) {
 }
 BAR *fscanf_bar(FILE *opus_text_file) {
 
-    BAR *bar = NULL;
+    BAR *bar = nullptr;
     bar = new BAR;
     char c;
     bar->X_of_start_bar = 0;
@@ -105,9 +105,9 @@ BAR *fscanf_bar(FILE *opus_text_file) {
         exit(1);
     }
 
-    CHORD *help_chord = NULL;
-    bar->prev = NULL;
-    bar->next = NULL;
+    CHORD *help_chord = nullptr;
+    bar->prev = nullptr;
+    bar->next = nullptr;
 
     if (getc(opus_text_file) != '[') {
         printf("Opus is written incorrectly");
@@ -116,8 +116,8 @@ BAR *fscanf_bar(FILE *opus_text_file) {
 
     bar->first_chord_treb = fscanf_chord(opus_text_file);
     help_chord = bar->first_chord_treb;
-    help_chord->prev = NULL;
-    help_chord->next = NULL;
+    help_chord->prev = nullptr;
+    help_chord->next = nullptr;
 
     while ((c = (char)getc(opus_text_file)) != '|') {
 
@@ -125,7 +125,7 @@ BAR *fscanf_bar(FILE *opus_text_file) {
         help_chord->next->prev = help_chord;
         help_chord = help_chord->next;
     }
-    help_chord->next = NULL;
+    help_chord->next = nullptr;
 
     if (getc(opus_text_file) != '[') {
         printf("Opus is written incorrectly");
@@ -134,33 +134,33 @@ BAR *fscanf_bar(FILE *opus_text_file) {
 
     bar->first_chord_bass = fscanf_chord(opus_text_file);
     help_chord = bar->first_chord_bass;
-    help_chord->prev = NULL;
-    help_chord->next = NULL;
+    help_chord->prev = nullptr;
+    help_chord->next = nullptr;
     while ((c = (char)getc(opus_text_file)) != '}') {
         help_chord->next = fscanf_chord(opus_text_file);
         help_chord->next->prev = help_chord;
         help_chord = help_chord->next;
     }
-    help_chord->next = NULL;
+    help_chord->next = nullptr;
 
 
     return bar;
 }
 OPUS *fscanf_opus(const char *path) {
 
-    OPUS *opus = NULL;
+    OPUS *opus = nullptr;
     opus = new OPUS;
     char c;
     int i;
 
     FILE *opus_text_file;
-    if (path != NULL) {
-        if ((opus_text_file = fopen(path, "r")) == NULL) {
+    if (path != nullptr) {
+        if ((opus_text_file = fopen(path, "r")) == nullptr) {
             printf("Opening error\n");
             exit(1);
         }
     } else {
-        if ((opus_text_file = fopen("opus.txt", "r")) == NULL) {
+        if ((opus_text_file = fopen("opus.txt", "r")) == nullptr) {
             printf("Opening error\n");
             exit(1);
         }
@@ -203,10 +203,10 @@ OPUS *fscanf_opus(const char *path) {
         exit(1);
     }
 
-    BAR *help_bar = NULL;
+    BAR *help_bar = nullptr;
     opus->first_BAR = fscanf_bar(opus_text_file);
-    opus->first_BAR->prev = NULL;
-    opus->first_BAR->next = NULL;
+    opus->first_BAR->prev = nullptr;
+    opus->first_BAR->next = nullptr;
     help_bar = opus->first_BAR;
 
     while (getc(opus_text_file) == '{') {
@@ -215,7 +215,7 @@ OPUS *fscanf_opus(const char *path) {
         help_bar->next->prev = help_bar;
         help_bar = help_bar->next;
     }
-    help_bar->next = NULL;
+    help_bar->next = nullptr;
 
     fclose(opus_text_file);
     return opus;
@@ -256,20 +256,20 @@ int fprint_chord(FILE *opus_text_file, CHORD *chord_to_print) {
 }
 int fprint_bar(FILE *opus_text_file, BAR *bar_to_print) {
 
-    CHORD *help_chord = NULL;
+    CHORD *help_chord = nullptr;
     fprintf(opus_text_file, "%c", '{');
     fprintf(opus_text_file, "%d:", bar_to_print->X_of_start_bar);
     fprintf(opus_text_file, "%d:", bar_to_print->width_);
     fprintf(opus_text_file, "%d:", bar_to_print->brace);
 
     help_chord = bar_to_print->first_chord_treb;
-    while (help_chord != NULL) {
+    while (help_chord != nullptr) {
         fprint_chord(opus_text_file, help_chord);
         help_chord = help_chord->next;
     }
     fprintf(opus_text_file, "%c", '|');
     help_chord = bar_to_print->first_chord_bass;
-    while (help_chord != NULL) {
+    while (help_chord != nullptr) {
         fprint_chord(opus_text_file, help_chord);
         help_chord = help_chord->next;
     }
@@ -280,8 +280,8 @@ int fprint_bar(FILE *opus_text_file, BAR *bar_to_print) {
 int save_OPUS_as_TextFile(OPUS *OPUS_to_save) {
 
     int i;
-    FILE *opus_text_file = NULL;
-    if ((opus_text_file = fopen("opus.txt", "w")) == NULL) {
+    FILE *opus_text_file = nullptr;
+    if ((opus_text_file = fopen("opus.txt", "w")) == nullptr) {
         printf("Nie mogę otworzyć pliku test.txt do zapisu!\n");
         exit(1);
     }
@@ -304,7 +304,7 @@ int save_OPUS_as_TextFile(OPUS *OPUS_to_save) {
 
     BAR *bar_to_put = OPUS_to_save->first_BAR;
 
-    while (bar_to_put != NULL) {
+    while (bar_to_put != nullptr) {
         fprint_bar(opus_text_file, bar_to_put);
         bar_to_put = bar_to_put->next;
     }

@@ -42,8 +42,8 @@ struct bar{
     struct bars_space b_space;
     int brace;
 };
-struct OPUS{
-
+class OPUS{
+public:
     char title[50];
     char author[50];
     char key[2];
@@ -59,8 +59,8 @@ typedef struct bar BAR;
 typedef struct OPUS OPUS;
 typedef struct bars_space BARS_SPACE;
 
-struct current_OPUS_edits_{
-
+class current_OPUS_edits_{
+public:
     OPUS *current_O;
     BAR *current_B;
     CHORD *current_C;

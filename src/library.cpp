@@ -1,6 +1,7 @@
 #include "library.h"
+#include <iostream>
 
-
+using namespace std;
 //#ifdef __cplusplus
 //extern "C"
 //#endif
@@ -24,26 +25,35 @@ void sdl_init() {
     }
 }
 void run() {
-    char chosen_key[2];
-    int chosen_metre[2];
+    char *chosen_key;
+    int *chosen_metre;
     int opt;
-    OPUS *current_OPUS = NULL, *prev_OPUS = NULL;
+    OPUS *current_OPUS = nullptr, *prev_OPUS = nullptr;
+    WindowsManager windowsManager = WindowsManager();
+    int k=0;
     while (1) {
 
-        opt = menu_open(chosen_key, chosen_metre);
+        k++;
+        cout << k << endl;
+
+        opt = windowsManager.menu_open();
+        cout << k << endl;
+
+        chosen_metre = windowsManager.get_chosen_metre();
+        chosen_key = windowsManager.get_chosen_key();
         if (opt == CREATING_WINDOW_CODE) {
             printf("Creating new opus\n");
-            current_OPUS = create_new_OPUS(chosen_key, chosen_metre, NULL);
+            current_OPUS = create_new_OPUS(chosen_key, chosen_metre, nullptr);
             printf("End of editing opus\n");
             printf("Saving opus as txt\n");
             save_OPUS_as_TextFile(current_OPUS);
             printf("Opus saved\n");
             printf("Try to free allocated memory of opus\n");
             delete current_OPUS;
-            printf("Allocated memoty for opus freed\n");
+            printf("Allocated memory for opus freed\n");
         } else if (opt == MENU_LOAD_CODE) {
             printf("Loading opus\n");
-            prev_OPUS = fscanf_opus(NULL);
+            prev_OPUS = fscanf_opus(nullptr);
             printf("Opus loaded\n");
             printf("Start editing loaded opus\n");
             current_OPUS = create_new_OPUS(prev_OPUS->key, prev_OPUS->time_sign, prev_OPUS);
@@ -57,6 +67,7 @@ void run() {
             break;
         }
     }
+
 }
 
 void scroll_updown(SDL_Surface *screen, SDL_Surface *stave, SDL_Rect *current, SDL_Event *occurrence) {
@@ -70,15 +81,15 @@ void scroll_updown(SDL_Surface *screen, SDL_Surface *stave, SDL_Rect *current, S
     if (y < 0) y = 0;
 
     current->y = y;
-    //SDL_BlitSurface(stave, current, screen, NULL);
+    //SDL_BlitSurface(stave, current, screen, nullptr);
 
 }
 OPUS *create_new_OPUS(char chosen_key[2], int chosen_metre[2], OPUS *prev_opus) {
 
     int i;
 
-    OPUS *current_OPUS = NULL;
-    if (prev_opus == NULL) {
+    OPUS *current_OPUS = nullptr;
+    if (prev_opus == nullptr) {
         current_OPUS = new OPUS;
         current_OPUS->key[0] = chosen_key[0];
         current_OPUS->key[1] = chosen_key[1];
@@ -107,11 +118,11 @@ OPUS *create_new_OPUS(char chosen_key[2], int chosen_metre[2], OPUS *prev_opus) 
     int X_start_on_bass = X_START_AFTER_KEY;
     int X_after_key;
 
-    SDL_Window *window = NULL;
-    SDL_Surface *screen = NULL;
-    SDL_Surface *stave = NULL;
-    SDL_Surface *blank_stave = NULL;
-    SDL_Surface *stave_with_key_and_metre = NULL;
+    SDL_Window *window = nullptr;
+    SDL_Surface *screen = nullptr;
+    SDL_Surface *stave = nullptr;
+    SDL_Surface *blank_stave = nullptr;
+    SDL_Surface *stave_with_key_and_metre = nullptr;
 
     stave = SDL_LoadBMP("obrazki/wiolbas.bmp");
     blank_stave = SDL_LoadBMP("obrazki/wiolbas.bmp");
@@ -132,10 +143,10 @@ OPUS *create_new_OPUS(char chosen_key[2], int chosen_metre[2], OPUS *prev_opus) 
     instructions_[2] = SDL_LoadBMP("obrazki/menu/stave_instructions_str3.bmp");
 
 
-    put_key(stave, chosen_key, NULL, &X_start_on_treb);
+    put_key(stave, chosen_key, nullptr, &X_start_on_treb);
     X_after_key = X_start_on_treb;
-    put_metre(stave, chosen_metre, NULL, &X_start_on_treb, 0);
-    SDL_BlitSurface(stave, NULL, stave_with_key_and_metre, NULL);
+    put_metre(stave, chosen_metre, nullptr, &X_start_on_treb, 0);
+    SDL_BlitSurface(stave, nullptr, stave_with_key_and_metre, nullptr);
     X_start_on_treb += 5;
     X_start_on_bass = X_start_on_treb;
 
@@ -144,8 +155,8 @@ OPUS *create_new_OPUS(char chosen_key[2], int chosen_metre[2], OPUS *prev_opus) 
     struct current_OPUS_edits_ COE;
 
     COE.current_O = current_OPUS;
-    if (prev_opus == NULL) {
-        COE.current_O->first_BAR = malloc_new_bar(NULL, NULL, X_start_on_treb, DEFAULT_BAR_WIDTH, 0, default_serial_key,
+    if (prev_opus == nullptr) {
+        COE.current_O->first_BAR = malloc_new_bar(nullptr, nullptr, X_start_on_treb, DEFAULT_BAR_WIDTH, 0, default_serial_key,
                                                   default_serial_key);
     }
     COE.current_B = COE.current_O->first_BAR;
@@ -162,9 +173,9 @@ OPUS *create_new_OPUS(char chosen_key[2], int chosen_metre[2], OPUS *prev_opus) 
     }
 
     int pressed_key, any_change;
-    const Uint8 *KEY_STATE = SDL_GetKeyboardState(NULL);
+    const Uint8 *KEY_STATE = SDL_GetKeyboardState(nullptr);
     put_all_bars_on_stave(COE.current_B, stave, stave_with_key_and_metre, default_serial_key, chosen_metre, &COE);
-    SDL_BlitSurface(stave, &Rect_current_view, screen, NULL);
+    SDL_BlitSurface(stave, &Rect_current_view, screen, nullptr);
     SDL_UpdateWindowSurface(window);
     SDL_Delay(5);
     SDL_UpdateWindowSurface(window);
@@ -201,7 +212,7 @@ OPUS *create_new_OPUS(char chosen_key[2], int chosen_metre[2], OPUS *prev_opus) 
                     page_number = __max(page_number - 1, 0);
                     SDL_Delay(200);
                 }
-                SDL_BlitSurface(instructions_[page_number], NULL, screen, NULL);
+                SDL_BlitSurface(instructions_[page_number], nullptr, screen, nullptr);
                 SDL_UpdateWindowSurface(window);
             }
 
@@ -255,14 +266,14 @@ OPUS *create_new_OPUS(char chosen_key[2], int chosen_metre[2], OPUS *prev_opus) 
             if (any_change && !is_instruction_open) {
                 put_all_bars_on_stave(COE.current_O->first_BAR, stave, stave_with_key_and_metre, default_serial_key,
                                       chosen_metre, &COE);
-                SDL_BlitSurface(stave, &Rect_current_view, screen, NULL);
+                SDL_BlitSurface(stave, &Rect_current_view, screen, nullptr);
                 SDL_UpdateWindowSurface(window);
                 SDL_Delay(10);
             }
         }
     }
 
-    COE.current_C = NULL;
+    COE.current_C = nullptr;
     put_all_bars_on_stave(COE.current_O->first_BAR, stave, stave_with_key_and_metre, default_serial_key, chosen_metre, &COE);
     SDL_SaveBMP(stave, "wynik.bmp");
     SDL_DestroyWindow(window);

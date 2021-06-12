@@ -3,11 +3,11 @@
 
 
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <math.h>
+#include <cstdlib>
+#include <cstdio>
+#include <cmath>
 #include <SDL2/SDL.h>
-#include <time.h>
+#include <ctime>
 
 #include "OPUS_EDIT_LOGIC/opus_edit_logic.h"
 #include "ON_STAVE_PUTTING/putting.h"
