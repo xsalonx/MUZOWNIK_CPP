@@ -123,11 +123,6 @@ public:
 
 };
 
-class OpusEditor{
-public:
-
-};
-
 class CurrentOpusEdits{
 public:
     Opus *current_O{};

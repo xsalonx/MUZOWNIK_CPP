@@ -12,11 +12,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a62cfe64-33c4-411e-bcad-41d7124d417d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MUZOWNIK.exe" beforeDir="false" afterPath="$PROJECT_DIR$/MUZOWNIK.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_edit_logic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_edit_logic.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opus.txt" beforeDir="false" afterPath="$PROJECT_DIR$/opus.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/putting.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/putting.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/library.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/library.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/library.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/structs.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/structs.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wynik.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/wynik.bmp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,19 +54,14 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\programowanie\c_cpp\c++\MUZOWNIK\src\OPUS_EDITOR" />
       <recent name="D:\programowanie\c_cpp\c++\MUZOWNIK" />
       <recent name="D:\programowanie\c_cpp\c++\MUZOWNIK\out" />
       <recent name="D:\programowanie\c_cpp\c\MUZOWNIK_PI_PART_LIB\src" />
       <recent name="D:\programowanie\c_cpp\c\MUZOWNIK_PI_PART_LIB\tmp" />
-      <recent name="D:\programowanie\c_cpp\c\MUZOWNIK_PI_PART_LIB\src\OPUS_LOADSAVE" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MUZOWNIK" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="MUZOWNIK" TARGET_NAME="MUZOWNIK" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="MUZOWNIK" RUN_TARGET_NAME="MUZOWNIK">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -156,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623525106667</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Opus class">
+      <created>1623527701967</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1623527701967</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,7 +176,8 @@
     <MESSAGE value="malloc to new, free to delete" />
     <MESSAGE value="NULL to nullptr, partial WindowsManager" />
     <MESSAGE value="classes, MALLFREE removed" />
-    <option name="LAST_COMMIT_MESSAGE" value="classes, MALLFREE removed" />
+    <MESSAGE value="Opus class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Opus class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -186,7 +194,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/library.cpp</url>
-          <line>30</line>
+          <line>21</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>

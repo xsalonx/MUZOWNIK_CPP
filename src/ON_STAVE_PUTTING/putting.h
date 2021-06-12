@@ -12,7 +12,7 @@
 #include "../structs.h"
 #include "../geometry_def_codes.h"
 #include "../OPUS_EDIT_LOGIC/opus_editing_utils.h"
-
+#include "init_putting.h"
 
 int put_chord_on_treb_without_beam(Chord *chord_to_put, SDL_Surface *stave, SDL_Surface *blank_stave, int *X_start, int brace, const char serial_key[7], BarsSpace *b_space, struct CurrentOpusEdits *COE);
 int put_chord_on_bass_without_beam(Chord *chord_to_put, SDL_Surface *stave, SDL_Surface *blank_stave, int *X_start, int brace, const char serial_key[7], BarsSpace *b_space, struct CurrentOpusEdits *COE);
