@@ -39,7 +39,7 @@ void run() {
             save_OPUS_as_TextFile(current_OPUS);
             printf("Opus saved\n");
             printf("Try to free allocated memory of opus\n");
-            free(current_OPUS);
+            delete current_OPUS;
             printf("Allocated memoty for opus freed\n");
         } else if (opt == MENU_LOAD_CODE) {
             printf("Loading opus\n");

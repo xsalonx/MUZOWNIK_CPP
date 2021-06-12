@@ -12,7 +12,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a62cfe64-33c4-411e-bcad-41d7124d417d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUZOWNIK.exe" beforeDir="false" afterPath="$PROJECT_DIR$/MUZOWNIK.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/opus.txt" beforeDir="false" afterPath="$PROJECT_DIR$/opus.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/init_putting.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/init_putting.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/putting.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/putting.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_edit_logic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_edit_logic.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/STRUCTS_MALLFREE/structs_mallfree.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/STRUCTS_MALLFREE/structs_mallfree.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/library.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wynik.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/wynik.bmp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +48,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="configurable.group.build" />
   </component>

@@ -127,7 +127,7 @@ int get_path_to_metre_bmp(const int chosen_metre[2], char path_to_metre_bmp[], i
 
 int put_key(SDL_Surface *stave, const char chosen_key[2], OPUS *current_OPUS, int *X_star_on_line) {
 
-    if (current_OPUS != NULL) {
+    if (current_OPUS != nullptr) {
         current_OPUS->key[0] = chosen_key[0];
         current_OPUS->key[1] = chosen_key[1];
     }
@@ -136,7 +136,7 @@ int put_key(SDL_Surface *stave, const char chosen_key[2], OPUS *current_OPUS, in
         return 0;
     }
 
-    SDL_Surface *key_accidentals = NULL;
+    SDL_Surface *key_accidentals = nullptr;
     SDL_Rect dst;
     dst.x = X_START_AFTER_KEY + 1;
 
@@ -152,9 +152,9 @@ int put_key(SDL_Surface *stave, const char chosen_key[2], OPUS *current_OPUS, in
         if (get_path_to_key_bmp(chosen_key, path_to_key_bmp, hand, path_prefix_len)) {
             return 1;
         }
-        if (key_accidentals != NULL) SDL_FreeSurface(key_accidentals);
+        if (key_accidentals != nullptr) SDL_FreeSurface(key_accidentals);
         key_accidentals = SDL_LoadBMP(path_to_key_bmp);
-        if (key_accidentals == NULL) {
+        if (key_accidentals == nullptr) {
             return 1;
         }
 
@@ -177,7 +177,7 @@ int put_key(SDL_Surface *stave, const char chosen_key[2], OPUS *current_OPUS, in
 
             dst.y = Y_FIRST_LINE + hand * DISTANCE_BETWEEN_FIRST_LINE_HANDS_STAVES +
                     brace * DISTANCE_BETWEEN_FIRST_LINE_BRACES - diff_of_hights;
-            SDL_BlitSurface(key_accidentals, NULL, stave, &dst);
+            SDL_BlitSurface(key_accidentals, nullptr, stave, &dst);
 
         }
     }
@@ -187,12 +187,12 @@ int put_key(SDL_Surface *stave, const char chosen_key[2], OPUS *current_OPUS, in
 }
 int put_metre(SDL_Surface *stave, const int chosen_metre[2], OPUS *current_OPUS, int *X_start_on_line, int brace) {
 
-    if (current_OPUS != NULL) {
+    if (current_OPUS != nullptr) {
         current_OPUS->time_sign[0] = chosen_metre[0];
         current_OPUS->time_sign[1] = chosen_metre[1];
     }
 
-    SDL_Surface *metre_sign = NULL;
+    SDL_Surface *metre_sign = nullptr;
     SDL_Rect dst;
     dst.x = *X_start_on_line + DISTANCE_BETWEEN_KEY_AND_METRE;
     dst.y = Y_FIRST_LINE;
@@ -204,7 +204,7 @@ int put_metre(SDL_Surface *stave, const int chosen_metre[2], OPUS *current_OPUS,
 
 
     metre_sign = SDL_LoadBMP(path_to_metre_bmp);
-    if (metre_sign == NULL) {
+    if (metre_sign == nullptr) {
         return 1;
     }
     SDL_SetColorKey(metre_sign, SDL_TRUE, SDL_MapRGB(metre_sign->format, 255, 255, 255));
@@ -214,7 +214,7 @@ int put_metre(SDL_Surface *stave, const int chosen_metre[2], OPUS *current_OPUS,
 
         dst.y = Y_FIRST_LINE + hands * DISTANCE_BETWEEN_FIRST_LINE_HANDS_STAVES +
                 brace * DISTANCE_BETWEEN_FIRST_LINE_BRACES;
-        SDL_BlitSurface(metre_sign, NULL, stave, &dst);
+        SDL_BlitSurface(metre_sign, nullptr, stave, &dst);
     }
 
     *X_start_on_line = dst.x + metre_sign->w;

@@ -297,11 +297,11 @@ int del_note_chord_bar(struct current_OPUS_edits_ *COE, const Uint8 *KEY_STATE, 
             if (COE->current_C->next != NULL) {
                 COE->current_C->next->prev = COE->current_C;
             }
-            free(COE_HELP.current_C);
+            delete COE_HELP.current_C;
             // jeżeli jest pierwszy i nie jest jedyny
         } else if (COE->current_C->next != NULL) {
             COE->current_C = COE->current_C->next;
-            free(COE->current_C->prev);
+            delete COE->current_C->prev;
             COE->current_C->prev = NULL;
             if (COE->current_hand == 0) {
                 COE->current_B->first_chord_treb = COE->current_C;

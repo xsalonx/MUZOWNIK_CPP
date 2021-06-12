@@ -911,7 +911,7 @@ int put_bar_on_stave(BAR *bar_to_put, SDL_Surface *stave, SDL_Surface *blank_sta
         }
         if (help_chord->prev != NULL) {
             help_chord->prev->next = NULL;
-            free(help_chord);
+            delete help_chord;
         } else {
             help_chord->time++;
         }
@@ -943,7 +943,7 @@ int put_bar_on_stave(BAR *bar_to_put, SDL_Surface *stave, SDL_Surface *blank_sta
 
         if (help_chord->prev != NULL) {
             help_chord->prev->next = NULL;
-            free(help_chord);
+            delete help_chord;
         } else {
             help_chord->time++;
         }
