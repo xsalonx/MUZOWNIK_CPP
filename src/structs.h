@@ -7,13 +7,14 @@
 #define MAX_NOTES_IN_CHORD 7
 
 #include "geometry_def_codes.h"
+#include <utility>
 
 struct Note{
     char name;
     char acci;
     int height;
     int may_print_acci;
-};
+}; typedef struct Note Note;
 
 //// No sentinels when using those classes
 class Chord{
@@ -40,9 +41,9 @@ public:
 
 };
 struct BarsSpace{
-
     int widths_ni_[6][6];
-};
+}; typedef struct BarsSpace BarsSpace;
+
 class Bar{
 public:
     Chord *first_chord_treb{};
@@ -82,16 +83,35 @@ public:
     }
 };
 class Opus{
+private:
+    void Opus_init() {
+
+    }
 public:
     char title[50]{};
     char author[50]{};
     char key[2]{};
     int time_sign[2]{};
     int temp{};
-    Bar *first_BAR{};
     char default_serial_key[7]{};
+    Bar *first_BAR{};
 
     Opus()=default;
+    Opus(char chosen_key[2], int chosen_metre[2]) {
+        this->key[0] = chosen_key[0];
+        this->key[1] = chosen_key[1];
+        this->time_sign[0] = chosen_metre[0];
+        this->time_sign[1] = chosen_metre[1];
+
+        for (int i = 0; i < 10; i++) {
+            this->title[i] = 'x';
+            this->author[i] = 'x';
+        }
+        this->title[10] = '\0';
+        this->author[10] = '\0';
+        this->temp = 60;
+
+    }
     ~Opus() {
         Bar *help_bar = this->first_BAR;
         while (help_bar->next != nullptr) {
@@ -103,15 +123,18 @@ public:
 
 };
 
-typedef struct Note Note;
+class OpusEditor{
+public:
+
+};
 
 class CurrentOpusEdits{
 public:
-    Opus *current_O;
-    Bar *current_B;
-    Chord *current_C;
-    int current_hand;
-    int current_note_index;
+    Opus *current_O{};
+    Bar *current_B{};
+    Chord *current_C{};
+    int current_hand{};
+    int current_note_index{};
 
 };
 

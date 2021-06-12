@@ -83,25 +83,10 @@ void scroll_updown(SDL_Surface *screen, SDL_Surface *stave, SDL_Rect *current, S
 }
 Opus *create_new_OPUS(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) {
 
-    int i;
 
     Opus *current_OPUS = nullptr;
     if (prev_opus == nullptr) {
-        current_OPUS = new Opus;
-        current_OPUS->key[0] = chosen_key[0];
-        current_OPUS->key[1] = chosen_key[1];
-        current_OPUS->time_sign[0] = chosen_metre[0];
-        current_OPUS->time_sign[1] = chosen_metre[1];
-
-        ///////
-        for (i = 0; i < 10; i++) {
-            current_OPUS->title[i] = 'x';
-            current_OPUS->author[i] = 'x';
-        }
-        current_OPUS->title[10] = '\0';
-        current_OPUS->author[10] = '\0';
-        current_OPUS->temp = 60;
-        //////
+        current_OPUS = new Opus(chosen_key, chosen_metre);
     } else {
         current_OPUS = prev_opus;
     }
@@ -165,7 +150,7 @@ Opus *create_new_OPUS(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
     COE.current_note_index = COE.current_C->notes_number - 1;
     COE.current_hand = 0;
 
-    for (i = 0; i < 7; i++){
+    for (int i = 0; i < 7; i++) {
         COE.current_O->default_serial_key[i] = default_serial_key[i];
     }
 

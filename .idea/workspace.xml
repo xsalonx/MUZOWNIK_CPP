@@ -12,28 +12,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a62cfe64-33c4-411e-bcad-41d7124d417d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/WINDOWS/windowsManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MUZOWNIK.exe" beforeDir="false" afterPath="$PROJECT_DIR$/MUZOWNIK.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opus.txt" beforeDir="false" afterPath="$PROJECT_DIR$/opus.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/init_putting.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/init_putting.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/init_putting.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/init_putting.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/putting.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/putting.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/putting.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/putting.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_edit_logic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_edit_logic.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_edit_logic.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_edit_logic.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_editing_utils.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_editing_utils.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_editing_utils.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_editing_utils.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OPUS_LOADSAVE/OPUS_loadsave.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_LOADSAVE/OPUS_loadsave.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OPUS_LOADSAVE/OPUS_loadsave.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_LOADSAVE/OPUS_loadsave.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/STRUCTS_MALLFREE/structs_mallfree.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/STRUCTS_MALLFREE/structs_mallfree.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WINDOWS/windows.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/WINDOWS/windowsManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WINDOWS/windows.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/library.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/library.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/library.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/structs.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/structs.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wynik.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/wynik.bmp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623516910263</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="classes, MALLFREE removed">
+      <created>1623525106667</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1623525106667</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,7 +168,8 @@
     <MESSAGE value="bugs of deleting first bar removed" />
     <MESSAGE value="malloc to new, free to delete" />
     <MESSAGE value="NULL to nullptr, partial WindowsManager" />
-    <option name="LAST_COMMIT_MESSAGE" value="NULL to nullptr, partial WindowsManager" />
+    <MESSAGE value="classes, MALLFREE removed" />
+    <option name="LAST_COMMIT_MESSAGE" value="classes, MALLFREE removed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
