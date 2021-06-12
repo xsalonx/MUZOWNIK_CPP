@@ -2,9 +2,6 @@
 #include <iostream>
 
 using namespace std;
-//#ifdef __cplusplus
-//extern "C"
-//#endif
 
 
 int pow_int(int a, int b) {
@@ -28,10 +25,10 @@ void run() {
     char *chosen_key;
     int *chosen_metre;
     int opt;
-    OPUS *current_OPUS = nullptr, *prev_OPUS = nullptr;
+    Opus *current_OPUS = nullptr, *prev_OPUS = nullptr;
     WindowsManager windowsManager = WindowsManager();
     int k=0;
-    while (1) {
+    while (true) {
 
         k++;
         cout << k << endl;
@@ -42,28 +39,28 @@ void run() {
         chosen_metre = windowsManager.get_chosen_metre();
         chosen_key = windowsManager.get_chosen_key();
         if (opt == CREATING_WINDOW_CODE) {
-            printf("Creating new opus\n");
+            cout << "Creating new opus\n";
             current_OPUS = create_new_OPUS(chosen_key, chosen_metre, nullptr);
-            printf("End of editing opus\n");
+            cout <<"End of editing opus\n";
             printf("Saving opus as txt\n");
             save_OPUS_as_TextFile(current_OPUS);
-            printf("Opus saved\n");
-            printf("Try to free allocated memory of opus\n");
+            cout << "Opus saved\n";
+            cout <<"Try to free allocated memory of opus\n";
             delete current_OPUS;
-            printf("Allocated memory for opus freed\n");
+            cout << "Allocated memory for opus freed\n";
         } else if (opt == MENU_LOAD_CODE) {
-            printf("Loading opus\n");
+            cout << "Loading opus\n";
             prev_OPUS = fscanf_opus(nullptr);
-            printf("Opus loaded\n");
-            printf("Start editing loaded opus\n");
+            cout << "Opus loaded\n";
+            cout << "Start editing loaded opus\n";
             current_OPUS = create_new_OPUS(prev_OPUS->key, prev_OPUS->time_sign, prev_OPUS);
-            printf("End of editing loaded opus\n");
-            printf("Saving edited opus\n");
+            cout << "End of editing loaded opus\n";
+            cout << "Saving edited opus\n";
             save_OPUS_as_TextFile(current_OPUS);
-            printf("Edited opus saved\n");
-            free_opus(current_OPUS); // also do free_opus(prev_OPUS); prev_OPUS == current_OPUS;
+            cout << "Edited opus saved\n";
+            delete current_OPUS; // also do free_opus(prev_OPUS); prev_OPUS == current_OPUS;
         } else if (opt == MENU_EXIT_CODE) {
-            printf("Ending work\n");
+            cout << "Ending work\n";
             break;
         }
     }
@@ -84,13 +81,13 @@ void scroll_updown(SDL_Surface *screen, SDL_Surface *stave, SDL_Rect *current, S
     //SDL_BlitSurface(stave, current, screen, nullptr);
 
 }
-OPUS *create_new_OPUS(char chosen_key[2], int chosen_metre[2], OPUS *prev_opus) {
+Opus *create_new_OPUS(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) {
 
     int i;
 
-    OPUS *current_OPUS = nullptr;
+    Opus *current_OPUS = nullptr;
     if (prev_opus == nullptr) {
-        current_OPUS = new OPUS;
+        current_OPUS = new Opus;
         current_OPUS->key[0] = chosen_key[0];
         current_OPUS->key[1] = chosen_key[1];
         current_OPUS->time_sign[0] = chosen_metre[0];
@@ -152,11 +149,11 @@ OPUS *create_new_OPUS(char chosen_key[2], int chosen_metre[2], OPUS *prev_opus) 
 
     //// Alokowanie pierwszego bar-u
 
-    struct current_OPUS_edits_ COE;
+    CurrentOpusEdits COE{};
 
     COE.current_O = current_OPUS;
     if (prev_opus == nullptr) {
-        COE.current_O->first_BAR = malloc_new_bar(nullptr, nullptr, X_start_on_treb, DEFAULT_BAR_WIDTH, 0, default_serial_key,
+        COE.current_O->first_BAR = new Bar(nullptr, nullptr, X_start_on_treb, DEFAULT_BAR_WIDTH, 0, default_serial_key,
                                                   default_serial_key);
     }
     COE.current_B = COE.current_O->first_BAR;

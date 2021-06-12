@@ -14,7 +14,7 @@
 #include "ON_STAVE_PUTTING/init_putting.h"
 
 #include "OPUS_LOADSAVE/OPUS_loadsave.h"
-#include "WINDOWS/windows.h"
+#include "WINDOWS/windowsManager.h"
 
 int pow_int(int a, int b);
 
@@ -23,7 +23,7 @@ void sdl_init();
 void run();
 
 void scroll_updown(SDL_Surface *screen, SDL_Surface *stave, SDL_Rect *current, SDL_Event *occurrence);
-OPUS *create_new_OPUS(char chosen_key[2], int chosen_metre[2], OPUS *prev_opus);
+Opus *create_new_OPUS(char chosen_key[2], int chosen_metre[2], Opus *prev_opus);
 
 
 

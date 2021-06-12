@@ -1,7 +1,7 @@
 #include "opus_editing_utils.h"
 
 
-void swap_notes(NOTE *n1, NOTE *n2) {
+void swap_notes(Note *n1, Note *n2) {
     int tmp;
     char c_tmp;
     tmp = n1->height;
@@ -17,7 +17,7 @@ void swap_notes(NOTE *n1, NOTE *n2) {
     n2->name = c_tmp;
 
 }
-int get_note_index(NOTE *n) {
+int get_note_index(Note *n) {
 
     int index = 0;
     switch (n->name) {
@@ -53,7 +53,7 @@ int get_note_index(NOTE *n) {
 
     return index;
 }
-int compare_notes(NOTE *n1, NOTE *n2) {
+int compare_notes(Note *n1, Note *n2) {
 
     int i1, i2;
     i1 = get_note_index(n1);
@@ -65,7 +65,7 @@ int compare_notes(NOTE *n1, NOTE *n2) {
 
     return 0;
 }
-int sort_uniq_notes(CHORD *chord_to_sort) {
+int sort_uniq_notes(Chord *chord_to_sort) {
     if (chord_to_sort->notes_number <= 1) return 0;
     int is_sorted = 0, i, opt, j;
 
@@ -216,10 +216,10 @@ int get_serial_key(const char *chosen_key, char serial_key[7]) {
 
     return 0;
 }
-int is_acci_req(CHORD *chord_to_put, int k, const char *defauly_serial_key) {
+int is_acci_req(Chord *chord_to_put, int k, const char *defauly_serial_key) {
 
     int i = 0;
-    NOTE *n = &(chord_to_put->notes_[k]);
+    Note *n = &(chord_to_put->notes_[k]);
     switch (n->name) {
         case 'C':
             i = 0;
@@ -253,7 +253,7 @@ int is_acci_req(CHORD *chord_to_put, int k, const char *defauly_serial_key) {
 
     return 0;
 }
-int get_space_for_chord(BAR *bar, BARS_SPACE *b_space, const int *metre) {
+int get_space_for_chord(Bar *bar, BarsSpace *b_space, const int *metre) {
 
     int available_width = bar->width_ - DISTANCE_BETWEEN_BAR_AND_FIRST_NOTE - DISTANCE_BEWTWEEN_LAST_NOTE_AND_BAR, i, j;
     double notes_periods[6][6], metre_quatient = (double)metre[0] / (double)metre[1];

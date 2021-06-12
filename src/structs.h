@@ -6,64 +6,110 @@
 #define NUMBER_OF_BRACES 5
 #define MAX_NOTES_IN_CHORD 7
 
-struct note{
+#include "geometry_def_codes.h"
 
+struct Note{
     char name;
     char acci;
     int height;
     int may_print_acci;
 };
 
-////W przypadku poniższych struktur nie używa się wartowników
-struct chord{
+//// No sentinels when using those classes
+class Chord{
+public:
+    int time{5};
+    int _time_dots_{};
+    int ssp_articulation{};
+    int notes_number{};
+    Note notes_[MAX_NOTES_IN_CHORD]{};
+    Chord *prev{};
+    Chord *next{};
+    int X_position{};
+    char local_serial_key[7]{};
 
-    int time;
-    int _time_dots_;
-    int ssp_articulation;
-    int notes_number;
-    struct note notes_[MAX_NOTES_IN_CHORD];
-    struct chord *prev;
-    struct chord *next;
-    int X_position;
-    char local_serial_key[7];
+    Chord()=default;
+    Chord(Chord *prev, Chord *next, int X_position, const char *serial_key): prev(prev), next(next), X_position(X_position) {
+        int i;
+        //// TODO change to c++ style
+        for (i = 0; i < 7; i++) {
+            this->local_serial_key[i] = serial_key[i];
+        }
+    }
+    ~Chord()=default;
+
 };
-struct bars_space{
+struct BarsSpace{
 
     int widths_ni_[6][6];
 };
-struct bar{
-
-    struct chord *first_chord_treb;
-    struct chord *first_chord_bass;
-    struct bar *prev;
-    struct bar *next;
-    int X_of_start_bar;
-    int width_;
-    struct bars_space b_space;
-    int brace;
-};
-class OPUS{
+class Bar{
 public:
-    char title[50];
-    char author[50];
-    char key[2];
-    int time_sign[2];
-    int temp;
-    struct bar *first_BAR;
-    char default_serial_key[7];
+    Chord *first_chord_treb{};
+    Chord *first_chord_bass{};
+    Bar *prev{};
+    Bar *next{};
+    int X_of_start_bar{};
+    int width_{};
+    BarsSpace b_space{};
+    int brace{};
+
+    Bar()=default;
+    Bar(Bar *prev, Bar *next, int X_of_start_bar, int width, int brace, const char *treb_serial_key,
+        const char *bass_serial_key): prev(prev), next(next), brace(brace), X_of_start_bar(X_of_start_bar) {
+
+        this->first_chord_bass = new Chord(nullptr, nullptr, X_of_start_bar + DISTANCE_BETWEEN_BAR_AND_FIRST_NOTE, bass_serial_key);
+        this->first_chord_treb = new Chord(nullptr, nullptr, X_of_start_bar + DISTANCE_BETWEEN_BAR_AND_FIRST_NOTE, treb_serial_key);
+        if (X_of_start_bar + width > X_END_OF_STAVE) {
+            this->width_ = (X_END_OF_STAVE - X_of_start_bar);
+        } else {
+            this->width_ = width;
+        }
+    }
+    ~Bar() {
+        Chord *help_chord = this->first_chord_treb;
+        while (help_chord->next != nullptr) {
+            help_chord = help_chord->next;
+            delete help_chord->prev;
+        } delete help_chord;
+
+        help_chord = this->first_chord_bass;
+        while (help_chord->next != nullptr) {
+            help_chord = help_chord->next;
+            delete help_chord->prev;
+        } delete help_chord;
+
+    }
+};
+class Opus{
+public:
+    char title[50]{};
+    char author[50]{};
+    char key[2]{};
+    int time_sign[2]{};
+    int temp{};
+    Bar *first_BAR{};
+    char default_serial_key[7]{};
+
+    Opus()=default;
+    ~Opus() {
+        Bar *help_bar = this->first_BAR;
+        while (help_bar->next != nullptr) {
+            help_bar = help_bar->next;
+            delete help_bar->prev;
+        }
+        delete help_bar;
+    }
+
 };
 
-typedef struct note NOTE;
-typedef struct chord CHORD;
-typedef struct bar BAR;
-typedef struct OPUS OPUS;
-typedef struct bars_space BARS_SPACE;
+typedef struct Note Note;
 
-class current_OPUS_edits_{
+class CurrentOpusEdits{
 public:
-    OPUS *current_O;
-    BAR *current_B;
-    CHORD *current_C;
+    Opus *current_O;
+    Bar *current_B;
+    Chord *current_C;
     int current_hand;
     int current_note_index;
 

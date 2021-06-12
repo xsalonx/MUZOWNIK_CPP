@@ -4,16 +4,16 @@
 
 #include "../library.h"
 
-int fscanf_note(FILE *opus_text_file, NOTE *n);
-CHORD *fscanf_chord(FILE *opus_text_file);
-BAR *fscanf_bar(FILE *opus_text_file);
-OPUS *fscanf_opus(const char *path);
+int fscanf_note(FILE *opus_text_file, Note *n);
+Chord *fscanf_chord(FILE *opus_text_file);
+Bar *fscanf_bar(FILE *opus_text_file);
+Opus *fscanf_opus(const char *path);
 
 
-int fprint_note(FILE *opus_text_file, NOTE *n);
-int fprint_chord(FILE *opus_text_file, CHORD *chord_to_print);
-int fprint_bar(FILE *opus_text_file, BAR *bar_to_print);
-int save_OPUS_as_TextFile(OPUS *OPUS_to_save);
+int fprint_note(FILE *opus_text_file, Note *n);
+int fprint_chord(FILE *opus_text_file, Chord *chord_to_print);
+int fprint_bar(FILE *opus_text_file, Bar *bar_to_print);
+int save_OPUS_as_TextFile(Opus *OPUS_to_save);
 
 /*
     opus_text_file:

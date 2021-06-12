@@ -4,7 +4,7 @@
 
 #include "OPUS_loadsave.h"
 
-int fscanf_note(FILE *opus_text_file, NOTE *n) {
+int fscanf_note(FILE *opus_text_file, Note *n) {
 
     char c;
     if (n == nullptr) {
@@ -28,12 +28,12 @@ int fscanf_note(FILE *opus_text_file, NOTE *n) {
 
     return 0;
 }
-CHORD *fscanf_chord(FILE *opus_text_file) {
+Chord *fscanf_chord(FILE *opus_text_file) {
 
-    CHORD *chord = nullptr;
+    Chord *chord = nullptr;
     int i;
     char c;
-    chord = new CHORD;
+    chord = new Chord;
 
     chord->time = getc(opus_text_file) - 48;
     if (getc(opus_text_file) != ':') {
@@ -84,10 +84,10 @@ CHORD *fscanf_chord(FILE *opus_text_file) {
 
     return chord;
 }
-BAR *fscanf_bar(FILE *opus_text_file) {
+Bar *fscanf_bar(FILE *opus_text_file) {
 
-    BAR *bar = nullptr;
-    bar = new BAR;
+    Bar *bar = nullptr;
+    bar = new Bar;
     char c;
     bar->X_of_start_bar = 0;
     while ((c = (char)getc(opus_text_file)) != ':') {
@@ -105,7 +105,7 @@ BAR *fscanf_bar(FILE *opus_text_file) {
         exit(1);
     }
 
-    CHORD *help_chord = nullptr;
+    Chord *help_chord = nullptr;
     bar->prev = nullptr;
     bar->next = nullptr;
 
@@ -146,10 +146,10 @@ BAR *fscanf_bar(FILE *opus_text_file) {
 
     return bar;
 }
-OPUS *fscanf_opus(const char *path) {
+Opus *fscanf_opus(const char *path) {
 
-    OPUS *opus = nullptr;
-    opus = new OPUS;
+    Opus *opus = nullptr;
+    opus = new Opus;
     char c;
     int i;
 
@@ -203,7 +203,7 @@ OPUS *fscanf_opus(const char *path) {
         exit(1);
     }
 
-    BAR *help_bar = nullptr;
+    Bar *help_bar = nullptr;
     opus->first_BAR = fscanf_bar(opus_text_file);
     opus->first_BAR->prev = nullptr;
     opus->first_BAR->next = nullptr;
@@ -222,7 +222,7 @@ OPUS *fscanf_opus(const char *path) {
 }
 
 
-int fprint_note(FILE *opus_text_file, NOTE *n) {
+int fprint_note(FILE *opus_text_file, Note *n) {
 
     fprintf(opus_text_file, "%c", '(');
     fprintf(opus_text_file, "%c:", n->name);
@@ -232,7 +232,7 @@ int fprint_note(FILE *opus_text_file, NOTE *n) {
 
     return 0;
 }
-int fprint_chord(FILE *opus_text_file, CHORD *chord_to_print) {
+int fprint_chord(FILE *opus_text_file, Chord *chord_to_print) {
 
     int i;
     fprintf(opus_text_file, "%c", '[');
@@ -254,9 +254,9 @@ int fprint_chord(FILE *opus_text_file, CHORD *chord_to_print) {
 
     return 0;
 }
-int fprint_bar(FILE *opus_text_file, BAR *bar_to_print) {
+int fprint_bar(FILE *opus_text_file, Bar *bar_to_print) {
 
-    CHORD *help_chord = nullptr;
+    Chord *help_chord = nullptr;
     fprintf(opus_text_file, "%c", '{');
     fprintf(opus_text_file, "%d:", bar_to_print->X_of_start_bar);
     fprintf(opus_text_file, "%d:", bar_to_print->width_);
@@ -277,7 +277,7 @@ int fprint_bar(FILE *opus_text_file, BAR *bar_to_print) {
 
     return 0;
 }
-int save_OPUS_as_TextFile(OPUS *OPUS_to_save) {
+int save_OPUS_as_TextFile(Opus *OPUS_to_save) {
 
     int i;
     FILE *opus_text_file = nullptr;
@@ -302,7 +302,7 @@ int save_OPUS_as_TextFile(OPUS *OPUS_to_save) {
     fprintf(opus_text_file, "%d,%d:", OPUS_to_save->time_sign[0], OPUS_to_save->time_sign[1]);
     fprintf(opus_text_file, "%d:", OPUS_to_save->temp);
 
-    BAR *bar_to_put = OPUS_to_save->first_BAR;
+    Bar *bar_to_put = OPUS_to_save->first_BAR;
 
     while (bar_to_put != nullptr) {
         fprint_bar(opus_text_file, bar_to_put);

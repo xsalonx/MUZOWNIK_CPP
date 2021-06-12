@@ -1,10 +1,10 @@
 
 #include "opus_edit_logic.h"
 
-int change_bar_width(int pressed_key, int *any_change, struct current_OPUS_edits_ *COE, const Uint8 *KEY_STATE, int X_after_key) {
+int change_bar_width(int pressed_key, int *any_change, struct CurrentOpusEdits *COE, const Uint8 *KEY_STATE, int X_after_key) {
 
     int i;
-    struct current_OPUS_edits_ COE_HELP;
+    struct CurrentOpusEdits COE_HELP;
     if (KEY_STATE != nullptr && !KEY_STATE[SDL_SCANCODE_LSHIFT] && !KEY_STATE[SDL_SCANCODE_RSHIFT]) {
         i = STEP_IN_BAR_WIDTH_CHANGING_WITHOUT_SHIFT;
     } else {
@@ -42,7 +42,7 @@ int change_bar_width(int pressed_key, int *any_change, struct current_OPUS_edits
                     COE_HELP.current_B->width_ = DEFAULT_BAR_WIDTH;
                 } else {
                     COE_HELP.current_B->prev->next = nullptr;
-                    free_bar(COE_HELP.current_B);
+                    delete COE_HELP.current_B;
                     COE_HELP.current_B = nullptr;
                 }
             }
@@ -52,7 +52,7 @@ int change_bar_width(int pressed_key, int *any_change, struct current_OPUS_edits
 
     return 0;
 }
-int change_chord_len(int pressed_key, int *any_change, struct current_OPUS_edits_ *COE, const Uint8 *KEY_STATE){
+int change_chord_len(int pressed_key, int *any_change, struct CurrentOpusEdits *COE, const Uint8 *KEY_STATE){
     int help_tmp_1, help_tmp_2;
     if (!KEY_STATE[SDL_SCANCODE_RSHIFT] && !KEY_STATE[SDL_SCANCODE_LSHIFT]) {
         help_tmp_1 = COE->current_C->time;
@@ -98,7 +98,7 @@ int change_chord_len(int pressed_key, int *any_change, struct current_OPUS_edits
     }
     return 0;
 }
-int change_hand(struct current_OPUS_edits_ *COE) {
+int change_hand(struct CurrentOpusEdits *COE) {
 
     if (COE->current_hand == 0) {
         COE->current_C = COE->current_B->first_chord_bass;
@@ -112,7 +112,7 @@ int change_hand(struct current_OPUS_edits_ *COE) {
     }
     return 0;
 }
-int change_note(int pressed_key, struct current_OPUS_edits_ *COE) {
+int change_note(int pressed_key, struct CurrentOpusEdits *COE) {
     if (COE->current_C->notes_number > 0) {
 
         if (pressed_key == SDLK_UP) {
@@ -131,9 +131,9 @@ int change_note(int pressed_key, struct current_OPUS_edits_ *COE) {
     }
     return 0;
 }
-int change_chord_or_bar(int pressed_key, struct current_OPUS_edits_ *COE, const Uint8 *KEY_STATE) {
+int change_chord_or_bar(int pressed_key, struct CurrentOpusEdits *COE, const Uint8 *KEY_STATE) {
 
-    struct current_OPUS_edits_ COE_HELP;
+    struct CurrentOpusEdits COE_HELP;
 
     if (pressed_key == SDLK_RIGHT) {
         if (!KEY_STATE[SDL_SCANCODE_LSHIFT]) {
@@ -211,7 +211,7 @@ int change_chord_or_bar(int pressed_key, struct current_OPUS_edits_ *COE, const 
     COE->current_note_index = COE->current_C->notes_number - 1;
     return 0;
 }
-int put_note_or_pause(int pressed_key, struct current_OPUS_edits_ *COE, const Uint8 *KEY_STATE, const char *serial_key) {
+int put_note_or_pause(int pressed_key, struct CurrentOpusEdits *COE, const Uint8 *KEY_STATE, const char *serial_key) {
 
     int help_tmp_1, i;
     if (COE->current_C->notes_number < MAX_NOTES_IN_CHORD) {
@@ -271,10 +271,10 @@ int put_note_or_pause(int pressed_key, struct current_OPUS_edits_ *COE, const Ui
     }
     return 0;
 }
-int del_note_chord_bar(struct current_OPUS_edits_ *COE, const Uint8 *KEY_STATE, int X_after_key) {
+int del_note_chord_bar(struct CurrentOpusEdits *COE, const Uint8 *KEY_STATE, int X_after_key) {
 
     int i;
-    struct current_OPUS_edits_ COE_HELP;
+    struct CurrentOpusEdits COE_HELP;
 
     if (!KEY_STATE[SDL_SCANCODE_LSHIFT] && !KEY_STATE[SDL_SCANCODE_RSHIFT]) {
         if (COE->current_C->notes_number > 0) {
@@ -319,7 +319,7 @@ int del_note_chord_bar(struct current_OPUS_edits_ *COE, const Uint8 *KEY_STATE, 
                 if (COE->current_B->next != nullptr) {
                     COE->current_B->next->prev = COE->current_B;
                 }
-                free_bar(COE_HELP.current_B);
+                delete COE_HELP.current_B;
                 if (COE->current_hand == 0) {
                     COE->current_C = COE->current_B->first_chord_treb;
                 } else {
@@ -330,7 +330,7 @@ int del_note_chord_bar(struct current_OPUS_edits_ *COE, const Uint8 *KEY_STATE, 
             } else if (COE->current_B->next != nullptr) {
                 COE->current_B = COE->current_B->next;
                 COE->current_B->X_of_start_bar = COE->current_B->prev->X_of_start_bar;
-                free_bar(COE->current_B->prev);
+                delete COE->current_B->prev;
                 COE->current_B->prev = nullptr;
                 COE->current_O->first_BAR = COE->current_B;
                 if (COE->current_hand == 0) {
@@ -345,15 +345,15 @@ int del_note_chord_bar(struct current_OPUS_edits_ *COE, const Uint8 *KEY_STATE, 
     change_bar_width(0, nullptr, COE, nullptr, X_after_key);
     return 0;
 }
-int create_new_chord_bar(struct current_OPUS_edits_ *COE, const Uint8 *KEY_STATE, int X_after_key, const char *default_serial_key) {
+int create_new_chord_bar(struct CurrentOpusEdits *COE, const Uint8 *KEY_STATE, int X_after_key, const char *default_serial_key) {
 
     int brace_help, X_st_help, width_help;
     if (!KEY_STATE[SDL_SCANCODE_LSHIFT] && !KEY_STATE[SDL_SCANCODE_RSHIFT]) {
         if (COE->current_C->next == nullptr) {
-            COE->current_C->next = malloc_new_chord(COE->current_C, nullptr,
+            COE->current_C->next = new Chord(COE->current_C, nullptr,
                                                     COE->current_C->X_position + WIDTH_NOTES_WITH_FLAGS, COE->current_C->local_serial_key);
         } else {
-            COE->current_C->next = malloc_new_chord(COE->current_C, COE->current_C->next,
+            COE->current_C->next = new Chord(COE->current_C, COE->current_C->next,
                                                     COE->current_C->X_position + WIDTH_NOTES_WITH_FLAGS, COE->current_C->local_serial_key);
             COE->current_C->next->prev = COE->current_C;
             COE->current_C->next->next->prev = COE->current_C->next;
@@ -372,7 +372,7 @@ int create_new_chord_bar(struct current_OPUS_edits_ *COE, const Uint8 *KEY_STATE
             X_st_help = X_after_key;
         }
 
-        COE->current_B->next = malloc_new_bar(COE->current_B, COE->current_B->next, X_st_help, width_help, brace_help,
+        COE->current_B->next = new Bar(COE->current_B, COE->current_B->next, X_st_help, width_help, brace_help,
                                               default_serial_key, default_serial_key);
         COE->current_B = COE->current_B->next;
         if (COE->current_B->next != nullptr) {
@@ -390,7 +390,7 @@ int create_new_chord_bar(struct current_OPUS_edits_ *COE, const Uint8 *KEY_STATE
 
     return 0;
 }
-int put_acci(int pressed_key, struct current_OPUS_edits_ *COE, const Uint8 *KEY_STATE, const char *default_serial_key) {
+int put_acci(int pressed_key, struct CurrentOpusEdits *COE, const Uint8 *KEY_STATE, const char *default_serial_key) {
 
 
     if (pressed_key == SDLK_x) {
@@ -426,7 +426,7 @@ int put_acci(int pressed_key, struct current_OPUS_edits_ *COE, const Uint8 *KEY_
                 break;
         }
         COE->current_C->local_serial_key[i] = (char) pressed_key;
-        CHORD *help_chord = COE->current_C->next;
+        Chord *help_chord = COE->current_C->next;
         while (help_chord != nullptr) {
 
             if (help_chord->local_serial_key[i] == default_serial_key[i]) {

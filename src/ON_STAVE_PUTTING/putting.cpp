@@ -4,8 +4,8 @@
 
 #include "putting.h"
 
-int put_chord_on_treb_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL_Surface *blank_stave, int *X_start,
-                                   int brace, const char serial_key[7], BARS_SPACE *b_space, struct current_OPUS_edits_ *COE) {
+int put_chord_on_treb_without_beam(Chord *chord_to_put, SDL_Surface *stave, SDL_Surface *blank_stave, int *X_start,
+                                   int brace, const char serial_key[7], BarsSpace *b_space, struct CurrentOpusEdits *COE) {
 
     int k, i, any_put = 0, j;
     int hand = 0;
@@ -362,8 +362,8 @@ int put_chord_on_treb_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL_
 
     return 0;
 }
-int put_chord_on_bass_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL_Surface *blank_stave, int *X_start,
-                                   int brace, const char serial_key[7], BARS_SPACE *b_space, struct current_OPUS_edits_ *COE) {
+int put_chord_on_bass_without_beam(Chord *chord_to_put, SDL_Surface *stave, SDL_Surface *blank_stave, int *X_start,
+                                   int brace, const char serial_key[7], BarsSpace *b_space, struct CurrentOpusEdits *COE) {
 
     int k, i, any_put = 0, j;
     int hand = 1;
@@ -793,8 +793,8 @@ int put_chord_on_bass_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL_
 
     return 0;
 }
-int put_pause_on_stave_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL_Surface *blank_stave, int *X_start,
-                                    int brace, int hand, BARS_SPACE *b_space, struct current_OPUS_edits_ *COE){
+int put_pause_on_stave_without_beam(Chord *chord_to_put, SDL_Surface *stave, SDL_Surface *blank_stave, int *X_start,
+                                    int brace, int hand, BarsSpace *b_space, struct CurrentOpusEdits *COE){
 
 
     SDL_Rect blank_stave_rect;
@@ -828,8 +828,8 @@ int put_pause_on_stave_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL
     SDL_FreeSurface(pause);
     return 0;
 }
-int put_chord_on_stave_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL_Surface *blank_stave, int *X_start,
-                                    int hand, int brace, const char *serial_key, BARS_SPACE *b_space, struct current_OPUS_edits_ *COE) {
+int put_chord_on_stave_without_beam(Chord *chord_to_put, SDL_Surface *stave, SDL_Surface *blank_stave, int *X_start,
+                                    int hand, int brace, const char *serial_key, BarsSpace *b_space, struct CurrentOpusEdits *COE) {
 
     if (chord_to_put->notes_[0].name == 'P') {
         put_pause_on_stave_without_beam(chord_to_put, stave, blank_stave, X_start, brace, hand, b_space, COE);
@@ -845,9 +845,9 @@ int put_chord_on_stave_without_beam(CHORD *chord_to_put, SDL_Surface *stave, SDL
 }
 
 
-int put_bar_on_stave(BAR *bar_to_put, SDL_Surface *stave, SDL_Surface *blank_stave, int hand, int brace,
+int put_bar_on_stave(Bar *bar_to_put, SDL_Surface *stave, SDL_Surface *blank_stave, int hand, int brace,
                      const char serial_key[7], const int chosen_metre[2],
-                     struct current_OPUS_edits_ *COE) {
+                     struct CurrentOpusEdits *COE) {
 
     int X_start = bar_to_put->X_of_start_bar;
     int i, j, may_edit_whole_bar = 0, was_chord_deleted = 0;
@@ -884,7 +884,7 @@ int put_bar_on_stave(BAR *bar_to_put, SDL_Surface *stave, SDL_Surface *blank_sta
     bass_bar_rect.h = 4 * DISTANCE_BETWEEN_LINES + 12 * DISTANCE_BETWEEN_LINES;
 
 
-    CHORD *help_chord = nullptr;
+    Chord *help_chord = nullptr;
     double chords_periods[6][6], max_metre_sum, metre_sum = 0;
     max_metre_sum = (double) chosen_metre[0] / (double) chosen_metre[1];
     chords_periods[0][0] = 1;
@@ -973,7 +973,7 @@ int put_bar_on_stave(BAR *bar_to_put, SDL_Surface *stave, SDL_Surface *blank_sta
     }
 
     //////////////////////////////
-    BARS_SPACE b_space;
+    BarsSpace b_space;
 
     get_space_for_chord(bar_to_put, &b_space, chosen_metre);
 
@@ -1032,9 +1032,9 @@ int put_bar_on_stave(BAR *bar_to_put, SDL_Surface *stave, SDL_Surface *blank_sta
 
     return 0;
 }
-int put_all_bars_on_stave(BAR *first_bar_to_put, SDL_Surface *stave, SDL_Surface *blank_stave, const char serial_key[7],
+int put_all_bars_on_stave(Bar *first_bar_to_put, SDL_Surface *stave, SDL_Surface *blank_stave, const char serial_key[7],
                           const int chosen_metre[2],
-                          struct current_OPUS_edits_ *COE){
+                          struct CurrentOpusEdits *COE){
     SDL_BlitSurface(blank_stave, nullptr, stave, nullptr);
 
     while (first_bar_to_put != nullptr){

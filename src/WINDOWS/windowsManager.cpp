@@ -2,13 +2,11 @@
 // Created by Luksz on 2021-06-12.
 //
 
-#include "windows.h"
+#include "windowsManager.h"
 
 
 int WindowsManager::help_window() {
 
-    SDL_Surface *instructions_ = nullptr;
-    instructions_ = SDL_LoadBMP("obrazki/menu/instructions.bmp");
     SDL_Event occurrence;
     int may_exit = 0, current_menu_opt = MENU_WINDOW_CODE;
     SDL_BlitSurface(instructions_, nullptr, screen, nullptr);
@@ -40,48 +38,8 @@ int WindowsManager::metre_choosing()  {
     chosen_metre[0] = 0;
     chosen_metre[1] = 0;
     SDL_Event occurrence;
-    SDL_Surface *metre_chose = nullptr;
-    SDL_Surface *stave = nullptr;
-    SDL_Surface *digits[10];
-    char path[33] = "obrazki/metre_choose/digit_0.bmp";
-    int pos = 27, i, may_exit = 0, tr = 0, key, current_opt = METRE_WINDOW_CODE;
-    for (i = 0; i < 10; i++) {
-        path[pos] = (char) (i + 48);
-        digits[i] = SDL_LoadBMP(path);
-        SDL_SetColorKey(digits[i], SDL_TRUE, SDL_MapRGB(digits[i]->format, 255, 255, 255));
 
-    }
-    metre_chose = SDL_LoadBMP("obrazki/metre_choose/metre_chosing.bmp");
-    stave = SDL_LoadBMP("obrazki/metre_choose/stave.bmp");
-
-
-    SDL_Rect RECT_STAVE_SRC[2], RECT_STAVE_DST[2], RECT_DIGIT_DST[8];
-    RECT_STAVE_SRC[0].x = 0;
-    RECT_STAVE_SRC[0].y = 0;
-    RECT_STAVE_SRC[0].w = stave->w;
-    RECT_STAVE_SRC[0].h = stave->h / 2;
-    RECT_STAVE_SRC[1].x = 0;
-    RECT_STAVE_SRC[1].y = stave->h / 2;
-    RECT_STAVE_SRC[1].w = stave->w;
-    RECT_STAVE_SRC[1].h = stave->h / 2;
-
-    RECT_STAVE_DST[0].x = X_STAVE_METRE_CHOOSING;
-    RECT_STAVE_DST[0].y = FIRST_Y_METRE_CHOOSE - 2;
-    RECT_STAVE_DST[1].x = X_STAVE_METRE_CHOOSING;
-    RECT_STAVE_DST[1].y = SECOND_Y_METRE_CHOOSE - 1;
-
-    RECT_DIGIT_DST[0].x = FIRST_X_METRE_CHOOSE;
-    RECT_DIGIT_DST[0].y = FIRST_Y_METRE_CHOOSE;
-    RECT_DIGIT_DST[1].x = SECOND_X_METRE_CHOOSE;
-    RECT_DIGIT_DST[1].y = FIRST_Y_METRE_CHOOSE;
-    RECT_DIGIT_DST[2].x = THIRD_X_METRE_CHOOSE;
-    RECT_DIGIT_DST[2].y = FIRST_Y_METRE_CHOOSE;
-    RECT_DIGIT_DST[3].x = FIRST_X_METRE_CHOOSE;
-    RECT_DIGIT_DST[3].y = SECOND_Y_METRE_CHOOSE;
-    RECT_DIGIT_DST[4].x = SECOND_X_METRE_CHOOSE;
-    RECT_DIGIT_DST[4].y = SECOND_Y_METRE_CHOOSE;
-    RECT_DIGIT_DST[5].x = THIRD_X_METRE_CHOOSE;
-    RECT_DIGIT_DST[5].y = SECOND_Y_METRE_CHOOSE;
+    int may_exit = 0, tr = 0, key, current_opt = METRE_WINDOW_CODE;
 
     SDL_BlitSurface(metre_chose, nullptr, screen, nullptr);
     SDL_BlitSurface(stave, nullptr, screen, &RECT_STAVE_DST[0]);
@@ -152,11 +110,7 @@ int WindowsManager::metre_choosing()  {
         }
     }
 
-//    SDL_FreeSurface(stave);
-//    SDL_FreeSurface(metre_chose);
-//    for (i = 0; i < 10; i++) {
-//        SDL_FreeSurface(digits[i]);
-//    }
+
 
     return current_opt;
 }
@@ -169,25 +123,12 @@ int WindowsManager::menu_window() {
 
 
 
-
-    SDL_Rect R_load_dst, R_new_dst, R_exit_dst, R_title_dst, R_help_dst;
-    R_title_dst.x = X_TO_INSERT_OPTION_TITLE;
-    R_title_dst.y = Y_TO_INSERT_OPTION_TITLE;
-    R_new_dst.x = X_TO_INSERT_OPTION_NEW;
-    R_new_dst.y = Y_TO_INSERT_OPTION_NEW;
-    R_load_dst.x = X_TO_INSERT_OPTION_OPEN;
-    R_load_dst.y = Y_TO_INSERT_OPTION_OPEN;
-    R_exit_dst.x = X_TO_INSERT_OPTION_EXIT;
-    R_exit_dst.y = Y_TO_INSERT_OPTION_EXIT;
-    R_help_dst.x = X_TO_INSERT_OPTION_HELP;
-    R_help_dst.y = Y_TO_INSERT_OPTION_HELP;
-
     current_menu_opt = MENU_NEW_STAVE_CODE;
     prev_menu_opt = -1;
 
     SDL_BlitSurface(menu_background, nullptr, screen, nullptr);
     SDL_BlitSurface(title, nullptr, screen, &R_title_dst);
-    SDL_BlitSurface(creating_option_highlight, nullptr, screen, &R_new_dst);
+    SDL_BlitSurface(creating_option_highlighted, nullptr, screen, &R_new_dst);
     SDL_BlitSurface(loading_option, nullptr, screen, &R_load_dst);
     SDL_BlitSurface(exit_option, nullptr, screen, &R_exit_dst);
     SDL_BlitSurface(help_option, nullptr, screen, &R_help_dst);
@@ -210,7 +151,7 @@ int WindowsManager::menu_window() {
 
                 case MENU_NEW_STAVE_CODE:
                     if (prev_menu_opt != current_menu_opt) {
-                        SDL_BlitSurface(creating_option_highlight, nullptr, screen, &R_new_dst);
+                        SDL_BlitSurface(creating_option_highlighted, nullptr, screen, &R_new_dst);
                         prev_menu_opt = MENU_NEW_STAVE_CODE;
                     }
                     if (occurrence.key.type == SDL_KEYDOWN && occurrence.key.keysym.sym == SDLK_DOWN) {
@@ -221,7 +162,7 @@ int WindowsManager::menu_window() {
                     break;
                 case MENU_LOAD_CODE:
                     if (prev_menu_opt != current_menu_opt) {
-                        SDL_BlitSurface(loading_option_highlight, nullptr, screen, &R_load_dst);
+                        SDL_BlitSurface(loading_option_highlighted, nullptr, screen, &R_load_dst);
                         prev_menu_opt = MENU_LOAD_CODE;
                     }
                     if (occurrence.key.type == SDL_KEYDOWN && occurrence.key.keysym.sym == SDLK_UP) {
@@ -236,7 +177,7 @@ int WindowsManager::menu_window() {
                     break;
                 case MENU_EXIT_CODE:
                     if (prev_menu_opt != current_menu_opt) {
-                        SDL_BlitSurface(exit_option_highlight, nullptr, screen, &R_exit_dst);
+                        SDL_BlitSurface(exit_option_highlighted, nullptr, screen, &R_exit_dst);
                         prev_menu_opt = MENU_EXIT_CODE;
                     }
                     if (occurrence.key.type == SDL_KEYDOWN && occurrence.key.keysym.sym == SDLK_UP) {
@@ -251,7 +192,7 @@ int WindowsManager::menu_window() {
                     break;
                 case MENU_HELP_CODE:
                     if (prev_menu_opt != current_menu_opt) {
-                        SDL_BlitSurface(help_highlight_option, nullptr, screen, &R_help_dst);
+                        SDL_BlitSurface(help_option_highlighted, nullptr, screen, &R_help_dst);
                         prev_menu_opt = MENU_HELP_CODE;
                     }
                     if (occurrence.key.type == SDL_KEYDOWN && occurrence.key.keysym.sym == SDLK_UP) {
@@ -282,63 +223,9 @@ int WindowsManager::menu_window() {
 ////It returns option code
 int WindowsManager::fifths_choosing() {
 
-    SDL_Rect RECT_fifths_dots[15];
-    RECT_fifths_dots[0].x = 390;
-    RECT_fifths_dots[0].y = 4;
-
-    RECT_fifths_dots[1].x = 559;
-    RECT_fifths_dots[1].y = 50;
-
-    RECT_fifths_dots[2].x = 680;
-    RECT_fifths_dots[2].y = 173;
-
-    RECT_fifths_dots[3].x = 723;
-    RECT_fifths_dots[3].y = 338;
-
-    RECT_fifths_dots[4].x = 684;
-    RECT_fifths_dots[4].y = 509;
-
-    RECT_fifths_dots[5].x = 564;
-    RECT_fifths_dots[5].y = 628;
-
-    RECT_fifths_dots[6].x = 590;
-    RECT_fifths_dots[6].y = 722;
-
-    RECT_fifths_dots[7].x = 392;
-    RECT_fifths_dots[7].y = 679;
-
-    RECT_fifths_dots[8].x = 407;
-    RECT_fifths_dots[8].y = 761;
-
-    RECT_fifths_dots[9].x = 215;
-    RECT_fifths_dots[9].y = 632;
-
-    RECT_fifths_dots[10].x = 156;
-    RECT_fifths_dots[10].y = 712;
-
-    RECT_fifths_dots[11].x = 98;
-    RECT_fifths_dots[11].y = 513;
-
-    RECT_fifths_dots[12].x = 59;
-    RECT_fifths_dots[12].y = 340;
-
-    RECT_fifths_dots[13].x = 100;
-    RECT_fifths_dots[13].y = 160;
-
-    RECT_fifths_dots[14].x = 224;
-    RECT_fifths_dots[14].y = 51;
-
 
     int current_fifths_opt = 0, prev_fifths_opt = -1, may_exit = 0, current_opt = 1;
-    SDL_Surface *fifths_circle = nullptr;
-    SDL_Surface *dot = nullptr;
-    SDL_Surface *anty_dot = nullptr;
     SDL_Event occurrence;
-
-    fifths_circle = SDL_LoadBMP("obrazki/fifths_circle/fifths_circle_large.bmp");
-    dot = SDL_LoadBMP("obrazki/fifths_circle/dot.bmp");
-    anty_dot = SDL_LoadBMP("obrazki/fifths_circle/anty_dot.bmp");
-    SDL_SetColorKey(dot, SDL_TRUE, SDL_MapRGB(dot->format, 255, 255, 255));
 
 
     SDL_BlitSurface(fifths_circle, nullptr, screen, nullptr);
@@ -447,9 +334,6 @@ int WindowsManager::fifths_choosing() {
 
     }
 
-//    SDL_FreeSurface(fifths_circle);
-//    SDL_FreeSurface(dot);
-//    SDL_FreeSurface(anty_dot);
 
     return current_opt;
 }
@@ -502,11 +386,11 @@ int WindowsManager::menu_open() {
     return current_opt;
 }
 
-char *WindowsManager::get_chosen_key() {
+char* WindowsManager::get_chosen_key() {
     return chosen_key;
 }
 
-int *WindowsManager::get_chosen_metre() {
+int* WindowsManager::get_chosen_metre() {
     return chosen_metre;
 }
 

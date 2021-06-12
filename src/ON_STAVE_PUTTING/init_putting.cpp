@@ -125,7 +125,7 @@ int get_path_to_metre_bmp(const int chosen_metre[2], char path_to_metre_bmp[], i
     return 0;
 }
 
-int put_key(SDL_Surface *stave, const char chosen_key[2], OPUS *current_OPUS, int *X_star_on_line) {
+int put_key(SDL_Surface *stave, const char chosen_key[2], Opus *current_OPUS, int *X_star_on_line) {
 
     if (current_OPUS != nullptr) {
         current_OPUS->key[0] = chosen_key[0];
@@ -185,7 +185,7 @@ int put_key(SDL_Surface *stave, const char chosen_key[2], OPUS *current_OPUS, in
     SDL_FreeSurface(key_accidentals);
     return 0;
 }
-int put_metre(SDL_Surface *stave, const int chosen_metre[2], OPUS *current_OPUS, int *X_start_on_line, int brace) {
+int put_metre(SDL_Surface *stave, const int chosen_metre[2], Opus *current_OPUS, int *X_start_on_line, int brace) {
 
     if (current_OPUS != nullptr) {
         current_OPUS->time_sign[0] = chosen_metre[0];
