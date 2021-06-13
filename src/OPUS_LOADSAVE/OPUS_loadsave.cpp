@@ -191,9 +191,9 @@ Opus *fscanf_opus(const char *path) {
     }
     getc(opus_text_file);
 
-    fscanf(opus_text_file, "%d", &(opus->time_sign[0]));
+    fscanf(opus_text_file, "%d", &(opus->metre[0]));
     getc(opus_text_file);
-    fscanf(opus_text_file, "%d", &(opus->time_sign[1]));
+    fscanf(opus_text_file, "%d", &(opus->metre[1]));
     getc(opus_text_file);
     fscanf(opus_text_file, "%d", &(opus->temp));
     getc(opus_text_file);
@@ -277,7 +277,7 @@ int fprint_bar(FILE *opus_text_file, Bar *bar_to_print) {
 
     return 0;
 }
-int save_OPUS_as_TextFile(Opus *OPUS_to_save) {
+int save_Opus_as_TextFile(Opus *OPUS_to_save) {
 
     int i;
     FILE *opus_text_file = nullptr;
@@ -299,7 +299,7 @@ int save_OPUS_as_TextFile(Opus *OPUS_to_save) {
     }
     fprintf(opus_text_file, "%c", ':');
 
-    fprintf(opus_text_file, "%d,%d:", OPUS_to_save->time_sign[0], OPUS_to_save->time_sign[1]);
+    fprintf(opus_text_file, "%d,%d:", OPUS_to_save->metre[0], OPUS_to_save->metre[1]);
     fprintf(opus_text_file, "%d:", OPUS_to_save->temp);
 
     Bar *bar_to_put = OPUS_to_save->first_BAR;

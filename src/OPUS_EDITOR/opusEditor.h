@@ -1,7 +1,3 @@
-//
-// Created by Luksz on 2021-06-12.
-//
-
 #ifndef MUZOWNIK_OPUSEDITOR_H
 #define MUZOWNIK_OPUSEDITOR_H
 
@@ -9,10 +5,10 @@
 #include "../OPUS_EDIT_LOGIC/opus_edit_logic.h"
 
 
+
 class OpusEditor{
 private:
     Opus *current_OPUS{};
-
 
     SDL_Window *window{};
     SDL_Surface *screen{};
@@ -23,205 +19,35 @@ private:
     SDL_Rect Rect_current_view{};
     SDL_Surface *instructions_[3]{};
 
-    void open_window() {
-        window = SDL_CreateWindow("MUZOWNIK", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, stave->w, SCREEN_HIGHT, SDL_WINDOW_SHOWN);
-        screen = SDL_GetWindowSurface(window);
+    int hand{};
+    //// ON_STAVE_PUTTING
+    //init_putting
+    int get_path_to_key_bmp(const char chosen_key[2], char path_to_key_bmp[], int path_prefix_len) const;
+    int get_path_to_metre_bmp(const int chosen_metre[2], char path_to_metre_bmp[], int path_prefix_len);
 
-    }
-    void close_window(){
-        SDL_DestroyWindow(window);
-        SDL_FreeSurface(screen);
-    }
-    void init() {
-        stave = SDL_LoadBMP("obrazki/wiolbas.bmp");
-        blank_stave = SDL_LoadBMP("obrazki/wiolbas.bmp");
-        stave_with_key_and_metre = SDL_LoadBMP("obrazki/wiolbas.bmp");
+    int put_key(const char chosen_key[2], int *X_star_on_lines);
+    int put_metre(const int chosen_metre[2], int *X_start_on_line, int brace);
+
+    //putting
+    int put_chord_on_treb_without_beam(Chord *chord_to_put, int *X_start, int brace, const char serial_key[7], BarsSpace *b_space, struct CurrentOpusEdits *COE);
+    int put_chord_on_bass_without_beam(Chord *chord_to_put, int *X_start, int brace, const char serial_key[7], BarsSpace *b_space, struct CurrentOpusEdits *COE);
+    int put_pause_on_stave_without_beam(Chord *chord_to_put, int *X_start, int brace, int hand, BarsSpace *b_space, struct CurrentOpusEdits *COE);
+    int put_chord_on_stave_without_beam(Chord *chord_to_put, int *X_start, int hand, int brace, const char *serial_key, BarsSpace *b_space, struct CurrentOpusEdits *COE);
+    int put_bar_on_stave(Bar *bar_to_put, int hand, int brace, const char serial_key[7], const int chosen_metre[2], struct CurrentOpusEdits *COE);
+    int put_all_bars_on_stave(Bar *first_bar_to_put, const char serial_key[7], const int chosen_metre[2], struct CurrentOpusEdits *COE);
 
 
-        Rect_current_view.x = 0;
-        Rect_current_view.y = 0;
-        Rect_current_view.w = stave->w;
-        Rect_current_view.h = SCREEN_HIGHT;
-
-        instructions_[0] = SDL_LoadBMP("obrazki/menu/stave_instructions_str1.bmp");
-        instructions_[1] = SDL_LoadBMP("obrazki/menu/stave_instructions_str2.bmp");
-        instructions_[2] = SDL_LoadBMP("obrazki/menu/stave_instructions_str3.bmp");
-    }
+    ////
+    void open_window();
+    void close_window();
+    void init();
+    void scroll_vertically(SDL_Rect *current, SDL_Event *occurrence);
 
 public:
     OpusEditor() {
         init();
     }
-    void scroll_updown(SDL_Rect *current, SDL_Event *occurrence) {
-
-        int y = current->y;
-        int s = occurrence->wheel.y;
-
-        y -= s * 10;
-
-        if (y > stave->h - screen->h) y = stave->h - screen->h;
-        if (y < 0) y = 0;
-
-        current->y = y;
-        //SDL_BlitSurface(stave, current, screen, nullptr);
-
-    }
-    Opus *run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) {
-        open_window();
-        if (prev_opus == nullptr) {
-            current_OPUS = new Opus(chosen_key, chosen_metre);
-        } else {
-            current_OPUS = prev_opus;
-        }
-
-        SDL_Event occurrence;
-        int may_exit = 0, is_instruction_open = 0, page_number = 0;
-        char default_serial_key[7];
-        get_serial_key(chosen_key, default_serial_key);
-
-        int X_start_on_treb = X_START_AFTER_KEY;
-        int X_start_on_bass = X_START_AFTER_KEY;
-        int X_after_key;
-
-
-
-        put_key(stave, chosen_key, nullptr, &X_start_on_treb);
-        X_after_key = X_start_on_treb;
-        put_metre(stave, chosen_metre, nullptr, &X_start_on_treb, 0);
-        SDL_BlitSurface(stave, nullptr, stave_with_key_and_metre, nullptr);
-        X_start_on_treb += 5;
-        X_start_on_bass = X_start_on_treb;
-
-        //// Alokowanie pierwszego bar-u
-
-        CurrentOpusEdits COE{};
-
-        COE.current_O = current_OPUS;
-        if (prev_opus == nullptr) {
-            COE.current_O->first_BAR = new Bar(nullptr, nullptr, X_start_on_treb, DEFAULT_BAR_WIDTH, 0, default_serial_key,
-                                               default_serial_key);
-        }
-        COE.current_B = COE.current_O->first_BAR;
-        COE.current_B->X_of_start_bar = X_start_on_treb;
-        COE.current_C = COE.current_B->first_chord_treb;
-
-
-
-        COE.current_note_index = COE.current_C->notes_number - 1;
-        COE.current_hand = 0;
-
-        for (int i = 0; i < 7; i++) {
-            COE.current_O->default_serial_key[i] = default_serial_key[i];
-        }
-
-        int pressed_key, any_change;
-        const Uint8 *KEY_STATE = SDL_GetKeyboardState(nullptr);
-        put_all_bars_on_stave(COE.current_B, stave, stave_with_key_and_metre, default_serial_key, chosen_metre, &COE);
-        SDL_BlitSurface(stave, &Rect_current_view, screen, nullptr);
-        SDL_UpdateWindowSurface(window);
-        SDL_Delay(5);
-        SDL_UpdateWindowSurface(window);
-
-        while (!may_exit) {
-            while (SDL_PollEvent(&occurrence)) {
-                if (occurrence.type == SDL_QUIT) {
-                    may_exit = 1;
-                }
-                any_change = 0;
-
-                if (!is_instruction_open && occurrence.type == SDL_MOUSEWHEEL) {
-                    any_change = 1;
-                    scroll_updown(&Rect_current_view, &occurrence);
-                }
-
-                if ((KEY_STATE[SDL_SCANCODE_LCTRL] && occurrence.type == SDL_KEYDOWN && occurrence.key.keysym.sym == SDLK_h)) {
-                    is_instruction_open += 1;
-                    is_instruction_open %= 2;
-                    page_number = 0;
-                    SDL_Delay(300);
-                }
-
-                if (occurrence.type == SDL_KEYDOWN && occurrence.key.keysym.sym == SDLK_ESCAPE) {
-                    may_exit = 1;
-                    SDL_Delay(200);
-                }
-
-                if (is_instruction_open) {
-                    if (occurrence.type == SDL_KEYDOWN && occurrence.key.keysym.sym == SDLK_RIGHT) {
-                        page_number = __min(page_number + 1, 2);
-                        SDL_Delay(200);
-                    } else if (occurrence.type == SDL_KEYDOWN && occurrence.key.keysym.sym == SDLK_LEFT) {
-                        page_number = __max(page_number - 1, 0);
-                        SDL_Delay(200);
-                    }
-                    SDL_BlitSurface(instructions_[page_number], nullptr, screen, nullptr);
-                    SDL_UpdateWindowSurface(window);
-                }
-
-                if (!is_instruction_open && occurrence.type == SDL_KEYDOWN) {
-                    any_change = 1;
-
-                    SDL_Delay(75);
-
-                    pressed_key = occurrence.key.keysym.sym;
-                    /////////// Zmiana szerokości aktualnego taktu
-                    if (pressed_key == SDLK_j || pressed_key == SDLK_m) {
-                        change_bar_width(pressed_key, &any_change, &COE, KEY_STATE, X_after_key);
-
-                    }
-                    ////////// Zmiana długości chord-u
-                    if (pressed_key == SDLK_k || pressed_key == SDLK_l) {
-                        change_chord_len(pressed_key, &any_change, &COE, KEY_STATE);
-                    }
-                    ///////// Zmiana ręki
-                    if (pressed_key == SDLK_LALT) {
-                        change_hand(&COE);
-                    }
-                    //////// Zmiana edytowanej nuty
-                    if ((pressed_key == SDLK_UP || pressed_key == SDLK_DOWN)) {
-                        change_note(pressed_key, &COE);
-                    }
-                    //////// Zmiana chord-u lub bar-u
-                    if (pressed_key == SDLK_LEFT || pressed_key == SDLK_RIGHT) {
-                        change_chord_or_bar(pressed_key, &COE, KEY_STATE);
-                    }
-                    /////// Odkładanie nuty lub pauzy
-                    if (pressed_key == SDLK_a || pressed_key == SDLK_p ||
-                        (SDLK_c <= pressed_key && pressed_key <= SDLK_h)) {
-                        put_note_or_pause(pressed_key, &COE, KEY_STATE, COE.current_C->local_serial_key);
-                    }
-                    /////// Odkładanie znaku chromatycznego
-                    if ((pressed_key == SDLK_s || pressed_key == SDLK_b || pressed_key == SDLK_n ||
-                         pressed_key == SDLK_x) && COE.current_C->notes_number > 0) {
-                        put_acci(pressed_key, &COE, KEY_STATE, COE.current_C->local_serial_key);
-                    }
-                    /////// Usuwanie nut i chord-ów
-                    if (pressed_key == SDLK_BACKSPACE) {
-                        del_note_chord_bar(&COE, KEY_STATE, X_after_key);
-                    }
-                    ////// Tworzenie noewgo chord-u lub bar-u
-                    if (pressed_key == SDLK_SPACE) {
-                        create_new_chord_bar(&COE, KEY_STATE, X_after_key, default_serial_key);
-                    }
-
-                }
-                if (any_change && !is_instruction_open) {
-                    put_all_bars_on_stave(COE.current_O->first_BAR, stave, stave_with_key_and_metre, default_serial_key,
-                                          chosen_metre, &COE);
-                    SDL_BlitSurface(stave, &Rect_current_view, screen, nullptr);
-                    SDL_UpdateWindowSurface(window);
-                    SDL_Delay(10);
-                }
-            }
-        }
-
-        COE.current_C = nullptr;
-        put_all_bars_on_stave(COE.current_O->first_BAR, stave, stave_with_key_and_metre, default_serial_key, chosen_metre, &COE);
-        SDL_SaveBMP(stave, "wynik.bmp");
-
-        close_window();
-        return current_OPUS;
-    }
+    Opus *run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus);
 };
 
 

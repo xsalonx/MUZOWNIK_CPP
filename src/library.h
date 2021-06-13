@@ -11,7 +11,6 @@
 
 #include "OPUS_EDIT_LOGIC/opus_edit_logic.h"
 #include "ON_STAVE_PUTTING/putting.h"
-#include "ON_STAVE_PUTTING/init_putting.h"
 
 #include "OPUS_LOADSAVE/OPUS_loadsave.h"
 #include "WINDOWS/windowsManager.h"

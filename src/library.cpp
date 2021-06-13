@@ -15,17 +15,11 @@ void run() {
     char *chosen_key;
     int *chosen_metre;
     int opt;
-    Opus *current_OPUS = nullptr, *prev_OPUS = nullptr;
+    Opus *current_OPUS, *prev_OPUS;
     WindowsManager windowsManager = WindowsManager();
     OpusEditor opusEditor = OpusEditor();
-    int k=0;
     while (true) {
-
-        k++;
-        cout << k << endl;
-
         opt = windowsManager.menu_open();
-        cout << k << endl;
 
         chosen_metre = windowsManager.get_chosen_metre();
         chosen_key = windowsManager.get_chosen_key();
@@ -34,7 +28,7 @@ void run() {
             current_OPUS = opusEditor.run(chosen_key, chosen_metre, nullptr);
             cout <<"End of editing opus\n";
             printf("Saving opus as txt\n");
-            save_OPUS_as_TextFile(current_OPUS);
+            save_Opus_as_TextFile(current_OPUS);
             cout << "Opus saved\n";
             cout <<"Try to free allocated memory of opus\n";
             delete current_OPUS;
@@ -44,10 +38,10 @@ void run() {
             prev_OPUS = fscanf_opus(nullptr);
             cout << "Opus loaded\n";
             cout << "Start editing loaded opus\n";
-            current_OPUS = opusEditor.run(prev_OPUS->key, prev_OPUS->time_sign, prev_OPUS);
+            current_OPUS = opusEditor.run(prev_OPUS->key, prev_OPUS->metre, prev_OPUS);
             cout << "End of editing loaded opus\n";
             cout << "Saving edited opus\n";
-            save_OPUS_as_TextFile(current_OPUS);
+            save_Opus_as_TextFile(current_OPUS);
             cout << "Edited opus saved\n";
             delete current_OPUS; // also do free_opus(prev_OPUS); prev_OPUS == current_OPUS;
         } else if (opt == MENU_EXIT_CODE) {

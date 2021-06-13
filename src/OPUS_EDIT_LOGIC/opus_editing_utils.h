@@ -10,8 +10,8 @@
 #include <cmath>
 #include <SDL2/SDL.h>
 #include <ctime>
-#include "../geometry_def_codes.h"
-#include "../structs.h"
+#include "../geometry_defCodes.h"
+#include "../STRUCTS/Opus.h"
 
 void swap_notes(Note *n1, Note *n2);
 int get_note_index(Note *n);

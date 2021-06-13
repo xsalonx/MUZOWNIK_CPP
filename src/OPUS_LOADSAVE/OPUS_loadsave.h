@@ -13,7 +13,7 @@ Opus *fscanf_opus(const char *path);
 int fprint_note(FILE *opus_text_file, Note *n);
 int fprint_chord(FILE *opus_text_file, Chord *chord_to_print);
 int fprint_bar(FILE *opus_text_file, Bar *bar_to_print);
-int save_OPUS_as_TextFile(Opus *OPUS_to_save);
+int save_Opus_as_TextFile(Opus *OPUS_to_save);
 
 /*
     opus_text_file:
