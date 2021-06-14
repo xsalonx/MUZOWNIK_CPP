@@ -12,175 +12,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a62cfe64-33c4-411e-bcad-41d7124d417d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/out/opus.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUZOWNIK.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SDL2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/out/SDL2.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/accidental/acci_b.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/accidental/acci_b.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/accidental/acci_n.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/accidental/acci_n.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/accidental/acci_s.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/accidental/acci_s.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/accidental/stare/b_na.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/accidental/stare/b_na.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/accidental/stare/b_pomiedzy.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/accidental/stare/b_pomiedzy.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/accidental/stare/kasownik_na.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/accidental/stare/kasownik_na.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/accidental/stare/kasownik_pomiedzy.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/accidental/stare/kasownik_pomiedzy.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/accidental/stare/krzyz_na.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/accidental/stare/krzyz_na.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/accidental/stare/krzyz_pomiedzy.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/accidental/stare/krzyz_pomiedzy.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/fifths_circle/813px-Expanded_circle_of_fifths-de.svg.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/fifths_circle/813px-Expanded_circle_of_fifths-de.svg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/fifths_circle/anty_dot.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/fifths_circle/anty_dot.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/fifths_circle/dot.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/fifths_circle/dot.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/fifths_circle/fifths_circle_large.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/fifths_circle/fifths_circle_large.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/fifths_circle/fifths_circle_large_.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/fifths_circle/fifths_circle_large_.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/fifths_circle/fifths_circle_large___.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/fifths_circle/fifths_circle_large___.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/fifths_circle/fifths_circle_large_eksp.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/fifths_circle/fifths_circle_large_eksp.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/fifths_circle/fifths_circle_large_eksp_dots.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/fifths_circle/fifths_circle_large_eksp_dots.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/fifths_circle/fifths_circle_large_white.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/fifths_circle/fifths_circle_large_white.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/fifths_circle/fifths_circle_org.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/fifths_circle/fifths_circle_org.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/fifths_circle/fifths_circle_small.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/fifths_circle/fifths_circle_small.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/b1b.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/b1b.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/b1s.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/b1s.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/b2b.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/b2b.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/b2s.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/b2s.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/b3b.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/b3b.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/b3s.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/b3s.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/b4b.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/b4b.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/b4s.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/b4s.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/b5b.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/b5b.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/b5s.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/b5s.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/b6b.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/b6b.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/b6s.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/b6s.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/b7b.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/b7b.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/b7s.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/b7s.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/t1b.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/t1b.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/t1s.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/t1s.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/t2b.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/t2b.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/t2s.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/t2s.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/t3b.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/t3b.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/t3s.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/t3s.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/t4b.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/t4b.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/t4s.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/t4s.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/t5b.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/t5b.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/t5s.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/t5s.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/t6b.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/t6b.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/t6s.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/t6s.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/t7b.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/t7b.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/keys/t7s.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/keys/t7s.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/Chopin_polonaise.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/Chopin_polonaise.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/Chopin_polonaise_Op._53.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/Chopin_polonaise_Op._53.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/background.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/background.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/background_duze.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/background_duze.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/background_org.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/background_org.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/background_with_options.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/background_with_options.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/backk.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/backk.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/instructions.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/instructions.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/menu_background.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/menu_background.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/option_exit.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_exit.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/option_exit_highlight.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_exit_highlight.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/option_help.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_help.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/option_help_highlight.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_help_highlight.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/option_new.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_new.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/option_new_highlight.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_new_highlight.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/option_open.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_open.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/option_open_highlight.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_open_highlight.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/stave_instructions.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/stave_instructions.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/stave_instructions_str1.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/stave_instructions_str1.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/stave_instructions_str2.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/stave_instructions_str2.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/stave_instructions_str3.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/stave_instructions_str3.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/menu/title.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/title.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/metre/metre_24.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/metre/metre_24.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/metre/metre_34.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/metre/metre_34.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/metre/metre_44.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/metre/metre_44.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/metre/metre_68.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/metre/metre_68.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/metre_choose/digit_0.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/metre_choose/digit_0.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/metre_choose/digit_1.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/metre_choose/digit_1.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/metre_choose/digit_2.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/metre_choose/digit_2.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/metre_choose/digit_3.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/metre_choose/digit_3.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/metre_choose/digit_4.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/metre_choose/digit_4.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/metre_choose/digit_5.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/metre_choose/digit_5.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/metre_choose/digit_6.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/metre_choose/digit_6.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/metre_choose/digit_7.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/metre_choose/digit_7.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/metre_choose/digit_8.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/metre_choose/digit_8.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/metre_choose/digit_9.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/metre_choose/digit_9.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/metre_choose/fifths_circle_large.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/metre_choose/fifths_circle_large.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/metre_choose/metre_chosing.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/metre_choose/metre_chosing.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/metre_choose/stave.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/metre_choose/stave.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/Nowy folder/note_1u.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/Nowy folder/note_1u.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/Nowy folder/note_3u.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/Nowy folder/note_3u.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/notb_0n.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/notb_0n.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/notb_1d.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/notb_1d.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/notb_1u.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/notb_1u.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/notb_2d.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/notb_2d.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/notb_2u.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/notb_2u.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/notb_3d.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/notb_3d.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/notb_3u.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/notb_3u.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/notb_4d.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/notb_4d.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/notb_4u.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/notb_4u.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/notb_5d.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/notb_5d.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/notb_5u.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/notb_5u.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/note_0n.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/note_0n.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/note_1d.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/note_1d.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/note_1u.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/note_1u.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/note_2d.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/note_2d.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/note_2u.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/note_2u.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/note_3d.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/note_3d.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/note_3u.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/note_3u.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/note_4d.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/note_4d.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/note_4u.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/note_4u.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/note_5d.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/note_5d.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/note_5u.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/note_5u.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/paub_0n.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/paub_0n.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/paub_1n.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/paub_1n.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/paub_2n.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/paub_2n.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/paub_3n.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/paub_3n.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/paub_4n.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/paub_4n.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/paub_5n.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/paub_5n.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/paus_0n.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/paus_0n.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/paus_1n.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/paus_1n.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/paus_2n.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/paus_2n.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/paus_3n.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/paus_3n.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/paus_4n.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/paus_4n.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/paus_5n.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/paus_5n.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/1bn.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/1bn.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/1on.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/1on.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/2bd.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/2bd.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/2bu.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/2bu.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/2od.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/2od.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/2ou.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/2ou.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/4bd.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/4bd.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/4bu.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/4bu.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/4od.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/4od.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/4ou.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/4ou.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/8bd.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/8bd.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/8bu.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/8bu.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/8od.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/8od.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/8ou.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/8ou.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/fbd.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/fbd.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/fbu.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/fbu.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/fod.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/fod.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/fou.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/fou.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/gbd.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/gbd.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/gbu.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/gbu.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/god.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/god.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/gou.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/gou.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/note_4d_stare.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/note_4d_stare.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/stare/note_5d.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/stare/note_5d.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/notes/time_dot.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/notes/time_dot.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obrazki/wiolbas.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/wiolbas.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opus.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/putting.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ON_STAVE_PUTTING/putting.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/opus.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/opus.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/wynik.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/wynik.bmp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_edit_logic.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_edit_logic.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_editing_utils.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_editing_utils.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_editing_utils.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_editing_utils.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_editing_utils.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_editing_utils.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OPUS_LOADSAVE/OPUS_loadsave.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_LOADSAVE/OPUS_loadsave.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OPUS_LOADSAVE/OPUS_loadsave.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_LOADSAVE/OPUS_loadsave.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WINDOWS/windowsManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/WINDOWS/windowsManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WINDOWS/windowsManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/WINDOWS/windowsManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/library.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/library.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/library.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/library.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wynik.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/wynik.bmp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +51,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../c/MUZOWNIK_PI_PART_LIB" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="configurable.group.build" />
@@ -221,14 +66,19 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Nutownik" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Nutownik" TARGET_NAME="Nutownik" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Nutownik" RUN_TARGET_NAME="Nutownik">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -253,6 +103,7 @@
       <workItem from="1623511749586" duration="254000" />
       <workItem from="1623529756197" duration="31000" />
       <workItem from="1623568511348" duration="14653000" />
+      <workItem from="1623660099056" duration="12841000" />
     </task>
     <task id="LOCAL-00001" summary="Windows commitment">
       <created>1619462266920</created>

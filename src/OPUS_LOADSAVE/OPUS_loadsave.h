@@ -3,6 +3,7 @@
 #define PI_PROJECTSDL2_PART_LIB_OPUS_LOADSAVE_H
 
 #include "../library.h"
+#include "../STRUCTS/Opus.h"
 
 int fscanf_note(FILE *opus_text_file, Note *n);
 Chord *fscanf_chord(FILE *opus_text_file);

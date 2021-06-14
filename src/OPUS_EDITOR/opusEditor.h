@@ -1,7 +1,8 @@
 #ifndef MUZOWNIK_OPUSEDITOR_H
 #define MUZOWNIK_OPUSEDITOR_H
 
-#include "../OPUS_EDIT_LOGIC/opus_editing_utils.h."
+#include "../STRUCTS/Opus.h"
+#include <SDL2/SDL.h>
 
 
 
@@ -11,6 +12,9 @@ private:
 
     SDL_Window *window{};
     SDL_Surface *screen{};
+    SDL_Renderer *renderer{};
+    SDL_Texture *texture{};
+
     SDL_Surface *stave{};
     SDL_Surface *blank_stave{};
     SDL_Surface *stave_with_key_and_metre{};
@@ -20,6 +24,8 @@ private:
     char default_serial_key[7]{};
 
     CurrentOpusEdits COE{};
+
+    void resize_window();
 
     int hand{};
     //// ON_STAVE_PUTTING
@@ -37,6 +43,17 @@ private:
     int put_chord_on_stave_without_beam(Chord *chord_to_put, int *X_start, int hand, int brace, const char *serial_key, BarsSpace *b_space);
     int put_bar_on_stave(Bar *bar_to_put, int hand, int brace, const char serial_key[7], const int chosen_metre[2]);
     int put_all_bars_on_stave(Bar *first_bar_to_put, const char serial_key[7], const int chosen_metre[2]);
+
+    //opus_editing_utils;
+    void swap_notes(Note *n1, Note *n2);
+    int get_note_index(Note *n);
+    int cmp_notes(Note *n1, Note *n2);
+    int sort_uniq_notes(Chord *chord_to_sort);
+    int get_serial_key(const char *chosen_key, char serial_key[7]);
+    int is_acci_req(Chord *chord_to_put, int k, const char *defauly_serial_key);
+    int get_space_for_chord(Bar *bar, BarsSpace *b_space, const int *metre);
+
+
 
     //opus_edit_logic;
     int change_bar_width(int pressed_key, int *any_change, const Uint8 *KEY_STATE, int X_after_key) const;

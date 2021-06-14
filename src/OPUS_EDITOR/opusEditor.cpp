@@ -1,4 +1,15 @@
 #include "opusEditor.h"
+#include <iostream>
+using namespace std;
+
+int pow(int a, int b) {
+    if (a != 0 && b == 0) return 1;
+    int A = a;
+    for (int i=0; i<b; i++) {
+        A *= a;
+    }
+    return A;
+}
 
 
 
@@ -262,7 +273,6 @@ int OpusEditor::put_chord_on_treb_without_beam(Chord *chord_to_put, int *X_start
     SDL_Surface *time_dot = SDL_LoadBMP("pictures/notes/time_dot.bmp");
 
 
-
     char path[28] = "pictures/notes/note_00.bmp";
     int prefix_len = 20;
     path[prefix_len] = (char) (chord_to_put->time + 48);
@@ -278,7 +288,6 @@ int OpusEditor::put_chord_on_treb_without_beam(Chord *chord_to_put, int *X_start
             path[prefix_len + 1] = 'u';
         }
     }
-
 
     if (chord_to_put->time <= 2) {
         note_without_flag = SDL_LoadBMP(path);
@@ -312,7 +321,6 @@ int OpusEditor::put_chord_on_treb_without_beam(Chord *chord_to_put, int *X_start
         SDL_SetColorKey(sign_note_without_flag, SDL_TRUE, SDL_MapRGB(sign_note_without_flag->format, 255, 255, 255));
     }
     SDL_SetColorKey(time_dot, SDL_TRUE, SDL_MapRGB(time_dot->format, 255, 255, 255));
-
 
     for (i = 0; i < chord_to_put->notes_number; i++) {
 
@@ -564,18 +572,6 @@ int OpusEditor::put_chord_on_treb_without_beam(Chord *chord_to_put, int *X_start
 
     chord_to_put->X_position = *X_start;
     *X_start += b_space->widths_ni_[chord_to_put->time][chord_to_put->_time_dots_];
-
-
-
-//    SDL_FreeSurface(note_without_flag);
-//    SDL_FreeSurface(note_with_flag);
-//    SDL_FreeSurface(note_to_put);
-//    SDL_FreeSurface(acci_b);
-//    SDL_FreeSurface(acci_s);
-//    SDL_FreeSurface(acci_n);
-//    SDL_FreeSurface(acci_to_put);
-
-
 
     return 0;
 }
@@ -1251,6 +1247,284 @@ int OpusEditor::put_all_bars_on_stave(Bar *first_bar_to_put, const char serial_k
     return 0;
 }
 
+
+//opus_editing_utils;
+void OpusEditor::swap_notes(Note *n1, Note *n2) {
+    int tmp;
+    char c_tmp;
+    tmp = n1->height;
+    n1->height = n2->height;
+    n2->height = tmp;
+
+    c_tmp = n1->acci;
+    n1->acci = n2->acci;
+    n2->acci = c_tmp;
+
+    c_tmp = n1->name;
+    n1->name = n2->name;
+    n2->name = c_tmp;
+
+}
+int OpusEditor::get_note_index(Note *n) {
+
+    int index = 0;
+    switch (n->name) {
+        case 'C':
+            index = 0;
+            break;
+        case 'D':
+            index = 2;
+            break;
+        case 'E':
+            index = 4;
+            break;
+        case 'F':
+            index = 5;
+            break;
+        case 'G':
+            index = 7;
+            break;
+        case 'A':
+            index = 9;
+            break;
+        case 'H':
+            index = 11;
+            break;
+        default:
+            break;
+    }
+
+    if (n->acci == 's') index = index + 1;
+    if (n->acci == 'b') index = index - 1;
+
+    index = index + n->height * 12;
+
+    return index;
+}
+int OpusEditor::cmp_notes(Note *n1, Note *n2) {
+
+    int i1, i2;
+    i1 = get_note_index(n1);
+    i2 = get_note_index(n2);
+
+    if (i1 > i2) return 1;
+    if (i1 == i2) return 0;
+    if (i1 < i2) return -1;
+
+    return 0;
+}
+int OpusEditor::sort_uniq_notes(Chord *chord_to_sort) {
+    if (chord_to_sort->notes_number <= 1) return 0;
+    int is_sorted = 0, i, opt, j;
+
+    while (!is_sorted) {
+        is_sorted = 1;
+        for (i = 0; i < chord_to_sort->notes_number - 1; i++) {
+            opt = cmp_notes(&chord_to_sort->notes_[i], &chord_to_sort->notes_[i + 1]);
+            if (opt == 1) {
+                swap_notes(&chord_to_sort->notes_[i], &chord_to_sort->notes_[i + 1]);
+                is_sorted = 0;
+            } else if (opt == 0) {
+                for (j = i + 1; j < chord_to_sort->notes_number - 1; j++) {
+                    swap_notes(&chord_to_sort->notes_[j], &chord_to_sort->notes_[j + 1]);
+                }
+                is_sorted = 0;
+                chord_to_sort->notes_number--;
+            }
+        }
+    }
+    return 0;
+}
+int OpusEditor::get_serial_key(const char *chosen_key, char serial_key[7]) {
+
+    int i;
+    for (i = 0; i < 7; i++) {
+        serial_key[i] = 'n';
+    }
+
+    switch (chosen_key[0]) {
+        case 'C':
+            switch (chosen_key[1]) {
+                case '\0':
+                    break;
+                case 'i':
+                    for (i = 0; i < 7; i++) {
+                        serial_key[i] = 's';
+                    }
+                    break;
+                case 'e':
+                    for (i = 0; i < 7; i++) {
+                        serial_key[i] = 'b';
+                    }
+                    break;
+                default:
+                    return 1;
+                    break;
+            }
+            break;
+        case 'D':
+            switch (chosen_key[1]) {
+                case '\0':
+                    serial_key[0] = 's';
+                    serial_key[3] = 's';
+                    break;
+                case 'e':
+                    for (i = 0; i < 7; i++) {
+                        serial_key[i] = 'b';
+                    }
+                    serial_key[0] = 'n';
+                    serial_key[3] = 'n';
+                    break;
+                default:
+                    return 1;
+                    break;
+            }
+            break;
+        case 'E':
+            switch (chosen_key[1]) {
+                case '\0':
+                    serial_key[0] = 's';
+                    serial_key[3] = 's';
+                    serial_key[4] = 's';
+                    serial_key[1] = 's';
+                    break;
+                case 'e':
+                    serial_key[2] = 'b';
+                    serial_key[5] = 'b';
+                    serial_key[6] = 'b';
+                    break;
+                default:
+                    return 1;
+                    break;
+            }
+            break;
+        case 'F':
+            switch (chosen_key[1]) {
+                case '\0':
+                    serial_key[6] = 'b';
+                    break;
+                case 'i':
+                    for (i = 0; i < 6; i++) {
+                        serial_key[i] = 's';
+                    }
+                    break;
+                default:
+                    return 1;
+                    break;
+            }
+            break;
+        case 'G':
+            switch (chosen_key[1]) {
+                case '\0':
+                    serial_key[3] = 's';
+                    break;
+                case 'e':
+                    for (i = 0; i < 7; i++) {
+                        serial_key[i] = 'b';
+                    }
+                    serial_key[3] = 'n';
+                    break;
+                default:
+                    return 1;
+                    break;
+            }
+            break;
+        case 'A':
+            switch (chosen_key[1]) {
+                case '\0':
+                    serial_key[3] = 's';
+                    serial_key[0] = 's';
+                    serial_key[4] = 's';
+                    break;
+                case 's':
+                    serial_key[6] = 'b';
+                    serial_key[2] = 'b';
+                    serial_key[5] = 'b';
+                    serial_key[1] = 'b';
+                    break;
+                default:
+                    return 1;
+                    break;
+            }
+            break;
+        case 'H':
+            for (i = 0; i < 6; i++) {
+                serial_key[i] = 's';
+            }
+            serial_key[2] = 'n';
+            break;
+        case 'B':
+            serial_key[6] = 'b';
+            serial_key[2] = 'b';
+            break;
+        default:
+            return 1;
+            break;
+    }
+
+    return 0;
+}
+int OpusEditor::is_acci_req(Chord *chord_to_put, int k, const char *defauly_serial_key) {
+
+    int i = 0;
+    Note *n = &(chord_to_put->notes_[k]);
+    switch (n->name) {
+        case 'C':
+            i = 0;
+            break;
+        case 'D':
+            i = 1;
+            break;
+        case 'E':
+            i = 2;
+            break;
+        case 'F':
+            i = 3;
+            break;
+        case 'G':
+            i = 4;
+            break;
+        case 'A':
+            i = 5;
+            break;
+        case 'H':
+            i = 6;
+            break;
+        default:
+            break;
+    }
+    if (//n->acci != chord_to_put->local_serial_key[i] ||
+            (chord_to_put->prev == nullptr && n->acci != defauly_serial_key[i]) ||
+            (chord_to_put->prev != nullptr && n->acci != chord_to_put->prev->local_serial_key[i])) {
+        return 1;
+    }
+
+    return 0;
+}
+int OpusEditor::get_space_for_chord(Bar *bar, BarsSpace *b_space, const int *metre) {
+
+    int available_width = bar->width_ - DISTANCE_BETWEEN_BAR_AND_FIRST_NOTE - DISTANCE_BEWTWEEN_LAST_NOTE_AND_BAR, i, j;
+    double notes_periods[6][6], metre_quatient = (double)metre[0] / (double)metre[1];
+
+    notes_periods[0][0] = 1;
+    for (i = 1; i < 6; i++) {
+        notes_periods[i][0] = notes_periods[i - 1][0] / 2;
+        for (j = 1; j < 6; j++) {
+            notes_periods[i][j] = notes_periods[i][0] * (2 - pow(2, -(double) j));
+        }
+    }
+
+
+    for (i = 0; i < 6; i++) {
+        for (j = 0; j < 6; j++) {
+            b_space->widths_ni_[i][j] = (int) ((available_width * notes_periods[i][j]) / metre_quatient);
+        }
+    }
+    return 0;
+}
+
+
+
 //opus_edit_logic;
 int OpusEditor::change_bar_width(int pressed_key, int *any_change, const Uint8 *KEY_STATE, int X_after_key) const {
 
@@ -1515,7 +1789,8 @@ int OpusEditor::put_note_or_pause(int pressed_key, const Uint8 *KEY_STATE, const
             sort_uniq_notes(COE.current_C);
         } else {
             COE.current_C->notes_[0].name = 'P';
-            COE.current_C->notes_[0].acci = 's';            COE.current_C->notes_[0].height = 4;
+            COE.current_C->notes_[0].acci = 's';
+            COE.current_C->notes_[0].height = 4;
             COE.current_C->notes_number = 1;
             COE.current_note_index = 0;
         }
@@ -1695,11 +1970,14 @@ int OpusEditor::put_accidental(int pressed_key, const Uint8 *KEY_STATE) {
 
 
 void OpusEditor::open_window() {
-    window = SDL_CreateWindow("MUZOWNIK", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, stave->w, SCREEN_HIGHT, SDL_WINDOW_SHOWN);
+    window = SDL_CreateWindow("Nutownik", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, stave->w, SCREEN_HIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
     screen = SDL_GetWindowSurface(window);
+    renderer = SDL_CreateRenderer( window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC );
+    texture = SDL_CreateTextureFromSurface(renderer, screen);
 
 }
 void OpusEditor::close_window(){
+    SDL_DestroyRenderer(renderer);
     SDL_FreeSurface(screen);
     SDL_DestroyWindow(window);
 }
@@ -1743,7 +2021,7 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
     }
 
     SDL_Event occurrence;
-    int go_end = 0, is_instruction_open = 0, page_number = 0;
+    int end = 0, is_instruction_open = 0, page_number = 0;
     get_serial_key(chosen_key, default_serial_key);
 
     int X_start_on_treb = X_START_AFTER_KEY;
@@ -1786,12 +2064,11 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
     SDL_BlitSurface(stave, &Rect_current_view, screen, nullptr);
     SDL_UpdateWindowSurface(window);
     SDL_Delay(5);
-    SDL_UpdateWindowSurface(window);
 
-    while (!go_end) {
+    while (!end) {
         while (SDL_PollEvent(&occurrence)) {
             if (occurrence.type == SDL_QUIT) {
-                go_end = 1;
+                end = 1;
             }
             any_change = 0;
 
@@ -1808,7 +2085,7 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
             }
 
             if (occurrence.type == SDL_KEYDOWN && occurrence.key.keysym.sym == SDLK_ESCAPE) {
-                go_end = 1;
+                end = 1;
                 SDL_Delay(200);
             }
 
@@ -1875,9 +2152,23 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
                 put_all_bars_on_stave(COE.current_O->first_BAR, default_serial_key,
                                       chosen_metre);
                 SDL_BlitSurface(stave, &Rect_current_view, screen, nullptr);
+//                SDL_BlitScaled(stave, nullptr, screen, nullptr);
+                SDL_RenderCopy(renderer, texture, nullptr, nullptr);
+//                SDL_UpdateTexture(texture);
+//                SDL_RenderPresent(renderer);
                 SDL_UpdateWindowSurface(window);
                 SDL_Delay(10);
             }
+
+            if (occurrence.type == SDL_WINDOWEVENT && occurrence.window.event == SDL_WINDOWEVENT_RESIZED) {
+                cout << "resizing event\n";
+                this->resize_window();
+
+            }
+//            if (occurrence.type == SDL_KEYDOWN && pressed_key == SDLK_z) {
+//                cout << "Renderer scale\n";
+//                SDL_RenderSetScale(renderer, 0.6, 0.6);
+//            }
         }
     }
 
@@ -1887,4 +2178,11 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
 
     close_window();
     return current_OPUS;
+}
+
+void OpusEditor::resize_window() {
+    SDL_FreeSurface(screen);
+    screen = SDL_GetWindowSurface(window);
+    SDL_BlitSurface(stave, nullptr, screen, nullptr);
+    SDL_UpdateWindowSurface(window);
 }

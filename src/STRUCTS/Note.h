@@ -17,7 +17,9 @@ public:
     char acci;
     int height;
     int may_print_acci;
+
 };
+
 
 
 #endif //MUZOWNIK_NOTE_H

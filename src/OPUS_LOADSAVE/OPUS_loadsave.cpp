@@ -2,7 +2,6 @@
 
 int fscanf_note(FILE *opus_text_file, Note *n) {
 
-    char c;
     if (n == nullptr) {
         return 1;
     }
@@ -26,7 +25,7 @@ int fscanf_note(FILE *opus_text_file, Note *n) {
 }
 Chord *fscanf_chord(FILE *opus_text_file) {
 
-    Chord *chord = nullptr;
+    Chord *chord;
     int i;
     char c;
     chord = new Chord;
@@ -82,7 +81,7 @@ Chord *fscanf_chord(FILE *opus_text_file) {
 }
 Bar *fscanf_bar(FILE *opus_text_file) {
 
-    Bar *bar = nullptr;
+    Bar *bar;
     bar = new Bar;
     char c;
     bar->X_of_start_bar = 0;
@@ -101,7 +100,7 @@ Bar *fscanf_bar(FILE *opus_text_file) {
         exit(1);
     }
 
-    Chord *help_chord = nullptr;
+    Chord *help_chord;
     bar->prev = nullptr;
     bar->next = nullptr;
 
@@ -144,7 +143,7 @@ Bar *fscanf_bar(FILE *opus_text_file) {
 }
 Opus *fscanf_opus(const char *path) {
 
-    Opus *opus = nullptr;
+    Opus *opus;
     opus = new Opus;
     char c;
     int i;
@@ -199,7 +198,7 @@ Opus *fscanf_opus(const char *path) {
         exit(1);
     }
 
-    Bar *help_bar = nullptr;
+    Bar *help_bar;
     opus->first_BAR = fscanf_bar(opus_text_file);
     opus->first_BAR->prev = nullptr;
     opus->first_BAR->next = nullptr;
