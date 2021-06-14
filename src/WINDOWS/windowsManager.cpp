@@ -6,22 +6,22 @@ void WindowsManager::init_menu_() {
                               SCREEN_HIGHT, SDL_WINDOW_SHOWN);
     screen = SDL_GetWindowSurface(window);
 
-    menu_background = SDL_LoadBMP("obrazki/menu/menu_background.bmp");
+    menu_background = SDL_LoadBMP("pictures/menu/menu_background.bmp");
 
 
-    creating_option = SDL_LoadBMP("obrazki/menu/option_new.bmp");
-    creating_option_highlighted = SDL_LoadBMP("obrazki/menu/option_new_highlight.bmp");
+    creating_option = SDL_LoadBMP("pictures/menu/option_new.bmp");
+    creating_option_highlighted = SDL_LoadBMP("pictures/menu/option_new_highlight.bmp");
 
-    loading_option = SDL_LoadBMP("obrazki/menu/option_open.bmp");
-    loading_option_highlighted = SDL_LoadBMP("obrazki/menu/option_open_highlight.bmp");
+    loading_option = SDL_LoadBMP("pictures/menu/option_open.bmp");
+    loading_option_highlighted = SDL_LoadBMP("pictures/menu/option_open_highlight.bmp");
 
-    exit_option = SDL_LoadBMP("obrazki/menu/option_exit.bmp");
-    exit_option_highlighted = SDL_LoadBMP("obrazki/menu/option_exit_highlight.bmp");
+    exit_option = SDL_LoadBMP("pictures/menu/option_exit.bmp");
+    exit_option_highlighted = SDL_LoadBMP("pictures/menu/option_exit_highlight.bmp");
 
-    title = SDL_LoadBMP("obrazki/menu/title.bmp");
+    title = SDL_LoadBMP("pictures/menu/title.bmp");
 
-    help_option = SDL_LoadBMP("obrazki/menu/option_help.bmp");
-    help_option_highlighted = SDL_LoadBMP("obrazki/menu/option_help_highlight.bmp");
+    help_option = SDL_LoadBMP("pictures/menu/option_help.bmp");
+    help_option_highlighted = SDL_LoadBMP("pictures/menu/option_help_highlight.bmp");
 
     SDL_SetColorKey(creating_option_highlighted, SDL_TRUE, SDL_MapRGB(creating_option_highlighted->format, 255, 255, 255));
     SDL_SetColorKey(creating_option, SDL_TRUE, SDL_MapRGB(creating_option->format, 255, 255, 255));
@@ -50,9 +50,9 @@ void WindowsManager::init_menu_() {
     R_help_dst.y = Y_TO_INSERT_OPTION_HELP;
 }
 void WindowsManager::init_fifths_choosing_() {
-    fifths_circle = SDL_LoadBMP("obrazki/fifths_circle/fifths_circle_large.bmp");
-    dot = SDL_LoadBMP("obrazki/fifths_circle/dot.bmp");
-    anty_dot = SDL_LoadBMP("obrazki/fifths_circle/anty_dot.bmp");
+    fifths_circle = SDL_LoadBMP("pictures/fifths_circle/fifths_circle_large.bmp");
+    dot = SDL_LoadBMP("pictures/fifths_circle/dot.bmp");
+    anty_dot = SDL_LoadBMP("pictures/fifths_circle/anty_dot.bmp");
     SDL_SetColorKey(dot, SDL_TRUE, SDL_MapRGB(dot->format, 255, 255, 255));
 
     RECT_fifths_dots[0].x = 390;
@@ -101,16 +101,16 @@ void WindowsManager::init_fifths_choosing_() {
     RECT_fifths_dots[14].y = 51;
 }
 void WindowsManager::init_metre_choosing_() {
-    char path[33] = "obrazki/metre_choose/digit_0.bmp";
-    int pos = 27;
+    char path[50] = "pictures/metre_choose/digit_0.bmp";
+    int pos = 28;
     for (int i = 0; i < 10; i++) {
         path[pos] = (char) (i + 48);
         digits[i] = SDL_LoadBMP(path);
         SDL_SetColorKey(digits[i], SDL_TRUE, SDL_MapRGB(digits[i]->format, 255, 255, 255));
 
     }
-    metre_chose = SDL_LoadBMP("obrazki/metre_choose/metre_chosing.bmp");
-    stave = SDL_LoadBMP("obrazki/metre_choose/stave.bmp");
+    metre_chose = SDL_LoadBMP("pictures/metre_choose/metre_chosing.bmp");
+    stave = SDL_LoadBMP("pictures/metre_choose/stave.bmp");
 
 
     RECT_STAVE_SRC[0].x = 0;
@@ -141,7 +141,7 @@ void WindowsManager::init_metre_choosing_() {
     RECT_DIGIT_DST[5].y = SECOND_Y_METRE_CHOOSE;
 }
 void WindowsManager::init_instructions_() {
-    instructions_ = SDL_LoadBMP("obrazki/menu/instructions.bmp");
+    instructions_ = SDL_LoadBMP("pictures/menu/instructions.bmp");
 }
 
 
@@ -152,8 +152,8 @@ WindowsManager::WindowsManager() {
     init_instructions_();
 }
 WindowsManager::~WindowsManager() {
-    SDL_DestroyWindow(window);
     SDL_FreeSurface(screen);
+    SDL_DestroyWindow(window);
 
     //// For menu;
     SDL_FreeSurface(menu_background);
@@ -205,7 +205,6 @@ int WindowsManager::help_window() {
     }
     return current_menu_opt;
 }
-////It returns option code
 int WindowsManager::metre_choosing_window()  {
 
     chosen_metre[0] = 0;
@@ -287,7 +286,6 @@ int WindowsManager::metre_choosing_window()  {
 
     return current_opt;
 }
-////It returns option code
 int WindowsManager::menu_window() {
 
     int may_exit = 0;
@@ -393,7 +391,6 @@ int WindowsManager::menu_window() {
 
     return current_menu_opt;
 }
-////It returns option code
 int WindowsManager::fifths_choosing() {
 
 
@@ -510,8 +507,8 @@ int WindowsManager::fifths_choosing() {
 
     return current_opt;
 }
-////It uses options codes
-int WindowsManager::menu_open() {
+
+int WindowsManager::open() {
 
     SDL_Event occurrence;
     int may_exit = 0, current_opt = MENU_WINDOW_CODE;

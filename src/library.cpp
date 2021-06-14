@@ -19,7 +19,7 @@ void run() {
     WindowsManager windowsManager = WindowsManager();
     OpusEditor opusEditor = OpusEditor();
     while (true) {
-        opt = windowsManager.menu_open();
+        opt = windowsManager.open();
 
         chosen_metre = windowsManager.get_chosen_metre();
         chosen_key = windowsManager.get_chosen_key();

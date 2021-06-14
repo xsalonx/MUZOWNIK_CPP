@@ -1,7 +1,3 @@
-//
-// Created by Luksz on 2021-06-11.
-//
-
 #include "OPUS_loadsave.h"
 
 int fscanf_note(FILE *opus_text_file, Note *n) {

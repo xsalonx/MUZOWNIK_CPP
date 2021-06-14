@@ -9,8 +9,7 @@
 #include <SDL2/SDL.h>
 #include <ctime>
 
-#include "OPUS_EDIT_LOGIC/opus_edit_logic.h"
-#include "ON_STAVE_PUTTING/putting.h"
+#include "OPUS_EDIT_LOGIC/opus_editing_utils.h"
 
 #include "OPUS_LOADSAVE/OPUS_loadsave.h"
 #include "WINDOWS/windowsManager.h"

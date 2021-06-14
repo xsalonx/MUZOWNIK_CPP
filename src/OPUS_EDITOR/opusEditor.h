@@ -1,8 +1,7 @@
 #ifndef MUZOWNIK_OPUSEDITOR_H
 #define MUZOWNIK_OPUSEDITOR_H
 
-#include "../ON_STAVE_PUTTING/putting.h"
-#include "../OPUS_EDIT_LOGIC/opus_edit_logic.h"
+#include "../OPUS_EDIT_LOGIC/opus_editing_utils.h."
 
 
 
@@ -18,6 +17,9 @@ private:
 
     SDL_Rect Rect_current_view{};
     SDL_Surface *instructions_[3]{};
+    char default_serial_key[7]{};
+
+    CurrentOpusEdits COE{};
 
     int hand{};
     //// ON_STAVE_PUTTING
@@ -29,12 +31,24 @@ private:
     int put_metre(const int chosen_metre[2], int *X_start_on_line, int brace);
 
     //putting
-    int put_chord_on_treb_without_beam(Chord *chord_to_put, int *X_start, int brace, const char serial_key[7], BarsSpace *b_space, struct CurrentOpusEdits *COE);
-    int put_chord_on_bass_without_beam(Chord *chord_to_put, int *X_start, int brace, const char serial_key[7], BarsSpace *b_space, struct CurrentOpusEdits *COE);
-    int put_pause_on_stave_without_beam(Chord *chord_to_put, int *X_start, int brace, int hand, BarsSpace *b_space, struct CurrentOpusEdits *COE);
-    int put_chord_on_stave_without_beam(Chord *chord_to_put, int *X_start, int hand, int brace, const char *serial_key, BarsSpace *b_space, struct CurrentOpusEdits *COE);
-    int put_bar_on_stave(Bar *bar_to_put, int hand, int brace, const char serial_key[7], const int chosen_metre[2], struct CurrentOpusEdits *COE);
-    int put_all_bars_on_stave(Bar *first_bar_to_put, const char serial_key[7], const int chosen_metre[2], struct CurrentOpusEdits *COE);
+    int put_chord_on_treb_without_beam(Chord *chord_to_put, int *X_start, int brace, const char serial_key[7], BarsSpace *b_space);
+    int put_chord_on_bass_without_beam(Chord *chord_to_put, int *X_start, int brace, const char serial_key[7], BarsSpace *b_space);
+    int put_pause_on_stave_without_beam(Chord *chord_to_put, int *X_start, int brace, int hand, BarsSpace *b_space);
+    int put_chord_on_stave_without_beam(Chord *chord_to_put, int *X_start, int hand, int brace, const char *serial_key, BarsSpace *b_space);
+    int put_bar_on_stave(Bar *bar_to_put, int hand, int brace, const char serial_key[7], const int chosen_metre[2]);
+    int put_all_bars_on_stave(Bar *first_bar_to_put, const char serial_key[7], const int chosen_metre[2]);
+
+    //opus_edit_logic;
+    int change_bar_width(int pressed_key, int *any_change, const Uint8 *KEY_STATE, int X_after_key) const;
+    int change_chord_len(int pressed_key, int *any_change, const Uint8 *KEY_STATE) const;
+    int change_hand();
+    int change_note(int pressed_key);
+    int change_chord_or_bar(int pressed_key, const Uint8 *KEY_STATE);
+    int put_note_or_pause(int pressed_key, const Uint8 *KEY_STATE, const char *serial_key);
+    int del_note_chord_bar(const Uint8 *KEY_STATE, int X_after_key);
+    int create_new_chord_bar(const Uint8 *KEY_STATE, int X_after_key);
+    int put_accidental(int pressed_key, const Uint8 *KEY_STATE);
+
 
 
     ////

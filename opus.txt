@@ -1,1 +1,0 @@
-xxxxxxxxxx:xxxxxxxxxx:C:nnnnnnn:3,4:60:{169:450:0:[2:0:0:1:184:nnnnnnn:(C:n:5)][3:0:0:1:327:nnnnnnn:(C:n:5)]|[3:0:0:2:184:nnnnnnn:(C:n:4)(C:n:5)][1:0:0:2:255:nnnnnnn:(C:n:2)(C:n:3)][3:0:0:1:541:nnnnnnn:(C:n:2)]}{622:450:0:[5:0:0:1:637:nnnnnnn:(C:n:5)]|[5:0:0:2:637:nnnnnnn:(C:n:3)(C:n:4)]}

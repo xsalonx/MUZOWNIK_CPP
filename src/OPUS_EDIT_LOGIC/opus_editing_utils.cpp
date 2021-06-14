@@ -53,7 +53,7 @@ int get_note_index(Note *n) {
 
     return index;
 }
-int compare_notes(Note *n1, Note *n2) {
+int cmp_notes(Note *n1, Note *n2) {
 
     int i1, i2;
     i1 = get_note_index(n1);
@@ -72,7 +72,7 @@ int sort_uniq_notes(Chord *chord_to_sort) {
     while (!is_sorted) {
         is_sorted = 1;
         for (i = 0; i < chord_to_sort->notes_number - 1; i++) {
-            opt = compare_notes(&chord_to_sort->notes_[i], &chord_to_sort->notes_[i + 1]);
+            opt = cmp_notes(&chord_to_sort->notes_[i], &chord_to_sort->notes_[i + 1]);
             if (opt == 1) {
                 swap_notes(&chord_to_sort->notes_[i], &chord_to_sort->notes_[i + 1]);
                 is_sorted = 0;

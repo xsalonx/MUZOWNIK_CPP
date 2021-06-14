@@ -142,8 +142,8 @@ int OpusEditor::put_key(const char chosen_key[2], int *X_star_on_line) {
 
     // Trzy zera ścieżki zostają podmienione na
     // znaki: ręka{t, b}, liczba znaków{1,..., 7}, typ znaku{s, b}
-    char path_to_key_bmp[] = "obrazki/keys/000.bmp";
-    const int path_prefix_len = 13;
+    char path_to_key_bmp[] = "pictures/keys/000.bmp";
+    const int path_prefix_len = 14;
 
     int brace, diff_of_hights;
 
@@ -198,8 +198,8 @@ int OpusEditor::put_metre(const int chosen_metre[2], int *X_start_on_line, int b
     dst.y = Y_FIRST_LINE;
 
     //// Two zeros are nunmerator and denomiantor metre.
-    char path_to_metre_bmp[] = "obrazki/metre/metre_00.bmp";
-    const int path_prefix_len = 20;
+    char path_to_metre_bmp[] = "pictures/metre/metre_00.bmp";
+    const int path_prefix_len = 21;
     get_path_to_metre_bmp(chosen_metre, path_to_metre_bmp, path_prefix_len);
 
 
@@ -223,8 +223,7 @@ int OpusEditor::put_metre(const int chosen_metre[2], int *X_start_on_line, int b
 }
 
 //putting
-int OpusEditor::put_chord_on_treb_without_beam(Chord *chord_to_put, int *X_start,
-                                   int brace, const char serial_key[7], BarsSpace *b_space, struct CurrentOpusEdits *COE) {
+int OpusEditor::put_chord_on_treb_without_beam(Chord *chord_to_put, int *X_start, int brace, const char serial_key[7], BarsSpace *b_space) {
 
     int k, i, any_put = 0, j;
     int hand = 0;
@@ -255,17 +254,17 @@ int OpusEditor::put_chord_on_treb_without_beam(Chord *chord_to_put, int *X_start
     SDL_Surface *sign_note_without_flag = nullptr;
     SDL_Surface *sign_note_with_flag = nullptr;
 
-    SDL_Surface *acci_b = SDL_LoadBMP("obrazki/accidental/acci_b.bmp");
-    SDL_Surface *acci_s = SDL_LoadBMP("obrazki/accidental/acci_s.bmp");
-    SDL_Surface *acci_n = SDL_LoadBMP("obrazki/accidental/acci_n.bmp");
+    SDL_Surface *acci_b = SDL_LoadBMP("pictures/accidental/acci_b.bmp");
+    SDL_Surface *acci_s = SDL_LoadBMP("pictures/accidental/acci_s.bmp");
+    SDL_Surface *acci_n = SDL_LoadBMP("pictures/accidental/acci_n.bmp");
     SDL_Surface *acci_to_put = nullptr;
 
-    SDL_Surface *time_dot = SDL_LoadBMP("obrazki/notes/time_dot.bmp");
+    SDL_Surface *time_dot = SDL_LoadBMP("pictures/notes/time_dot.bmp");
 
 
 
-    char path[28] = "obrazki/notes/note_00.bmp";
-    int prefix_len = 19;
+    char path[28] = "pictures/notes/note_00.bmp";
+    int prefix_len = 20;
     path[prefix_len] = (char) (chord_to_put->time + 48);
     if (chord_to_put->time == 0) {
         path[prefix_len + 1] = 'n';
@@ -284,21 +283,21 @@ int OpusEditor::put_chord_on_treb_without_beam(Chord *chord_to_put, int *X_start
     if (chord_to_put->time <= 2) {
         note_without_flag = SDL_LoadBMP(path);
         note_with_flag = SDL_LoadBMP(path);
-        if (chord_to_put == COE->current_C){
+        if (chord_to_put == COE.current_C){
             path[prefix_len - 2] = 'b';
             sign_note_with_flag = SDL_LoadBMP(path);
             sign_note_without_flag = SDL_LoadBMP(path);
         }
     } else {
         note_with_flag = SDL_LoadBMP(path);
-        if (chord_to_put == COE->current_C){
+        if (chord_to_put == COE.current_C){
             path[prefix_len - 2] = 'b';
             sign_note_with_flag = SDL_LoadBMP(path);
             path[prefix_len - 2] = 'e';
         }
         path[prefix_len] = '2';
         note_without_flag = SDL_LoadBMP(path);
-        if (chord_to_put == COE->current_C){
+        if (chord_to_put == COE.current_C){
             path[prefix_len - 2] = 'b';
             sign_note_without_flag = SDL_LoadBMP(path);
         }
@@ -308,7 +307,7 @@ int OpusEditor::put_chord_on_treb_without_beam(Chord *chord_to_put, int *X_start
     SDL_SetColorKey(acci_s, SDL_TRUE, SDL_MapRGB(acci_s->format, 255, 255, 255));
     SDL_SetColorKey(note_with_flag, SDL_TRUE, SDL_MapRGB(note_with_flag->format, 255, 255, 255));
     SDL_SetColorKey(note_without_flag, SDL_TRUE, SDL_MapRGB(note_without_flag->format, 255, 255, 255));
-    if (chord_to_put == COE->current_C) {
+    if (chord_to_put == COE.current_C) {
         SDL_SetColorKey(sign_note_with_flag, SDL_TRUE, SDL_MapRGB(sign_note_with_flag->format, 255, 255, 255));
         SDL_SetColorKey(sign_note_without_flag, SDL_TRUE, SDL_MapRGB(sign_note_without_flag->format, 255, 255, 255));
     }
@@ -322,7 +321,7 @@ int OpusEditor::put_chord_on_treb_without_beam(Chord *chord_to_put, int *X_start
         note_to_put = note_without_flag;
         if (i == chord_to_put->notes_number - 1) note_to_put = note_with_flag;
 
-        if (chord_to_put == COE->current_C && i == COE->current_note_index){
+        if (chord_to_put == COE.current_C && i == COE.current_note_index){
             note_to_put = sign_note_without_flag;
             if (i == chord_to_put->notes_number - 1) note_to_put = sign_note_with_flag;
 
@@ -527,7 +526,7 @@ int OpusEditor::put_chord_on_treb_without_beam(Chord *chord_to_put, int *X_start
         if (insert_note_rect.y != 0) {
             SDL_BlitSurface(note_to_put, nullptr, stave, &insert_note_rect);
             any_put = 1;
-            if (is_acci_req(chord_to_put, k, COE->current_O->default_serial_key) || chord_to_put->notes_[k].may_print_acci) {
+            if (is_acci_req(chord_to_put, k, COE.current_O->default_serial_key) || chord_to_put->notes_[k].may_print_acci) {
                 acci_rect.y = insert_note_rect.y + Y_OF_ACCI_S_ON_LINE + 10;
                 switch (chord_to_put->notes_[i].acci) {
                     case 's':
@@ -555,7 +554,7 @@ int OpusEditor::put_chord_on_treb_without_beam(Chord *chord_to_put, int *X_start
         insert_note_rect.y = Y_FIRST_LINE + brace * DISTANCE_BETWEEN_FIRST_LINE_BRACES + hand * DISTANCE_BETWEEN_FIRST_LINE_HANDS_STAVES;
         insert_note_rect.h = 4 * DISTANCE_BETWEEN_LINES;
         insert_note_rect.w = WIDTH_NOTES_WITHOUT_FLAG;
-        if (chord_to_put == COE->current_C){
+        if (chord_to_put == COE.current_C){
             SDL_FillRect(stave, &insert_note_rect, 0x0f);
 
         } else {
@@ -580,8 +579,7 @@ int OpusEditor::put_chord_on_treb_without_beam(Chord *chord_to_put, int *X_start
 
     return 0;
 }
-int OpusEditor::put_chord_on_bass_without_beam(Chord *chord_to_put, int *X_start,
-                                   int brace, const char serial_key[7], BarsSpace *b_space, struct CurrentOpusEdits *COE) {
+int OpusEditor::put_chord_on_bass_without_beam(Chord *chord_to_put, int *X_start, int brace, const char serial_key[7], BarsSpace *b_space) {
 
     int k, i, any_put = 0, j;
     int hand = 1;
@@ -612,16 +610,16 @@ int OpusEditor::put_chord_on_bass_without_beam(Chord *chord_to_put, int *X_start
     SDL_Surface *sign_note_without_flag = nullptr;
     SDL_Surface *sign_note_with_flag = nullptr;
 
-    SDL_Surface *acci_b = SDL_LoadBMP("obrazki/accidental/acci_b.bmp");
-    SDL_Surface *acci_s = SDL_LoadBMP("obrazki/accidental/acci_s.bmp");
-    SDL_Surface *acci_n = SDL_LoadBMP("obrazki/accidental/acci_n.bmp");
+    SDL_Surface *acci_b = SDL_LoadBMP("pictures/accidental/acci_b.bmp");
+    SDL_Surface *acci_s = SDL_LoadBMP("pictures/accidental/acci_s.bmp");
+    SDL_Surface *acci_n = SDL_LoadBMP("pictures/accidental/acci_n.bmp");
     SDL_Surface *acci_to_put = nullptr;
 
-    SDL_Surface *time_dot = SDL_LoadBMP("obrazki/notes/time_dot.bmp");
+    SDL_Surface *time_dot = SDL_LoadBMP("pictures/notes/time_dot.bmp");
 
 
-    char path[28] = "obrazki/notes/note_00.bmp";
-    int prefix_len = 19;
+    char path[28] = "pictures/notes/note_00.bmp";
+    int prefix_len = 20;
     path[prefix_len] = (char) (chord_to_put->time + 48);
     if (chord_to_put->time == 0) {
         path[prefix_len + 1] = 'n';
@@ -640,21 +638,21 @@ int OpusEditor::put_chord_on_bass_without_beam(Chord *chord_to_put, int *X_start
     if (chord_to_put->time <= 2) {
         note_without_flag = SDL_LoadBMP(path);
         note_with_flag = SDL_LoadBMP(path);
-        if (chord_to_put == COE->current_C) {
+        if (chord_to_put == COE.current_C) {
             path[prefix_len - 2] = 'b';
             sign_note_with_flag = SDL_LoadBMP(path);
             sign_note_without_flag = SDL_LoadBMP(path);
         }
     } else {
         note_with_flag = SDL_LoadBMP(path);
-        if (chord_to_put == COE->current_C) {
+        if (chord_to_put == COE.current_C) {
             path[prefix_len - 2] = 'b';
             sign_note_with_flag = SDL_LoadBMP(path);
             path[prefix_len - 2] = 'e';
         }
         path[prefix_len] = '2';
         note_without_flag = SDL_LoadBMP(path);
-        if (chord_to_put == COE->current_C) {
+        if (chord_to_put == COE.current_C) {
             path[prefix_len - 2] = 'b';
             sign_note_without_flag = SDL_LoadBMP(path);
         }
@@ -665,7 +663,7 @@ int OpusEditor::put_chord_on_bass_without_beam(Chord *chord_to_put, int *X_start
     SDL_SetColorKey(acci_s, SDL_TRUE, SDL_MapRGB(acci_s->format, 255, 255, 255));
     SDL_SetColorKey(note_with_flag, SDL_TRUE, SDL_MapRGB(note_with_flag->format, 255, 255, 255));
     SDL_SetColorKey(note_without_flag, SDL_TRUE, SDL_MapRGB(note_without_flag->format, 255, 255, 255));
-    if (chord_to_put == COE->current_C) {
+    if (chord_to_put == COE.current_C) {
         SDL_SetColorKey(sign_note_with_flag, SDL_TRUE, SDL_MapRGB(sign_note_with_flag->format, 255, 255, 255));
         SDL_SetColorKey(sign_note_without_flag, SDL_TRUE, SDL_MapRGB(sign_note_without_flag->format, 255, 255, 255));
     }
@@ -679,7 +677,7 @@ int OpusEditor::put_chord_on_bass_without_beam(Chord *chord_to_put, int *X_start
         note_to_put = note_without_flag;
         if (i == chord_to_put->notes_number - 1) note_to_put = note_with_flag;
 
-        if (chord_to_put == COE->current_C && i == COE->current_note_index) {
+        if (chord_to_put == COE.current_C && i == COE.current_note_index) {
             note_to_put = sign_note_without_flag;
             if (i == chord_to_put->notes_number - 1) note_to_put = sign_note_with_flag;
 
@@ -960,7 +958,7 @@ int OpusEditor::put_chord_on_bass_without_beam(Chord *chord_to_put, int *X_start
             SDL_BlitSurface(note_to_put, nullptr, stave, &insert_note_rect);
             any_put = 1;
             ////// Znaki chromatyczne
-            if (is_acci_req(chord_to_put, k, COE->current_O->default_serial_key) || chord_to_put->notes_[k].may_print_acci) {
+            if (is_acci_req(chord_to_put, k, COE.current_O->default_serial_key) || chord_to_put->notes_[k].may_print_acci) {
                 acci_rect.y = insert_note_rect.y + Y_OF_ACCI_S_ON_LINE + 10;
                 switch (chord_to_put->notes_[i].acci) {
                     case 's':
@@ -988,7 +986,7 @@ int OpusEditor::put_chord_on_bass_without_beam(Chord *chord_to_put, int *X_start
         insert_note_rect.y = Y_FIRST_LINE + brace * DISTANCE_BETWEEN_FIRST_LINE_BRACES + hand * DISTANCE_BETWEEN_FIRST_LINE_HANDS_STAVES;
         insert_note_rect.h = 4 * DISTANCE_BETWEEN_LINES;
         insert_note_rect.w = WIDTH_NOTES_WITHOUT_FLAG;
-        if (chord_to_put == COE->current_C){
+        if (chord_to_put == COE.current_C){
             SDL_FillRect(stave, &insert_note_rect, 0x0f);
 
         } else {
@@ -1010,8 +1008,7 @@ int OpusEditor::put_chord_on_bass_without_beam(Chord *chord_to_put, int *X_start
 
     return 0;
 }
-int OpusEditor::put_pause_on_stave_without_beam(Chord *chord_to_put, int *X_start,
-                                    int brace, int hand, BarsSpace *b_space, struct CurrentOpusEdits *COE){
+int OpusEditor::put_pause_on_stave_without_beam(Chord *chord_to_put, int *X_start, int brace, int hand, BarsSpace *b_space){
 
 
     SDL_Rect blank_stave_rect;
@@ -1026,11 +1023,11 @@ int OpusEditor::put_pause_on_stave_without_beam(Chord *chord_to_put, int *X_star
     pause_rect.x = *X_start;
     pause_rect.y = Y_FIRST_LINE + hand * DISTANCE_BETWEEN_FIRST_LINE_HANDS_STAVES + brace * DISTANCE_BETWEEN_FIRST_LINE_BRACES;
     SDL_Surface *pause = nullptr;
-    char path[26] = "obrazki/notes/paus_0n.bmp";
-    int prefix_len = 19;
+    char path[40] = "pictures/notes/paus_0n.bmp";
+    int prefix_len = 20;
     path[prefix_len] = (char)(chord_to_put->time + 48);
 
-    if (chord_to_put == COE->current_C){
+    if (chord_to_put == COE.current_C) {
         path[prefix_len - 2] = 'b';
     }
 
@@ -1044,26 +1041,22 @@ int OpusEditor::put_pause_on_stave_without_beam(Chord *chord_to_put, int *X_star
     SDL_FreeSurface(pause);
     return 0;
 }
-int OpusEditor::put_chord_on_stave_without_beam(Chord *chord_to_put, int *X_start,
-                                    int hand, int brace, const char *serial_key, BarsSpace *b_space, struct CurrentOpusEdits *COE) {
+int OpusEditor::put_chord_on_stave_without_beam(Chord *chord_to_put, int *X_start, int hand, int brace, const char *serial_key, BarsSpace *b_space) {
 
     if (chord_to_put->notes_[0].name == 'P') {
-        put_pause_on_stave_without_beam(chord_to_put, X_start, brace, hand, b_space, COE);
+        put_pause_on_stave_without_beam(chord_to_put, X_start, brace, hand, b_space);
     } else {
 
         if (hand == 0) {
-            put_chord_on_treb_without_beam(chord_to_put, X_start, brace, serial_key, b_space, COE);
+            put_chord_on_treb_without_beam(chord_to_put, X_start, brace, serial_key, b_space);
         } else {
-            put_chord_on_bass_without_beam(chord_to_put, X_start, brace, serial_key, b_space, COE);
+            put_chord_on_bass_without_beam(chord_to_put, X_start, brace, serial_key, b_space);
         }
     }
     return 0;
 }
 
-
-int OpusEditor::put_bar_on_stave(Bar *bar_to_put, int hand, int brace,
-                                 const char serial_key[7], const int chosen_metre[2],
-                                 struct CurrentOpusEdits *COE) {
+int OpusEditor::put_bar_on_stave(Bar *bar_to_put, int hand, int brace, const char serial_key[7], const int chosen_metre[2]) {
 
     int X_start = bar_to_put->X_of_start_bar;
     int i, j, may_edit_whole_bar = 0, was_chord_deleted = 0;
@@ -1172,20 +1165,20 @@ int OpusEditor::put_bar_on_stave(Bar *bar_to_put, int hand, int brace,
         }
     }
     if (was_chord_deleted) {
-        if (COE->current_hand == 0) {
+        if (COE.current_hand == 0) {
             help_chord = bar_to_put->first_chord_treb;
             while (help_chord->next != nullptr) {
                 help_chord = help_chord->next;
             }
-            COE->current_C = help_chord;
+            COE.current_C = help_chord;
         } else {
             help_chord = bar_to_put->first_chord_bass;
             while (help_chord->next != nullptr) {
                 help_chord = help_chord->next;
             }
-            COE->current_C = help_chord;
+            COE.current_C = help_chord;
         }
-        COE->current_note_index = COE->current_C->notes_number - 1;
+        COE.current_note_index = COE.current_C->notes_number - 1;
     }
 
     //////////////////////////////
@@ -1218,13 +1211,13 @@ int OpusEditor::put_bar_on_stave(Bar *bar_to_put, int hand, int brace,
         help_chord = bar_to_put->first_chord_treb;
         while (help_chord != nullptr) {
             put_chord_on_stave_without_beam(help_chord, &X_start_hands[0], 0, brace, serial_key,
-                                            &b_space, COE);
+                                            &b_space);
             help_chord = help_chord->next;
         }
         help_chord = bar_to_put->first_chord_bass;
         while (help_chord != nullptr) {
             put_chord_on_stave_without_beam(help_chord, &X_start_hands[1], 1, brace, serial_key,
-                                            &b_space, COE);
+                                            &b_space);
             help_chord = help_chord->next;
         }
     } else {
@@ -1232,14 +1225,14 @@ int OpusEditor::put_bar_on_stave(Bar *bar_to_put, int hand, int brace,
             help_chord = bar_to_put->first_chord_treb;
             while (help_chord != nullptr) {
                 put_chord_on_stave_without_beam(help_chord, &X_start_hands[0], 0, brace, serial_key,
-                                                &b_space, COE);
+                                                &b_space);
                 help_chord = help_chord->next;
             }
         } else if (hand == 1) {
             help_chord = bar_to_put->first_chord_bass;
             while (help_chord != nullptr) {
                 put_chord_on_stave_without_beam(help_chord, &X_start_hands[1], 1, brace, serial_key,
-                                                &b_space, COE);
+                                                &b_space);
                 help_chord = help_chord->next;
             }
         }
@@ -1248,15 +1241,454 @@ int OpusEditor::put_bar_on_stave(Bar *bar_to_put, int hand, int brace,
 
     return 0;
 }
-int OpusEditor::put_all_bars_on_stave(Bar *first_bar_to_put, const char serial_key[7],
-                                      const int chosen_metre[2],
-                                      struct CurrentOpusEdits *COE){
+int OpusEditor::put_all_bars_on_stave(Bar *first_bar_to_put, const char serial_key[7], const int chosen_metre[2]) {
     SDL_BlitSurface(stave_with_key_and_metre, nullptr, stave, nullptr);
 
     while (first_bar_to_put != nullptr){
-        put_bar_on_stave(first_bar_to_put, 2, first_bar_to_put->brace, serial_key, chosen_metre, COE);
+        put_bar_on_stave(first_bar_to_put, 2, first_bar_to_put->brace, serial_key, chosen_metre);
         first_bar_to_put = first_bar_to_put->next;
     }
+    return 0;
+}
+
+//opus_edit_logic;
+int OpusEditor::change_bar_width(int pressed_key, int *any_change, const Uint8 *KEY_STATE, int X_after_key) const {
+
+    int i;
+    CurrentOpusEdits COE_HELP;
+    if (KEY_STATE != nullptr && !KEY_STATE[SDL_SCANCODE_LSHIFT] && !KEY_STATE[SDL_SCANCODE_RSHIFT]) {
+        i = STEP_IN_BAR_WIDTH_CHANGING_WITHOUT_SHIFT;
+    } else {
+        i = STEP_IN_BAR_WIDTH_CHANGING_WITH_SHIFT;
+    }
+    if (pressed_key == SDLK_j) {
+        COE.current_B->width_ -= i;
+        if (COE.current_B->width_ < WIDTH_NOTES_WITH_FLAGS) {
+            COE.current_B->width_ = WIDTH_NOTES_WITH_FLAGS;
+            if (any_change != nullptr) *any_change = 0;
+        }
+    } else if (pressed_key == SDLK_m) {
+        COE.current_B->width_ += i;
+        if (COE.current_B->X_of_start_bar + COE.current_B->width_ > X_END_OF_STAVE) {
+            COE.current_B->width_ = X_END_OF_STAVE - COE.current_B->X_of_start_bar;
+            if (any_change != nullptr) *any_change = 0;
+        }
+    }
+
+    COE_HELP.current_B = COE.current_B->next;
+    if (any_change == nullptr || *any_change) {
+        while (COE_HELP.current_B != nullptr) {
+
+            COE_HELP.current_B->X_of_start_bar =
+                    COE_HELP.current_B->prev->width_ + COE_HELP.current_B->prev->X_of_start_bar + 3;
+            COE_HELP.current_B->width_ = __min(X_END_OF_STAVE - COE_HELP.current_B->X_of_start_bar,
+                                               COE_HELP.current_B->width_);
+            //COE_HELP.current_B->width_ = __min(DEFAULT_BAR_WIDTH, COE_HELP.current_B->width_);
+
+            COE_HELP.current_B->brace = COE_HELP.current_B->prev->brace;
+            if (COE_HELP.current_B->width_ < MIN_BAR_WIDTH) {
+                if (COE_HELP.current_B->brace < 4) {
+                    COE_HELP.current_B->brace += 1;
+                    COE_HELP.current_B->X_of_start_bar = X_after_key;
+                    COE_HELP.current_B->width_ = DEFAULT_BAR_WIDTH;
+                } else {
+                    COE_HELP.current_B->prev->next = nullptr;
+                    delete COE_HELP.current_B;
+                    COE_HELP.current_B = nullptr;
+                }
+            }
+            COE_HELP.current_B = COE_HELP.current_B->next;
+        }
+    }
+
+    return 0;
+}
+int OpusEditor::change_chord_len(int pressed_key, int *any_change, const Uint8 *KEY_STATE) const {
+    int help_tmp_1, help_tmp_2;
+    if (!KEY_STATE[SDL_SCANCODE_RSHIFT] && !KEY_STATE[SDL_SCANCODE_LSHIFT]) {
+        help_tmp_1 = COE.current_C->time;
+        if (pressed_key == SDLK_k) {
+            COE.current_C->time--;
+            if (COE.current_C->time < 0) {
+                COE.current_C->time = 0;
+            }
+        } else {
+            COE.current_C->time++;
+            if (COE.current_C->time > 5) {
+                COE.current_C->time = 5;
+            }
+        }
+        if (help_tmp_1 == COE.current_C->time) {
+            *any_change = 0;
+        }
+    } else {
+        help_tmp_1 = COE.current_C->_time_dots_;
+        help_tmp_2 = COE.current_C->ssp_articulation;
+        if (pressed_key == SDLK_l) {
+            if (COE.current_C->_time_dots_ > 0) {
+                COE.current_C->_time_dots_--;
+            } else {
+                if (COE.current_C->ssp_articulation < 3) {
+                    COE.current_C->ssp_articulation++;
+                }
+            }
+
+        } else {
+            if (COE.current_C->ssp_articulation > 0) {
+                COE.current_C->ssp_articulation--;
+            } else {
+                if (COE.current_C->_time_dots_ < 5) {
+                    COE.current_C->_time_dots_++;
+                }
+            }
+        }
+        if (!(help_tmp_1 != COE.current_C->_time_dots_ ||
+              help_tmp_2 != COE.current_C->ssp_articulation)) {
+            *any_change = 0;
+        }
+    }
+    return 0;
+}
+int OpusEditor::change_hand() {
+
+    if (COE.current_hand == 0) {
+        COE.current_C = COE.current_B->first_chord_bass;
+        COE.current_hand = 1;
+        COE.current_note_index = COE.current_C->notes_number - 1;
+
+    } else {
+        COE.current_C = COE.current_B->first_chord_treb;
+        COE.current_hand = 0;
+        COE.current_note_index = COE.current_C->notes_number - 1;
+    }
+    return 0;
+}
+int OpusEditor::change_note(int pressed_key) {
+    if (COE.current_C->notes_number > 0) {
+
+        if (pressed_key == SDLK_UP) {
+            COE.current_note_index++;
+            if (COE.current_note_index >= COE.current_C->notes_number) {
+                COE.current_note_index--;
+            }
+        } else {
+            COE.current_note_index--;
+            if (COE.current_note_index < 0) {
+                COE.current_note_index++;
+            }
+        }
+    } else {
+        COE.current_note_index = -1;
+    }
+    return 0;
+}
+int OpusEditor::change_chord_or_bar(int pressed_key, const Uint8 *KEY_STATE) {
+
+    struct CurrentOpusEdits COE_HELP;
+
+    if (pressed_key == SDLK_RIGHT) {
+        if (!KEY_STATE[SDL_SCANCODE_LSHIFT]) {
+            if (COE.current_C->next != nullptr) {
+                COE.current_C = COE.current_C->next;
+            } else if (COE.current_B->next != nullptr) {
+                COE.current_B = COE.current_B->next;
+                if (COE.current_hand == 0) {
+                    COE.current_C = COE.current_B->first_chord_treb;
+                } else {
+                    COE.current_C = COE.current_B->first_chord_bass;
+                }
+
+            }
+        } else {
+            if (COE.current_B->next != nullptr) {
+                COE.current_B = COE.current_B->next;
+                if (COE.current_hand == 0) {
+                    COE.current_C = COE.current_B->first_chord_treb;
+                } else {
+                    COE.current_C = COE.current_B->first_chord_bass;
+                }
+
+            } else {
+                COE_HELP.current_C = COE.current_C;
+                while (COE_HELP.current_C->next != nullptr) {
+                    COE_HELP.current_C = COE_HELP.current_C->next;
+                }
+                COE.current_C = COE_HELP.current_C;
+            }
+        }
+    }
+    if (pressed_key == SDLK_LEFT) {
+        if (!KEY_STATE[SDL_SCANCODE_LSHIFT]) {
+            if (COE.current_C->prev != nullptr) {
+                COE.current_C = COE.current_C->prev;
+            } else if (COE.current_B->prev != nullptr) {
+                COE.current_B = COE.current_B->prev;
+
+                if (COE.current_hand == 0) {
+                    COE.current_C = COE.current_B->first_chord_treb;
+                } else {
+                    COE.current_C = COE.current_B->first_chord_bass;
+                }
+                COE_HELP.current_C = COE.current_C;
+                while (COE_HELP.current_C->next != nullptr) {
+                    COE_HELP.current_C = COE_HELP.current_C->next;
+                }
+                COE.current_C = COE_HELP.current_C;
+            }
+        } else {
+            if (COE.current_B->prev != nullptr) {
+                COE.current_B = COE.current_B->prev;
+
+                if (COE.current_hand == 0) {
+                    COE.current_C = COE.current_B->first_chord_treb;
+                } else {
+                    COE.current_C = COE.current_B->first_chord_bass;
+                }
+                COE_HELP.current_C = COE.current_C;
+                while (COE_HELP.current_C->next != nullptr) {
+                    COE_HELP.current_C = COE_HELP.current_C->next;
+                }
+                COE.current_C = COE_HELP.current_C;
+            } else {
+                if (COE.current_hand == 0) {
+                    COE.current_C = COE.current_B->first_chord_treb;
+                } else {
+                    COE.current_C = COE.current_B->first_chord_bass;
+                }
+            }
+        }
+    }
+
+    COE.current_note_index = COE.current_C->notes_number - 1;
+    return 0;
+}
+int OpusEditor::put_note_or_pause(int pressed_key, const Uint8 *KEY_STATE, const char *serial_key) {
+
+    int help_tmp_1, i;
+    if (COE.current_C->notes_number < MAX_NOTES_IN_CHORD) {
+        COE.current_C->notes_number++;
+        COE.current_note_index = COE.current_C->notes_number - 1;
+    }
+
+    help_tmp_1 = -1;
+    for (i = SDL_SCANCODE_1; i <= SDL_SCANCODE_7; i++) {
+        if (KEY_STATE[i]) {
+            help_tmp_1 = i + 1 - SDL_SCANCODE_1;
+            break;
+        }
+    }
+
+    if (help_tmp_1 > -1 || pressed_key == SDLK_p) {
+        if (pressed_key != SDLK_p) {
+            char name, acci;
+            name = (char) (pressed_key - 32);
+            COE.current_C->notes_[COE.current_note_index].name = name;
+            COE.current_C->notes_[COE.current_note_index].height = help_tmp_1;
+            COE.current_C->notes_[COE.current_note_index].may_print_acci = 0;
+            switch (name) {
+                case 'C':
+                    acci = serial_key[0];
+                    break;
+                case 'D':
+                    acci = serial_key[1];
+                    break;
+                case 'E':
+                    acci = serial_key[2];
+                    break;
+                case 'F':
+                    acci = serial_key[3];
+                    break;
+                case 'G':
+                    acci = serial_key[4];
+                    break;
+                case 'A':
+                    acci = serial_key[5];
+                    break;
+                case 'H':
+                    acci = serial_key[6];
+                    break;
+                default:
+                    acci = '\0';
+                    break;
+            }
+            COE.current_C->notes_[COE.current_note_index].acci = acci;
+            sort_uniq_notes(COE.current_C);
+        } else {
+            COE.current_C->notes_[0].name = 'P';
+            COE.current_C->notes_[0].acci = 's';            COE.current_C->notes_[0].height = 4;
+            COE.current_C->notes_number = 1;
+            COE.current_note_index = 0;
+        }
+    }
+    return 0;
+}
+int OpusEditor::del_note_chord_bar(const Uint8 *KEY_STATE, int X_after_key) {
+
+    int i;
+    CurrentOpusEdits COE_HELP;
+
+    if (!KEY_STATE[SDL_SCANCODE_LSHIFT] && !KEY_STATE[SDL_SCANCODE_RSHIFT]) {
+        if (COE.current_C->notes_number > 0) {
+            if (COE.current_note_index == COE.current_C->notes_number - 1) {
+                COE.current_C->notes_number--;
+                COE.current_note_index--;
+            } else {
+                for (i = COE.current_note_index; i < COE.current_C->notes_number - 1; i++) {
+                    swap_notes(&(COE.current_C->notes_[i]), &(COE.current_C->notes_[i + 1]));
+                }
+                COE.current_C->notes_number--;
+            }
+        }
+    } else {
+        // Usuwanie pojedynczego chord-u
+        if (COE.current_C->prev != nullptr) {
+            COE_HELP.current_C = COE.current_C;
+            COE.current_C = COE.current_C->prev;
+            COE.current_C->next = COE.current_C->next->next;
+            if (COE.current_C->next != nullptr) {
+                COE.current_C->next->prev = COE.current_C;
+            }
+            delete COE_HELP.current_C;
+            // jeżeli jest pierwszy i nie jest jedyny
+        } else if (COE.current_C->next != nullptr) {
+            COE.current_C = COE.current_C->next;
+            delete COE.current_C->prev;
+            COE.current_C->prev = nullptr;
+            if (COE.current_hand == 0) {
+                COE.current_B->first_chord_treb = COE.current_C;
+            } else {
+                COE.current_B->first_chord_bass = COE.current_C;
+            }
+
+            // jeśli jest on pierwszym i jedynym chord-em w bar-rze, to jeśli nie jest to jedyny bar
+        } else {
+            if (COE.current_B->prev != nullptr) {
+                COE.current_B = COE.current_B->prev;
+
+                COE_HELP.current_B = COE.current_B->next;
+                COE.current_B->next = COE.current_B->next->next;
+                if (COE.current_B->next != nullptr) {
+                    COE.current_B->next->prev = COE.current_B;
+                }
+                delete COE_HELP.current_B;
+                if (COE.current_hand == 0) {
+                    COE.current_C = COE.current_B->first_chord_treb;
+                } else {
+                    COE.current_C = COE.current_B->first_chord_bass;
+                }
+
+                // Jesli bar jest pierwszy ale nie jest jedyny
+            } else if (COE.current_B->next != nullptr) {
+                COE.current_B = COE.current_B->next;
+                COE.current_B->X_of_start_bar = COE.current_B->prev->X_of_start_bar;
+                delete COE.current_B->prev;
+                COE.current_B->prev = nullptr;
+                COE.current_O->first_BAR = COE.current_B;
+                if (COE.current_hand == 0) {
+                    COE.current_C = COE.current_B->first_chord_treb;
+                } else {
+                    COE.current_C = COE.current_B->first_chord_bass;
+                }
+            }
+        }
+        COE.current_note_index = COE.current_C->notes_number - 1;
+    }
+    change_bar_width(0, nullptr, nullptr, X_after_key);
+    return 0;
+}
+int OpusEditor::create_new_chord_bar(const Uint8 *KEY_STATE, int X_after_key) {
+
+    int brace_help, X_st_help, width_help;
+    if (!KEY_STATE[SDL_SCANCODE_LSHIFT] && !KEY_STATE[SDL_SCANCODE_RSHIFT]) {
+        if (COE.current_C->next == nullptr) {
+            COE.current_C->next = new Chord(COE.current_C, nullptr,
+                                             COE.current_C->X_position + WIDTH_NOTES_WITH_FLAGS, COE.current_C->local_serial_key);
+        } else {
+            COE.current_C->next = new Chord(COE.current_C, COE.current_C->next,
+                                             COE.current_C->X_position + WIDTH_NOTES_WITH_FLAGS, COE.current_C->local_serial_key);
+            COE.current_C->next->prev = COE.current_C;
+            COE.current_C->next->next->prev = COE.current_C->next;
+        }
+        COE.current_C = COE.current_C->next;
+        COE.current_note_index = -1;
+    } else {
+
+        brace_help = COE.current_B->brace;
+        X_st_help = COE.current_B->X_of_start_bar + COE.current_B->width_ + 2;
+        width_help = __min(X_END_OF_STAVE - (COE.current_B->X_of_start_bar + COE.current_B->width_),
+                           DEFAULT_BAR_WIDTH);
+        if (width_help < MIN_BAR_WIDTH) {
+            brace_help++;
+            width_help = DEFAULT_BAR_WIDTH;
+            X_st_help = X_after_key;
+        }
+
+        COE.current_B->next = new Bar(COE.current_B, COE.current_B->next, X_st_help, width_help, brace_help,
+                                       default_serial_key, default_serial_key);
+        COE.current_B = COE.current_B->next;
+        if (COE.current_B->next != nullptr) {
+            COE.current_B->next->prev = COE.current_B;
+        }
+        if (COE.current_hand == 0) {
+            COE.current_C = COE.current_B->first_chord_treb;
+        } else {
+            COE.current_C = COE.current_B->first_chord_bass;
+        }
+    }
+
+    COE.current_note_index = -1;
+    change_bar_width(0, nullptr, nullptr, X_after_key);
+
+    return 0;
+}
+int OpusEditor::put_accidental(int pressed_key, const Uint8 *KEY_STATE) {
+
+
+    if (pressed_key == SDLK_x) {
+        COE.current_C->notes_[COE.current_note_index].may_print_acci += 1;
+        COE.current_C->notes_[COE.current_note_index].may_print_acci %= 2;
+    } else if (COE.current_C->notes_[COE.current_note_index].name != 'p') {
+        int i = 0;
+        COE.current_C->notes_[COE.current_note_index].acci = (char) pressed_key;
+        sort_uniq_notes(COE.current_C);
+        switch (COE.current_C->notes_[COE.current_note_index].name) {
+            case 'C':
+                i = 0;
+                break;
+            case 'D':
+                i = 1;
+                break;
+            case 'E':
+                i = 2;
+                break;
+            case 'F':
+                i = 3;
+                break;
+            case 'G':
+                i = 4;
+                break;
+            case 'A':
+                i = 5;
+                break;
+            case 'H':
+                i = 6;
+                break;
+            default:
+                break;
+        }
+        COE.current_C->local_serial_key[i] = (char) pressed_key;
+        Chord *help_chord = COE.current_C->next;
+        while (help_chord != nullptr) {
+
+            if (help_chord->local_serial_key[i] == default_serial_key[i]) {
+                help_chord->local_serial_key[i] = help_chord->prev->local_serial_key[i];
+            } else {
+                break;
+            }
+            help_chord = help_chord->next;
+        }
+    }
+
     return 0;
 }
 
@@ -1268,13 +1700,13 @@ void OpusEditor::open_window() {
 
 }
 void OpusEditor::close_window(){
-    SDL_DestroyWindow(window);
     SDL_FreeSurface(screen);
+    SDL_DestroyWindow(window);
 }
 void OpusEditor::init() {
-    stave = SDL_LoadBMP("obrazki/wiolbas.bmp");
-    blank_stave = SDL_LoadBMP("obrazki/wiolbas.bmp");
-    stave_with_key_and_metre = SDL_LoadBMP("obrazki/wiolbas.bmp");
+    stave = SDL_LoadBMP("pictures/wiolbas.bmp");
+    blank_stave = SDL_LoadBMP("pictures/wiolbas.bmp");
+    stave_with_key_and_metre = SDL_LoadBMP("pictures/wiolbas.bmp");
 
 
     Rect_current_view.x = 0;
@@ -1282,9 +1714,9 @@ void OpusEditor::init() {
     Rect_current_view.w = stave->w;
     Rect_current_view.h = SCREEN_HIGHT;
 
-    instructions_[0] = SDL_LoadBMP("obrazki/menu/stave_instructions_str1.bmp");
-    instructions_[1] = SDL_LoadBMP("obrazki/menu/stave_instructions_str2.bmp");
-    instructions_[2] = SDL_LoadBMP("obrazki/menu/stave_instructions_str3.bmp");
+    instructions_[0] = SDL_LoadBMP("pictures/menu/stave_instructions_str1.bmp");
+    instructions_[1] = SDL_LoadBMP("pictures/menu/stave_instructions_str2.bmp");
+    instructions_[2] = SDL_LoadBMP("pictures/menu/stave_instructions_str3.bmp");
 }
 
 
@@ -1302,7 +1734,6 @@ void OpusEditor::scroll_vertically(SDL_Rect *current, SDL_Event *occurrence) {
     //SDL_BlitSurface(stave, current, screen, nullptr);
 
 }
-
 Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) {
     open_window();
     if (prev_opus == nullptr) {
@@ -1312,8 +1743,7 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
     }
 
     SDL_Event occurrence;
-    int may_exit = 0, is_instruction_open = 0, page_number = 0;
-    char default_serial_key[7];
+    int go_end = 0, is_instruction_open = 0, page_number = 0;
     get_serial_key(chosen_key, default_serial_key);
 
     int X_start_on_treb = X_START_AFTER_KEY;
@@ -1331,7 +1761,6 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
 
     //// Alokowanie pierwszego bar-u
 
-    CurrentOpusEdits COE{};
 
     COE.current_O = current_OPUS;
     if (prev_opus == nullptr) {
@@ -1353,16 +1782,16 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
 
     int pressed_key, any_change;
     const Uint8 *KEY_STATE = SDL_GetKeyboardState(nullptr);
-    put_all_bars_on_stave(COE.current_B, default_serial_key, chosen_metre, &COE);
+    put_all_bars_on_stave(COE.current_B, default_serial_key, chosen_metre);
     SDL_BlitSurface(stave, &Rect_current_view, screen, nullptr);
     SDL_UpdateWindowSurface(window);
     SDL_Delay(5);
     SDL_UpdateWindowSurface(window);
 
-    while (!may_exit) {
+    while (!go_end) {
         while (SDL_PollEvent(&occurrence)) {
             if (occurrence.type == SDL_QUIT) {
-                may_exit = 1;
+                go_end = 1;
             }
             any_change = 0;
 
@@ -1379,7 +1808,7 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
             }
 
             if (occurrence.type == SDL_KEYDOWN && occurrence.key.keysym.sym == SDLK_ESCAPE) {
-                may_exit = 1;
+                go_end = 1;
                 SDL_Delay(200);
             }
 
@@ -1403,48 +1832,48 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
                 pressed_key = occurrence.key.keysym.sym;
                 /////////// Zmiana szerokości aktualnego taktu
                 if (pressed_key == SDLK_j || pressed_key == SDLK_m) {
-                    change_bar_width(pressed_key, &any_change, &COE, KEY_STATE, X_after_key);
+                    change_bar_width(pressed_key, &any_change, KEY_STATE, X_after_key);
 
                 }
                 ////////// Zmiana długości chord-u
                 if (pressed_key == SDLK_k || pressed_key == SDLK_l) {
-                    change_chord_len(pressed_key, &any_change, &COE, KEY_STATE);
+                    change_chord_len(pressed_key, &any_change, KEY_STATE);
                 }
                 ///////// Zmiana ręki
                 if (pressed_key == SDLK_LALT) {
-                    change_hand(&COE);
+                    change_hand();
                 }
                 //////// Zmiana edytowanej nuty
                 if ((pressed_key == SDLK_UP || pressed_key == SDLK_DOWN)) {
-                    change_note(pressed_key, &COE);
+                    change_note(pressed_key);
                 }
                 //////// Zmiana chord-u lub bar-u
                 if (pressed_key == SDLK_LEFT || pressed_key == SDLK_RIGHT) {
-                    change_chord_or_bar(pressed_key, &COE, KEY_STATE);
+                    change_chord_or_bar(pressed_key, KEY_STATE);
                 }
                 /////// Odkładanie nuty lub pauzy
                 if (pressed_key == SDLK_a || pressed_key == SDLK_p ||
                     (SDLK_c <= pressed_key && pressed_key <= SDLK_h)) {
-                    put_note_or_pause(pressed_key, &COE, KEY_STATE, COE.current_C->local_serial_key);
+                    put_note_or_pause(pressed_key, KEY_STATE, COE.current_C->local_serial_key);
                 }
                 /////// Odkładanie znaku chromatycznego
                 if ((pressed_key == SDLK_s || pressed_key == SDLK_b || pressed_key == SDLK_n ||
                      pressed_key == SDLK_x) && COE.current_C->notes_number > 0) {
-                    put_acci(pressed_key, &COE, KEY_STATE, COE.current_C->local_serial_key);
+                    put_accidental(pressed_key, KEY_STATE);
                 }
                 /////// Usuwanie nut i chord-ów
                 if (pressed_key == SDLK_BACKSPACE) {
-                    del_note_chord_bar(&COE, KEY_STATE, X_after_key);
+                    del_note_chord_bar(KEY_STATE, X_after_key);
                 }
                 ////// Tworzenie noewgo chord-u lub bar-u
                 if (pressed_key == SDLK_SPACE) {
-                    create_new_chord_bar(&COE, KEY_STATE, X_after_key, default_serial_key);
+                    create_new_chord_bar(KEY_STATE, X_after_key);
                 }
 
             }
             if (any_change && !is_instruction_open) {
                 put_all_bars_on_stave(COE.current_O->first_BAR, default_serial_key,
-                                      chosen_metre, &COE);
+                                      chosen_metre);
                 SDL_BlitSurface(stave, &Rect_current_view, screen, nullptr);
                 SDL_UpdateWindowSurface(window);
                 SDL_Delay(10);
@@ -1453,7 +1882,7 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
     }
 
     COE.current_C = nullptr;
-    put_all_bars_on_stave(COE.current_O->first_BAR, default_serial_key, chosen_metre, &COE);
+    put_all_bars_on_stave(COE.current_O->first_BAR, default_serial_key, chosen_metre);
     SDL_SaveBMP(stave, "wynik.bmp");
 
     close_window();

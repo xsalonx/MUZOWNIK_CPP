@@ -66,7 +66,7 @@ public:
 
 
 
-    int menu_open();
+    int open();
 
 
     char *get_chosen_key();
