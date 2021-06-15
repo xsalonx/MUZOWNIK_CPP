@@ -199,10 +199,10 @@ Opus *fscanf_opus(const char *path) {
     }
 
     Bar *help_bar;
-    opus->first_BAR = fscanf_bar(opus_text_file);
-    opus->first_BAR->prev = nullptr;
-    opus->first_BAR->next = nullptr;
-    help_bar = opus->first_BAR;
+    opus->first_bar = fscanf_bar(opus_text_file);
+    opus->first_bar->prev = nullptr;
+    opus->first_bar->next = nullptr;
+    help_bar = opus->first_bar;
 
     while (getc(opus_text_file) == '{') {
 
@@ -297,7 +297,7 @@ int save_Opus_as_TextFile(Opus *OPUS_to_save) {
     fprintf(opus_text_file, "%d,%d:", OPUS_to_save->metre[0], OPUS_to_save->metre[1]);
     fprintf(opus_text_file, "%d:", OPUS_to_save->temp);
 
-    Bar *bar_to_put = OPUS_to_save->first_BAR;
+    Bar *bar_to_put = OPUS_to_save->first_bar;
 
     while (bar_to_put != nullptr) {
         fprint_bar(opus_text_file, bar_to_put);

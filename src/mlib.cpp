@@ -10,6 +10,7 @@ void sdl_init() {
         exit(1);
     }
 }
+
 void run() {
     char *chosen_key;
     int *chosen_metre;

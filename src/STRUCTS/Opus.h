@@ -5,9 +5,8 @@
 
 class Opus{
 private:
-    void Opus_init() {
+    void Opus_init() {}
 
-    }
 public:
     char title[50]{};
     char author[50]{};
@@ -15,7 +14,7 @@ public:
     int metre[2]{};
     int temp{};
     char default_serial_key[7]{};
-    Bar *first_BAR{};
+    Bar *first_bar{};
 
     Opus()=default;
     Opus(const char chosen_key[2], const int chosen_metre[2]);
@@ -23,13 +22,13 @@ public:
 
 };
 
-class CurrentOpusEdits{
+class OnStaveObjects{
 public:
-    Opus *current_O{};
-    Bar *current_B{};
-    Chord *current_C{};
-    int current_hand{};
-    int current_note_index{};
+    Opus *opus{};
+    Bar *bar{};
+    Chord *chord{};
+    int note_idx{};
+    int hand{};
 
 };
 

@@ -3,9 +3,9 @@
 
 #include "Chord.h"
 
-struct BarsSpace{
+typedef struct {
     int widths_ni_[6][6];
-}; typedef struct BarsSpace BarsSpace;
+} BarsSpace;
 
 
 class Bar{
@@ -18,7 +18,7 @@ public:
     int width_{};
     BarsSpace b_space{};
     int brace{};
-    const static double chords_periods[6][6];
+    const static double chords_spaces[6][6];
 
 
     Bar()=default;

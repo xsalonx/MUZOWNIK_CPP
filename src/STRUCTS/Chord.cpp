@@ -4,7 +4,7 @@
 Chord::Chord(Chord *prev, Chord *next, int X_position, const char *serial_key):
             prev(prev), next(next), X_position(X_position) {
     int i;
-    //// TODO change to c++ style
+    //// TODO change to c++ style, ... everything
     for (i = 0; i < 7; i++) {
         this->local_serial_key[i] = serial_key[i];
     }

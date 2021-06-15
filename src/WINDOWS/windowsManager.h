@@ -62,7 +62,7 @@ private:
 
     void open_window_() {
         window = SDL_CreateWindow("MUZOWNIK", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, MENU_SCREEN_WIDTH,
-                                  SCREEN_HIGHT, SDL_WINDOW_SHOWN);
+                                  SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
         screen = SDL_GetWindowSurface(window);
     }
     void close_window_() {

@@ -226,6 +226,7 @@ int WindowsManager::metre_choosing_window()  {
                 tr = 0;
             }
 
+            SDL_Delay(60);
             if (occurrence.key.type != SDL_KEYUP) {
                 SDL_Delay(60);
             }
@@ -390,7 +391,7 @@ int WindowsManager::menu_window() {
 int WindowsManager::fifths_choosing_window() {
 
 
-    int current_fifths_opt = 0, prev_fifths_opt = -1, may_exit = 0, current_opt = 1;
+    int current_fifths_opt = 0, prev_fifths_opt = -1, end = 0, current_opt = 1;
     SDL_Event occurrence;
 
 
@@ -398,10 +399,10 @@ int WindowsManager::fifths_choosing_window() {
     if (occurrence.key.type != SDL_KEYUP) {
         SDL_Delay(50);
     }
-    while (may_exit == 0) {
+    while (!end) {
         while (SDL_PollEvent(&occurrence)) {
             if (occurrence.type == SDL_QUIT) {
-                may_exit = 1;
+                end = 1;
                 current_opt = MENU_EXIT_CODE;
             }
         }
@@ -419,7 +420,7 @@ int WindowsManager::fifths_choosing_window() {
         } else if (occurrence.key.type == SDL_KEYDOWN &&
                    (occurrence.key.keysym.sym == SDLK_UP || occurrence.key.keysym.sym == SDLK_LEFT)) {
             SDL_BlitSurface(anty_dot_surf, nullptr, screen, &RECT_fifths_dots[current_fifths_opt]);
-            prev_fifths_opt = 0;
+            prev_fifths_opt = current_fifths_opt;
             current_fifths_opt = (current_fifths_opt + 14) % 15;
         }
 
@@ -484,7 +485,7 @@ int WindowsManager::fifths_choosing_window() {
             }
 
             current_opt = METRE_WINDOW_CODE;
-            may_exit = 1;
+            end = 1;
 
         }
 
@@ -493,13 +494,12 @@ int WindowsManager::fifths_choosing_window() {
             SDL_Delay(60);
         }
         if (occurrence.type == SDL_KEYDOWN && occurrence.key.keysym.sym == SDLK_ESCAPE) {
-            may_exit = 1;
+            end = 1;
             current_opt = MENU_WINDOW_CODE;
         }
-        SDL_Delay(20);
+        SDL_Delay(80);
 
     }
-
 
     return current_opt;
 }

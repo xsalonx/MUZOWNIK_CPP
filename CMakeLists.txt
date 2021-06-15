@@ -4,7 +4,7 @@ project(Nutownik)
 
 set(CMAKE_CXX_STANDARD 14)
 
-find_library(SDL2 REQUIRED SDL2)
+find_library(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 
 
@@ -18,4 +18,4 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/out)
 FILE(GLOB_RECURSE SOURCE_FILES src/*)
 add_executable(Nutownik ${SOURCE_FILES})
 
-target_link_libraries(Nutownik -lm SDL2)
+#target_link_libraries(Nutownik -lm SDL2)

@@ -13,16 +13,21 @@
   <component name="ChangeListManager">
     <list default="true" id="a62cfe64-33c4-411e-bcad-41d7124d417d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/pictures/menu/menu_background.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/menu_background.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/pictures/menu/option_exit.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_exit.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/pictures/menu/option_exit_highlight.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_exit_highlight.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/pictures/menu/option_help.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_help.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/pictures/menu/option_help_highlight.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_help_highlight.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/pictures/menu/option_new.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_new.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/pictures/menu/option_new_highlight.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_new_highlight.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/pictures/menu/option_open.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_open.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/pictures/menu/option_open_highlight.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_open_highlight.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/opus.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/opus.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/wynik.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/wynik.bmp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OPUS_LOADSAVE/OPUS_loadsave.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_LOADSAVE/OPUS_loadsave.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/STRUCTS/Bar.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/STRUCTS/Bar.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/STRUCTS/Bar.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/STRUCTS/Bar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/STRUCTS/Chord.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/STRUCTS/Chord.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/STRUCTS/Opus.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/STRUCTS/Opus.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/STRUCTS/Opus.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/STRUCTS/Opus.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WINDOWS/windowsManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/WINDOWS/windowsManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WINDOWS/windowsManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/WINDOWS/windowsManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry_defCodes.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry_defCodes.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mlib.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/mlib.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +53,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../c/SDL2_audio_eks" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="configurable.group.build" />
@@ -63,7 +68,17 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Nutownik" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Nutownik" TARGET_NAME="Nutownik" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Nutownik" RUN_TARGET_NAME="Nutownik">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -92,7 +107,7 @@
       <workItem from="1623568511348" duration="14653000" />
       <workItem from="1623660099056" duration="26754000" />
       <workItem from="1623735380877" duration="10510000" />
-      <workItem from="1623760991085" duration="326000" />
+      <workItem from="1623760991085" duration="9953000" />
     </task>
     <task id="LOCAL-00001" summary="Windows commitment">
       <created>1619462266920</created>
@@ -192,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623742962277</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="new gui design">
+      <created>1623761355780</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1623761355780</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,6 +232,7 @@
     <MESSAGE value="putting transferred to OPUS_EDITOR" />
     <MESSAGE value="all logic in OpusEditor" />
     <MESSAGE value="increasing note time do note cause deletion" />
-    <option name="LAST_COMMIT_MESSAGE" value="increasing note time do note cause deletion" />
+    <MESSAGE value="new gui design" />
+    <option name="LAST_COMMIT_MESSAGE" value="new gui design" />
   </component>
 </project>

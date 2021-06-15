@@ -17,7 +17,7 @@ Opus::Opus(const char chosen_key[2], const int chosen_metre[2]) {
 }
 
 Opus::~Opus() {
-    Bar *help_bar = this->first_BAR;
+    Bar *help_bar = this->first_bar;
     while (help_bar->next != nullptr) {
         help_bar = help_bar->next;
         delete help_bar->prev;

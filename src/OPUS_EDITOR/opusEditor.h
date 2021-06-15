@@ -7,10 +7,11 @@
 #define RIGHT_HAND 0
 #define LEFT_HAND 1
 
+#define BUTTONS_DELAY 50
 
 class OpusEditor{
 private:
-    Opus *current_OPUS{};
+    Opus *current_opus{};
 
     SDL_Window *window{};
     SDL_Surface *screen{};
@@ -24,7 +25,7 @@ private:
     SDL_Rect Rect_current_view{};
     SDL_Surface *instructions_[3]{};
 
-    CurrentOpusEdits COE{};
+    OnStaveObjects OSO{};
 
     void resize_window();
 
