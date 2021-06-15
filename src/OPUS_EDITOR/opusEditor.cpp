@@ -1456,7 +1456,6 @@ int OpusEditor::change_bar_width(int pressed_key, const Uint8 *KEY_STATE, int X_
                     COE_HELP.current_B->prev->width_ + COE_HELP.current_B->prev->X_of_start_bar + 3;
             COE_HELP.current_B->width_ = __min(X_END_OF_STAVE - COE_HELP.current_B->X_of_start_bar,
                                                COE_HELP.current_B->width_);
-            //COE_HELP.current_B->width_ = __min(DEFAULT_BAR_WIDTH, COE_HELP.current_B->width_);
 
             COE_HELP.current_B->brace = COE_HELP.current_B->prev->brace;
             if (COE_HELP.current_B->width_ < MIN_BAR_WIDTH) {

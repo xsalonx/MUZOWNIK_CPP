@@ -12,29 +12,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a62cfe64-33c4-411e-bcad-41d7124d417d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/STRUCTS/Note.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/opus.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/opus.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/pictures/menu/Chopin_polonaise_Op._53.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/pictures/menu/background.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/pictures/menu/background_duze.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/pictures/menu/background_org.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/pictures/menu/background_with_options.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/pictures/menu/backk.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/pictures/menu/title.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/title.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/wynik.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/wynik.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/pictures/menu/menu_background.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/menu_background.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/pictures/menu/option_exit.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_exit.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/pictures/menu/option_exit_highlight.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_exit_highlight.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/pictures/menu/option_help.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_help.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/pictures/menu/option_help_highlight.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_help_highlight.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/pictures/menu/option_new.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_new.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/pictures/menu/option_new_highlight.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_new_highlight.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/pictures/menu/option_open.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_open.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/pictures/menu/option_open_highlight.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/option_open_highlight.bmp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OPUS_LOADSAVE/OPUS_loadsave.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_LOADSAVE/OPUS_loadsave.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/STRUCTS/Bar.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/STRUCTS/Bar.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/STRUCTS/Bar.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/STRUCTS/Bar.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/STRUCTS/Chord.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/STRUCTS/Chord.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/STRUCTS/Chord.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/STRUCTS/Chord.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/STRUCTS/Note.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/STRUCTS/Note.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WINDOWS/windowsManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/WINDOWS/windowsManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/mlib.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/mlib.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,11 +68,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -108,7 +91,8 @@
       <workItem from="1623529756197" duration="31000" />
       <workItem from="1623568511348" duration="14653000" />
       <workItem from="1623660099056" duration="26754000" />
-      <workItem from="1623735380877" duration="6473000" />
+      <workItem from="1623735380877" duration="10510000" />
+      <workItem from="1623760991085" duration="326000" />
     </task>
     <task id="LOCAL-00001" summary="Windows commitment">
       <created>1619462266920</created>
@@ -201,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623676331032</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="increasing note time do note cause deletion">
+      <created>1623742962277</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1623742962277</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,6 +209,7 @@
     <MESSAGE value="OpusEditor class got" />
     <MESSAGE value="putting transferred to OPUS_EDITOR" />
     <MESSAGE value="all logic in OpusEditor" />
-    <option name="LAST_COMMIT_MESSAGE" value="all logic in OpusEditor" />
+    <MESSAGE value="increasing note time do note cause deletion" />
+    <option name="LAST_COMMIT_MESSAGE" value="increasing note time do note cause deletion" />
   </component>
 </project>
