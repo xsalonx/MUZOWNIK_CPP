@@ -2,7 +2,7 @@
 #ifndef PI_PROJECTSDL2_PART_LIB_OPUS_LOADSAVE_H
 #define PI_PROJECTSDL2_PART_LIB_OPUS_LOADSAVE_H
 
-#include "../library.h"
+#include "../mlib.h"
 #include "../STRUCTS/Opus.h"
 
 int fscanf_note(FILE *opus_text_file, Note *n);

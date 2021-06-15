@@ -73,10 +73,7 @@ public:
     WindowsManager();
     ~WindowsManager();
 
-
-
     int open();
-
 
     char *get_chosen_key();
     int *get_chosen_metre();

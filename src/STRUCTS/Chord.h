@@ -17,14 +17,11 @@ public:
     char local_serial_key[7]{};
 
     Chord()=default;
-    Chord(Chord *prev, Chord *next, int X_position, const char *serial_key): prev(prev), next(next), X_position(X_position) {
-        int i;
-        //// TODO change to c++ style
-        for (i = 0; i < 7; i++) {
-            this->local_serial_key[i] = serial_key[i];
-        }
-    }
+    Chord(Chord *prev, Chord *next, int X_position, const char *serial_key);
     ~Chord()=default;
+
+    void swap_notes(int i, int j);
+    int sort_uniq_notes();
 
 };
 #endif //MUZOWNIK_CHORD_H

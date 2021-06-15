@@ -18,12 +18,18 @@ public:
     int width_{};
     BarsSpace b_space{};
     int brace{};
+    const static double chords_periods[6][6];
+
 
     Bar()=default;
     Bar(Bar *prev, Bar *next, int X_of_start_bar, int width, int brace, const char *treb_serial_key,
         const char *bass_serial_key);
     ~Bar();
+
+    double get_current_time_taken(int hand) const;
 };
+
+
 
 
 #endif //MUZOWNIK_BAT_H

@@ -12,20 +12,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a62cfe64-33c4-411e-bcad-41d7124d417d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/STRUCTS/Note.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/opus.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/opus.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/pictures/menu/Chopin_polonaise_Op._53.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/pictures/menu/background.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/pictures/menu/background_duze.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/pictures/menu/background_org.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/pictures/menu/background_with_options.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/pictures/menu/backk.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/pictures/menu/title.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/pictures/menu/title.bmp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/wynik.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/wynik.bmp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_editing_utils.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OPUS_EDIT_LOGIC/opus_editing_utils.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OPUS_LOADSAVE/OPUS_loadsave.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_LOADSAVE/OPUS_loadsave.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OPUS_LOADSAVE/OPUS_loadsave.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_LOADSAVE/OPUS_loadsave.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WINDOWS/windowsManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/WINDOWS/windowsManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/STRUCTS/Bar.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/STRUCTS/Bar.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/STRUCTS/Bar.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/STRUCTS/Bar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/STRUCTS/Chord.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/STRUCTS/Chord.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/STRUCTS/Chord.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/STRUCTS/Chord.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/STRUCTS/Note.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/STRUCTS/Note.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WINDOWS/windowsManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/WINDOWS/windowsManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/library.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/library.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/mlib.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/mlib.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,11 +75,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Nutownik" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Nutownik" TARGET_NAME="Nutownik" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Nutownik" RUN_TARGET_NAME="Nutownik">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -103,7 +107,8 @@
       <workItem from="1623511749586" duration="254000" />
       <workItem from="1623529756197" duration="31000" />
       <workItem from="1623568511348" duration="14653000" />
-      <workItem from="1623660099056" duration="12841000" />
+      <workItem from="1623660099056" duration="26754000" />
+      <workItem from="1623735380877" duration="6473000" />
     </task>
     <task id="LOCAL-00001" summary="Windows commitment">
       <created>1619462266920</created>
@@ -189,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623606581522</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="all logic in OpusEditor">
+      <created>1623676331032</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1623676331032</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,6 +217,7 @@
     <MESSAGE value="Opus class" />
     <MESSAGE value="OpusEditor class got" />
     <MESSAGE value="putting transferred to OPUS_EDITOR" />
-    <option name="LAST_COMMIT_MESSAGE" value="putting transferred to OPUS_EDITOR" />
+    <MESSAGE value="all logic in OpusEditor" />
+    <option name="LAST_COMMIT_MESSAGE" value="all logic in OpusEditor" />
   </component>
 </project>

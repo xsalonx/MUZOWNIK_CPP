@@ -1,4 +1,4 @@
-#include "library.h"
+#include "mlib.h"
 //author: Lukasz Dubiel
 #define SDL_main main
 

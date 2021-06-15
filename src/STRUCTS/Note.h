@@ -18,6 +18,8 @@ public:
     int height;
     int may_print_acci;
 
+    int index() const;
+    int cmp_notes(const Note &other) const;
 };
 
 
