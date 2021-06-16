@@ -521,7 +521,7 @@ int OpusEditor::put_chord_on_treb_without_beam(Chord *chord_to_put, int *X_start
         if (insert_note_rect.y != 0) {
             SDL_BlitSurface(note_to_put, nullptr, stave, &insert_note_rect);
             any_put = 1;
-            if (is_acci_req(chord_to_put, k, OSO.opus->default_serial_key) || chord_to_put->notes_[k].may_print_acci) {
+            if (is_acci_req(chord_to_put, k, OSO.opus->default_serial_key) || chord_to_put->notes_[k].print_acci) {
                 acci_rect.y = insert_note_rect.y + Y_OF_ACCI_S_ON_LINE + 10;
                 switch (chord_to_put->notes_[i].acci) {
                     case 's':
@@ -941,7 +941,7 @@ int OpusEditor::put_chord_on_bass_without_beam(Chord *chord_to_put, int *X_start
             SDL_BlitSurface(note_to_put, nullptr, stave, &insert_note_rect);
             any_put = 1;
             ////// Znaki chromatyczne
-            if (is_acci_req(chord_to_put, k, OSO.opus->default_serial_key) || chord_to_put->notes_[k].may_print_acci) {
+            if (is_acci_req(chord_to_put, k, OSO.opus->default_serial_key) || chord_to_put->notes_[k].print_acci) {
                 acci_rect.y = insert_note_rect.y + Y_OF_ACCI_S_ON_LINE + 10;
                 switch (chord_to_put->notes_[i].acci) {
                     case 's':
@@ -1354,10 +1354,10 @@ int OpusEditor::get_serial_key(const char *chosen_key, char *serial_key) {
 
     return 0;
 }
-int OpusEditor::is_acci_req(Chord *chord_to_put, int k, const char *defauly_serial_key) {
+int OpusEditor::is_acci_req(Chord *chord, int k, const char *default_serial_key) {
 
     int i = 0;
-    Note *n = &(chord_to_put->notes_[k]);
+    Note *n = &(chord->notes_[k]);
     switch (n->name) {
         case 'C':
             i = 0;
@@ -1383,13 +1383,11 @@ int OpusEditor::is_acci_req(Chord *chord_to_put, int k, const char *defauly_seri
         default:
             break;
     }
-    if (//n->acci != chord_to_put->local_serial_key[i] ||
-            (chord_to_put->prev == nullptr && n->acci != defauly_serial_key[i]) ||
-            (chord_to_put->prev != nullptr && n->acci != chord_to_put->prev->local_serial_key[i])) {
-        return 1;
-    }
 
-    return 0;
+    return  n->acci != chord->local_serial_key[i] ||
+            (chord->prev == nullptr && n->acci != OSO.opus->default_serial_key[i]) ||
+            (chord->prev != nullptr && n->acci != chord->prev->local_serial_key[i]);
+
 }
 int OpusEditor::get_space_for_chord(Bar *bar, BarsSpace *b_space, const int *metre) {
 
@@ -1660,7 +1658,7 @@ int OpusEditor::put_note_or_pause(int pressed_key, const Uint8 *KEY_STATE, const
             name = (char) (pressed_key - 32);
             OSO.chord->notes_[OSO.note_idx].name = name;
             OSO.chord->notes_[OSO.note_idx].height = help_tmp_1;
-            OSO.chord->notes_[OSO.note_idx].may_print_acci = 0;
+            OSO.chord->notes_[OSO.note_idx].print_acci = 0;
             switch (name) {
                 case 'C':
                     acci = serial_key[0];
@@ -1822,8 +1820,8 @@ int OpusEditor::put_accidental(int pressed_key, const Uint8 *KEY_STATE) {
 
 
     if (pressed_key == SDLK_x) {
-        OSO.chord->notes_[OSO.note_idx].may_print_acci += 1;
-        OSO.chord->notes_[OSO.note_idx].may_print_acci %= 2;
+        OSO.chord->notes_[OSO.note_idx].print_acci += 1;
+        OSO.chord->notes_[OSO.note_idx].print_acci %= 2;
     } else if (OSO.chord->notes_[OSO.note_idx].name != 'p') {
         int i = 0;
         OSO.chord->notes_[OSO.note_idx].acci = (char) pressed_key;
@@ -1917,7 +1915,7 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
         current_opus = prev_opus;
     }
 
-    SDL_Event occurrence;
+    SDL_Event event;
     int end = 0, is_instruction_open = 0, page_number = 0;
 
     int X_start_on_treb = X_START_AFTER_KEY;
@@ -1937,6 +1935,7 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
 
 
     OSO.opus = current_opus;
+    get_serial_key(chosen_key, OSO.opus->default_serial_key);
     if (prev_opus == nullptr) {
         OSO.opus->first_bar = new Bar(nullptr, nullptr, X_start_on_treb, DEFAULT_BAR_WIDTH, 0, OSO.opus->default_serial_key,
                                       OSO.opus->default_serial_key);
@@ -1944,9 +1943,6 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
     OSO.bar = OSO.opus->first_bar;
     OSO.bar->X_of_start_bar = X_start_on_treb;
     OSO.chord = OSO.bar->first_chord_treb;
-
-    get_serial_key(chosen_key, OSO.opus->default_serial_key);
-
 
 
     OSO.note_idx = OSO.chord->notes_number - 1;
@@ -1961,98 +1957,96 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
     SDL_Delay(BUTTONS_DELAY);
 
     while (!end) {
-        while (SDL_PollEvent(&occurrence)) {
-            if (occurrence.type == SDL_QUIT) {
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) {
                 end = 1;
             }
             any_change = 0;
 
-            if (!is_instruction_open && occurrence.type == SDL_MOUSEWHEEL) {
+            if (!is_instruction_open && event.type == SDL_MOUSEWHEEL) {
                 any_change = 1;
-                scroll_vertically(&occurrence);
+                scroll_vertically(&event);
             }
-            else if ((KEY_STATE[SDL_SCANCODE_LCTRL] && occurrence.type == SDL_KEYDOWN && occurrence.key.keysym.sym == SDLK_h)) {
-                is_instruction_open += 1;
-                is_instruction_open %= 2;
-                page_number = 0;
-                SDL_Delay(BUTTONS_DELAY);
-            }
-            else if (occurrence.type == SDL_KEYDOWN && occurrence.key.keysym.sym == SDLK_ESCAPE) {
-                if (!is_instruction_open) {
-                    end = 1;
-                    SDL_Delay(BUTTONS_DELAY);
-                } else {
-                    is_instruction_open = 0;
+            else if (event.type == SDL_KEYDOWN) {
+                pressed_key = event.key.keysym.sym;
+
+                if ((KEY_STATE[SDL_SCANCODE_LCTRL] && pressed_key == SDLK_h)) {
+                    is_instruction_open += 1;
+                    is_instruction_open %= 2;
+                    page_number = 0;
+                } else if (pressed_key == SDLK_ESCAPE) {
+                    if (!is_instruction_open) {
+                        end = 1;
+                    } else {
+                        is_instruction_open = 0;
+                        any_change = 1;
+                    }
+                } else if (is_instruction_open) {
+                    if (pressed_key == SDLK_RIGHT) {
+                        page_number = __min(page_number + 1, 2);
+                    } else if (pressed_key == SDLK_LEFT) {
+                        page_number = __max(page_number - 1, 0);
+                    }
+                    SDL_BlitSurface(instructions_[page_number], nullptr, screen, nullptr);
+                    SDL_UpdateWindowSurface(window);
+                } else if (!is_instruction_open) {
                     any_change = 1;
+
+
+                    /////////// Change width of current bar
+                    if (pressed_key == SDLK_j || pressed_key == SDLK_m) {
+                        change_bar_width(pressed_key, KEY_STATE, X_after_key);
+                    }
+                        ////////// Change chord length
+                    else if (pressed_key == SDLK_k || pressed_key == SDLK_l) {
+                        change_chord_len(pressed_key, KEY_STATE);
+                    }
+                        ///////// Change hand
+                    else if (pressed_key == SDLK_LALT) {
+                        change_hand();
+                    }
+                        //////// Change current note
+                    else if ((pressed_key == SDLK_UP || pressed_key == SDLK_DOWN)) {
+                        change_note(pressed_key);
+                    }
+                        //////// Change chord or bar
+                    else if (pressed_key == SDLK_LEFT || pressed_key == SDLK_RIGHT) {
+                        change_chord_or_bar(pressed_key, KEY_STATE);
+                    }
+                        /////// Put note or pause
+                    else if (pressed_key == SDLK_a || pressed_key == SDLK_p ||
+                             (SDLK_c <= pressed_key && pressed_key <= SDLK_h)) {
+                        put_note_or_pause(pressed_key, KEY_STATE, OSO.chord->local_serial_key);
+                    }
+                        /////// Put accidental
+                    else if ((pressed_key == SDLK_s || pressed_key == SDLK_b || pressed_key == SDLK_n ||
+                              pressed_key == SDLK_x) && OSO.chord->notes_number > 0) {
+                        put_accidental(pressed_key, KEY_STATE);
+                    }
+                        /////// Remove note or chord
+                    else if (pressed_key == SDLK_BACKSPACE) {
+                        del_note_chord_bar(KEY_STATE, X_after_key);
+                    }
+                        ////// Put new bar or chord
+                    else if (pressed_key == SDLK_SPACE) {
+                        create_new_chord_bar(KEY_STATE, X_after_key);
+                    }
+
                 }
             }
-            else if (is_instruction_open) {
-                if (occurrence.type == SDL_KEYDOWN && occurrence.key.keysym.sym == SDLK_RIGHT) {
-                    page_number = __min(page_number + 1, 2);
-                    SDL_Delay(BUTTONS_DELAY);
-                } else if (occurrence.type == SDL_KEYDOWN && occurrence.key.keysym.sym == SDLK_LEFT) {
-                    page_number = __max(page_number - 1, 0);
-                    SDL_Delay(BUTTONS_DELAY);
-                }
-                SDL_BlitSurface(instructions_[page_number], nullptr, screen, nullptr);
-                SDL_UpdateWindowSurface(window);
-            }
-            else if (!is_instruction_open && occurrence.type == SDL_KEYDOWN) {
-                any_change = 1;
-
-                SDL_Delay(BUTTONS_DELAY);
-
-                pressed_key = occurrence.key.keysym.sym;
-                /////////// Zmiana szerokości aktualnego taktu
-                if (pressed_key == SDLK_j || pressed_key == SDLK_m) {
-                    change_bar_width(pressed_key, KEY_STATE, X_after_key);
-                }
-                ////////// Zmiana długości chord-u
-                else if (pressed_key == SDLK_k || pressed_key == SDLK_l) {
-                    change_chord_len(pressed_key, KEY_STATE);
-                }
-                ///////// Zmiana ręki
-                else if (pressed_key == SDLK_LALT) {
-                    change_hand();
-                }
-                //////// Zmiana edytowanej nuty
-                else if ((pressed_key == SDLK_UP || pressed_key == SDLK_DOWN)) {
-                    change_note(pressed_key);
-                }
-                //////// Zmiana chord-u lub bar-u
-                else if (pressed_key == SDLK_LEFT || pressed_key == SDLK_RIGHT) {
-                    change_chord_or_bar(pressed_key, KEY_STATE);
-                }
-                /////// Odkładanie nuty lub pauzy
-                else if (pressed_key == SDLK_a || pressed_key == SDLK_p ||
-                    (SDLK_c <= pressed_key && pressed_key <= SDLK_h)) {
-                    put_note_or_pause(pressed_key, KEY_STATE, OSO.chord->local_serial_key);
-                }
-                /////// Odkładanie znaku chromatycznego
-                else if ((pressed_key == SDLK_s || pressed_key == SDLK_b || pressed_key == SDLK_n ||
-                     pressed_key == SDLK_x) && OSO.chord->notes_number > 0) {
-                    put_accidental(pressed_key, KEY_STATE);
-                }
-                /////// Usuwanie nut i chord-ów
-                else if (pressed_key == SDLK_BACKSPACE) {
-                    del_note_chord_bar(KEY_STATE, X_after_key);
-                }
-                ////// Tworzenie noewgo chord-u lub bar-u
-                else if (pressed_key == SDLK_SPACE) {
-                    create_new_chord_bar(KEY_STATE, X_after_key);
-                }
-
-            }
-            else if (occurrence.type == SDL_WINDOWEVENT && occurrence.window.event == SDL_WINDOWEVENT_RESIZED) {
+            ///// Resizing
+            else if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_RESIZED) {
                 cout << "resizing event\n";
                 this->resize_window();
             }
 
+            ///// Update screen if any change is done
             if (any_change && !is_instruction_open) {
                 put_all_bars_on_stave(OSO.opus->first_bar, chosen_metre);
                 SDL_BlitSurface(stave, &Rect_current_view, screen, nullptr);
                 SDL_UpdateWindowSurface(window);
                 SDL_Delay(BUTTONS_DELAY);
+
             }
 
 

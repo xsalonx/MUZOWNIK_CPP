@@ -49,7 +49,7 @@ private:
 
     //opus_editing_utils;
     int get_serial_key(const char *chosen_key, char serial_key[7]);
-    int is_acci_req(Chord *chord_to_put, int k, const char *defauly_serial_key);
+    int is_acci_req(Chord *chord, int k, const char *default_serial_key);
     int get_space_for_chord(Bar *bar, BarsSpace *b_space, const int *metre);
 
 

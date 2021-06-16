@@ -16,7 +16,7 @@ public:
     char name;
     char acci;
     int height;
-    int may_print_acci;
+    int print_acci;
 
     int index() const;
     int cmp_notes(const Note &other) const;
