@@ -1975,6 +1975,7 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
                     is_instruction_open += 1;
                     is_instruction_open %= 2;
                     page_number = 0;
+                    any_change = 1;
                 } else if (pressed_key == SDLK_ESCAPE) {
                     if (!is_instruction_open) {
                         end = 1;
@@ -2047,10 +2048,7 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
                 SDL_BlitSurface(stave, &Rect_current_view, screen, nullptr);
                 SDL_UpdateWindowSurface(window);
                 SDL_Delay(BUTTONS_DELAY);
-
             }
-
-
 
         }
     }
