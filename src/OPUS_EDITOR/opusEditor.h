@@ -26,10 +26,12 @@ private:
     SDL_Surface *instructions_[3]{};
 
     OnStaveObjects OSO{};
+    const Uint8 *KEY_STATE;
+
+    int any_change{};
 
     void resize_window();
 
-    int any_change{};
 
     //// ON_STAVE_PUTTING
     //init_putting
@@ -55,15 +57,15 @@ private:
 
 
     //opus_edit_logic;
-    int change_bar_width(int pressed_key, const Uint8 *KEY_STATE, int X_after_key);
-    int change_chord_len(int pressed_key, const Uint8 *KEY_STATE);
+    int change_bar_width(int pressed_key, int X_after_key);
+    int change_chord_len(int pressed_key);
     int change_hand();
     int change_note(int pressed_key);
-    int change_chord_or_bar(int pressed_key, const Uint8 *KEY_STATE);
-    int put_note_or_pause(int pressed_key, const Uint8 *KEY_STATE, const char *serial_key);
-    int del_note_chord_bar(const Uint8 *KEY_STATE, int X_after_key);
-    int create_new_chord_bar(const Uint8 *KEY_STATE, int X_after_key);
-    int put_accidental(int pressed_key, const Uint8 *KEY_STATE);
+    int change_chord_or_bar(int pressed_key);
+    int put_note_or_pause(int pressed_key, const char *serial_key);
+    int del_note_chord_bar(int X_after_key);
+    int create_new_chord_bar(int X_after_key);
+    int put_accidental(int pressed_key);
 
 
 

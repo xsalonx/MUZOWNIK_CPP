@@ -1418,7 +1418,7 @@ int OpusEditor::get_space_for_chord(Bar *bar, BarsSpace *b_space, const int *met
 
 
 //opus_edit_logic;
-int OpusEditor::change_bar_width(int pressed_key, const Uint8 *KEY_STATE, int X_after_key) {
+int OpusEditor::change_bar_width(int pressed_key, int X_after_key) {
 
     int i;
     OnStaveObjects COE_HELP;
@@ -1469,7 +1469,7 @@ int OpusEditor::change_bar_width(int pressed_key, const Uint8 *KEY_STATE, int X_
 
     return 0;
 }
-int OpusEditor::change_chord_len(int pressed_key, const Uint8 *KEY_STATE) {
+int OpusEditor::change_chord_len(int pressed_key) {
     int tmp1, tmp2;
     Chord *help_chord = nullptr;
     double max_time_taken, metre_sum = 0;
@@ -1556,7 +1556,7 @@ int OpusEditor::change_note(int pressed_key) {
     }
     return 0;
 }
-int OpusEditor::change_chord_or_bar(int pressed_key, const Uint8 *KEY_STATE) {
+int OpusEditor::change_chord_or_bar(int pressed_key) {
 
     struct OnStaveObjects COE_HELP;
 
@@ -1636,7 +1636,7 @@ int OpusEditor::change_chord_or_bar(int pressed_key, const Uint8 *KEY_STATE) {
     OSO.note_idx = OSO.chord->notes_number - 1;
     return 0;
 }
-int OpusEditor::put_note_or_pause(int pressed_key, const Uint8 *KEY_STATE, const char *serial_key) {
+int OpusEditor::put_note_or_pause(int pressed_key, const char *serial_key) {
 
     int help_tmp_1, i;
     if (OSO.chord->notes_number < MAX_NOTES_IN_CHORD) {
@@ -1697,7 +1697,7 @@ int OpusEditor::put_note_or_pause(int pressed_key, const Uint8 *KEY_STATE, const
     }
     return 0;
 }
-int OpusEditor::del_note_chord_bar(const Uint8 *KEY_STATE, int X_after_key) {
+int OpusEditor::del_note_chord_bar(int X_after_key) {
 
     int i;
     OnStaveObjects COE_HELP;
@@ -1768,10 +1768,10 @@ int OpusEditor::del_note_chord_bar(const Uint8 *KEY_STATE, int X_after_key) {
         }
         OSO.note_idx = OSO.chord->notes_number - 1;
     }
-    change_bar_width(0, nullptr, X_after_key);
+    change_bar_width(0, X_after_key);
     return 0;
 }
-int OpusEditor::create_new_chord_bar(const Uint8 *KEY_STATE, int X_after_key) {
+int OpusEditor::create_new_chord_bar(int X_after_key) {
 
     int brace_help, X_st_help, width_help;
     if (!KEY_STATE[SDL_SCANCODE_LSHIFT] && !KEY_STATE[SDL_SCANCODE_RSHIFT]) {
@@ -1812,11 +1812,11 @@ int OpusEditor::create_new_chord_bar(const Uint8 *KEY_STATE, int X_after_key) {
     }
 
     OSO.note_idx = -1;
-    change_bar_width(0, nullptr, X_after_key);
+    change_bar_width(0, X_after_key);
 
     return 0;
 }
-int OpusEditor::put_accidental(int pressed_key, const Uint8 *KEY_STATE) {
+int OpusEditor::put_accidental(int pressed_key) {
 
 
     if (pressed_key == SDLK_x) {
@@ -1892,6 +1892,8 @@ void OpusEditor::init() {
     instructions_[0] = SDL_LoadBMP("pictures/menu/stave_instructions_str1.bmp");
     instructions_[1] = SDL_LoadBMP("pictures/menu/stave_instructions_str2.bmp");
     instructions_[2] = SDL_LoadBMP("pictures/menu/stave_instructions_str3.bmp");
+
+    KEY_STATE = SDL_GetKeyboardState(nullptr);
 }
 
 
@@ -1950,7 +1952,6 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
 
     int pressed_key;
 
-    const Uint8 *KEY_STATE = SDL_GetKeyboardState(nullptr);
     put_all_bars_on_stave(OSO.bar, chosen_metre);
     SDL_BlitSurface(stave, &Rect_current_view, screen, nullptr);
     SDL_UpdateWindowSurface(window);
@@ -1995,11 +1996,11 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
 
                     /////////// Change width of current bar
                     if (pressed_key == SDLK_j || pressed_key == SDLK_m) {
-                        change_bar_width(pressed_key, KEY_STATE, X_after_key);
+                        change_bar_width(pressed_key, X_after_key);
                     }
                         ////////// Change chord length
                     else if (pressed_key == SDLK_k || pressed_key == SDLK_l) {
-                        change_chord_len(pressed_key, KEY_STATE);
+                        change_chord_len(pressed_key);
                     }
                         ///////// Change hand
                     else if (pressed_key == SDLK_LALT) {
@@ -2011,25 +2012,25 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
                     }
                         //////// Change chord or bar
                     else if (pressed_key == SDLK_LEFT || pressed_key == SDLK_RIGHT) {
-                        change_chord_or_bar(pressed_key, KEY_STATE);
+                        change_chord_or_bar(pressed_key);
                     }
                         /////// Put note or pause
                     else if (pressed_key == SDLK_a || pressed_key == SDLK_p ||
                              (SDLK_c <= pressed_key && pressed_key <= SDLK_h)) {
-                        put_note_or_pause(pressed_key, KEY_STATE, OSO.chord->local_serial_key);
+                        put_note_or_pause(pressed_key, OSO.chord->local_serial_key);
                     }
                         /////// Put accidental
                     else if ((pressed_key == SDLK_s || pressed_key == SDLK_b || pressed_key == SDLK_n ||
                               pressed_key == SDLK_x) && OSO.chord->notes_number > 0) {
-                        put_accidental(pressed_key, KEY_STATE);
+                        put_accidental(pressed_key);
                     }
                         /////// Remove note or chord
                     else if (pressed_key == SDLK_BACKSPACE) {
-                        del_note_chord_bar(KEY_STATE, X_after_key);
+                        del_note_chord_bar(X_after_key);
                     }
                         ////// Put new bar or chord
                     else if (pressed_key == SDLK_SPACE) {
-                        create_new_chord_bar(KEY_STATE, X_after_key);
+                        create_new_chord_bar(X_after_key);
                     }
 
                 }

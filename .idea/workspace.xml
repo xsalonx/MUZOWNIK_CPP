@@ -12,8 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a62cfe64-33c4-411e-bcad-41d7124d417d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +94,7 @@
       <workItem from="1623660099056" duration="26754000" />
       <workItem from="1623735380877" duration="10510000" />
       <workItem from="1623760991085" duration="10829000" />
-      <workItem from="1623828720832" duration="2677000" />
+      <workItem from="1623828720832" duration="3559000" />
     </task>
     <task id="LOCAL-00001" summary="Windows commitment">
       <created>1619462266920</created>
@@ -215,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623831373309</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary=".">
+      <created>1623831844865</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1623831844865</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,6 +243,7 @@
     <MESSAGE value="new gui design" />
     <MESSAGE value="dots near notes work" />
     <MESSAGE value="opusEditor run conditions simplified" />
-    <option name="LAST_COMMIT_MESSAGE" value="opusEditor run conditions simplified" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>
