@@ -51,50 +51,50 @@ void WindowsManager::init_fifths_choosing_() {
     anty_dot_surf = SDL_LoadBMP("pictures/fifths_circle/anty_dot.bmp");
     SDL_SetColorKey(dot_surf, SDL_TRUE, SDL_MapRGB(dot_surf->format, 255, 255, 255));
 
-    RECT_fifths_dots[0].x = 390;
-    RECT_fifths_dots[0].y = 4;
+    RECT_fifths_dots[C_dur_key].x = 390;
+    RECT_fifths_dots[C_dur_key].y = 4;
 
-    RECT_fifths_dots[1].x = 559;
-    RECT_fifths_dots[1].y = 50;
+    RECT_fifths_dots[G_dur_key].x = 559;
+    RECT_fifths_dots[G_dur_key].y = 50;
 
-    RECT_fifths_dots[2].x = 680;
-    RECT_fifths_dots[2].y = 173;
+    RECT_fifths_dots[D_dur_key].x = 680;
+    RECT_fifths_dots[D_dur_key].y = 173;
 
-    RECT_fifths_dots[3].x = 723;
-    RECT_fifths_dots[3].y = 338;
+    RECT_fifths_dots[A_dur_key].x = 723;
+    RECT_fifths_dots[A_dur_key].y = 338;
 
-    RECT_fifths_dots[4].x = 684;
-    RECT_fifths_dots[4].y = 509;
+    RECT_fifths_dots[E_dur_key].x = 684;
+    RECT_fifths_dots[E_dur_key].y = 509;
 
-    RECT_fifths_dots[5].x = 564;
-    RECT_fifths_dots[5].y = 628;
+    RECT_fifths_dots[Ces_dur_key].x = 564;
+    RECT_fifths_dots[Ces_dur_key].y = 628;
 
-    RECT_fifths_dots[6].x = 590;
-    RECT_fifths_dots[6].y = 722;
+    RECT_fifths_dots[H_dur_key].x = 590;
+    RECT_fifths_dots[H_dur_key].y = 722;
 
-    RECT_fifths_dots[7].x = 392;
-    RECT_fifths_dots[7].y = 679;
+    RECT_fifths_dots[Ges_dur_key].x = 392;
+    RECT_fifths_dots[Ges_dur_key].y = 679;
 
-    RECT_fifths_dots[8].x = 407;
-    RECT_fifths_dots[8].y = 761;
+    RECT_fifths_dots[Fis_dur_key].x = 407;
+    RECT_fifths_dots[Fis_dur_key].y = 761;
 
-    RECT_fifths_dots[9].x = 215;
-    RECT_fifths_dots[9].y = 632;
+    RECT_fifths_dots[Des_dur_key].x = 215;
+    RECT_fifths_dots[Des_dur_key].y = 632;
 
-    RECT_fifths_dots[10].x = 156;
-    RECT_fifths_dots[10].y = 712;
+    RECT_fifths_dots[Cis_dur_key].x = 156;
+    RECT_fifths_dots[Cis_dur_key].y = 712;
 
-    RECT_fifths_dots[11].x = 98;
-    RECT_fifths_dots[11].y = 513;
+    RECT_fifths_dots[As_dur_key].x = 98;
+    RECT_fifths_dots[As_dur_key].y = 513;
 
-    RECT_fifths_dots[12].x = 59;
-    RECT_fifths_dots[12].y = 340;
+    RECT_fifths_dots[Es_dur_key].x = 59;
+    RECT_fifths_dots[Es_dur_key].y = 340;
 
-    RECT_fifths_dots[13].x = 100;
-    RECT_fifths_dots[13].y = 160;
+    RECT_fifths_dots[B_dur_key].x = 100;
+    RECT_fifths_dots[B_dur_key].y = 160;
 
-    RECT_fifths_dots[14].x = 224;
-    RECT_fifths_dots[14].y = 51;
+    RECT_fifths_dots[F_dur_key].x = 224;
+    RECT_fifths_dots[F_dur_key].y = 51;
 }
 void WindowsManager::init_metre_choosing_() {
     char path[50] = "pictures/metre_choose/digit_0.bmp";
@@ -399,6 +399,7 @@ int WindowsManager::fifths_choosing_window() {
     if (occurrence.key.type != SDL_KEYUP) {
         SDL_Delay(50);
     }
+
     while (!end) {
         while (SDL_PollEvent(&occurrence)) {
             if (occurrence.type == SDL_QUIT) {

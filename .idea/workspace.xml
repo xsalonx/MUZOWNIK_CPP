@@ -11,11 +11,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a62cfe64-33c4-411e-bcad-41d7124d417d" name="Default Changelist" comment="">
+    <list default="true" id="a62cfe64-33c4-411e-bcad-41d7124d417d" name="Default Changelist" comment="readme">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/opus.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/prev/2/opus.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/wynik.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/out/prev/2/wynik.bmp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/OPUS_EDITOR/opusEditor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WINDOWS/windowsManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/WINDOWS/windowsManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry_defCodes.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry_defCodes.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mlib.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/mlib.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,11 +49,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\programowanie\c_cpp\c++\Nutownik\out\prev\2" />
+      <recent name="D:\programowanie\c_cpp\c++\Nutownik\out\prev\1" />
       <recent name="D:\programowanie\c_cpp\c++\MUZOWNIK\out" />
       <recent name="D:\programowanie\c_cpp\c++\MUZOWNIK\src\STRUCTS" />
       <recent name="D:\programowanie\c_cpp\c++\MUZOWNIK\src\OPUS_EDITOR" />
-      <recent name="D:\programowanie\c_cpp\c++\MUZOWNIK" />
-      <recent name="D:\programowanie\c_cpp\c\MUZOWNIK_PI_PART_LIB\src" />
     </key>
   </component>
   <component name="RunManager">
@@ -96,7 +97,7 @@
       <workItem from="1623660099056" duration="26754000" />
       <workItem from="1623735380877" duration="10510000" />
       <workItem from="1623760991085" duration="10829000" />
-      <workItem from="1623828720832" duration="4929000" />
+      <workItem from="1623828720832" duration="8303000" />
     </task>
     <task id="LOCAL-00001" summary="Windows commitment">
       <created>1619462266920</created>
@@ -231,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623832748841</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="readme">
+      <created>1623834873774</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1623834873774</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,6 +262,7 @@
     <MESSAGE value="opusEditor run conditions simplified" />
     <MESSAGE value="." />
     <MESSAGE value="KEY_STATE as field" />
-    <option name="LAST_COMMIT_MESSAGE" value="KEY_STATE as field" />
+    <MESSAGE value="readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme" />
   </component>
 </project>

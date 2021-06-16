@@ -116,4 +116,30 @@
 #define A_in_serial_key 5
 #define H_in_serial_key 6
 
+
+/// fifths
+#define C_dur_key 0
+#define G_dur_key 1
+#define D_dur_key 2
+#define A_dur_key 3
+#define E_dur_key 4
+
+#define Ces_dur_key 5
+#define H_dur_key 6
+
+#define Ges_dur_key 7
+#define Fis_dur_key 8
+
+#define Des_dur_key 9
+#define Cis_dur_key 10
+
+#define As_dur_key 11
+#define Es_dur_key 12
+#define B_dur_key 13
+#define F_dur_key 14
+
+
+
+
+
 #endif //PI_PROJECTSDL2_PART_LIB_GEOMETRY_DEF_CODES_H

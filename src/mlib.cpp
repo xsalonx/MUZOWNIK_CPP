@@ -16,8 +16,10 @@ void run() {
     int *chosen_metre;
     int opt;
     Opus *current_opus, *prev_opus;
+
     WindowsManager windowsManager = WindowsManager();
     OpusEditor opusEditor = OpusEditor();
+
     while (true) {
         opt = windowsManager.open();
 
@@ -43,7 +45,7 @@ void run() {
             cout << "Saving edited opus\n";
             save_Opus_as_TextFile(current_opus);
             cout << "Edited opus saved\n";
-            delete current_opus; // also do free_opus(prev_OPUS) if prev_OPUS == current_OPUS;
+            delete current_opus; // also do free (prev_opus) if prev_OPUS == current_OPUS;
         } else if (opt == MENU_EXIT_CODE) {
             cout << "Ending work\n";
             break;

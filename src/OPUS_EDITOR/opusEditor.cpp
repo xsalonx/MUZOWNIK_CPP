@@ -1925,7 +1925,6 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
     int X_after_key;
 
 
-
     this->put_key(chosen_key, &X_start_on_treb);
     X_after_key = X_start_on_treb;
     this->put_metre(chosen_metre, &X_start_on_treb, 0);
@@ -1933,9 +1932,8 @@ Opus* OpusEditor::run(char chosen_key[2], int chosen_metre[2], Opus *prev_opus) 
     X_start_on_treb += 5;
     X_start_on_bass = X_start_on_treb;
 
+
     //// Alokowanie pierwszego bar-u
-
-
     OSO.opus = current_opus;
     get_serial_key(chosen_key, OSO.opus->default_serial_key);
     if (prev_opus == nullptr) {
